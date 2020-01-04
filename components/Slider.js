@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 16,
         borderWidth: 20,
-        padding: 25,
+        padding: 30,
         borderColor: 'white',
         backgroundColor: '#7EB3FF',
         color: 'white',
