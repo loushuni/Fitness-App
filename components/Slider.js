@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Slides from './Slides';
 
 export default class Slider extends React.Component {
@@ -9,11 +9,11 @@ export default class Slider extends React.Component {
                 <Slides />
                 <TouchableOpacity
                     onPress={() => this.props.navigation.navigate('Settings')}>
-                    <Text style={styles.text}>Let's Get Started!</Text>
+                    <Text style={styles.text1}>Let's Get Started!</Text>
                 </TouchableOpacity>
-                <Button
-                    onPress={() => this.props.navigation.navigate('Login')}
-                    title="I already have an account" />
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+                    <Text style={styles.text2}>I already have an account</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -26,13 +26,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    text: {
+    text1: {
         fontSize: 16,
-        borderWidth: 20,
-        padding: 30,
+        borderWidth: 10,
+        padding: 25,
         borderColor: 'white',
-        backgroundColor: '#7EB3FF',
+        backgroundColor: '#2980b6',
         color: 'white',
         fontWeight: 'bold',
+    },
+    text2: {
+        color: '#2980b6',
+        fontSize: 16,
+        marginBottom: 20,
+        fontWeight: 'bold',
+        paddingTop: 10,
     }
 });
