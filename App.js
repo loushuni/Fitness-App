@@ -2,18 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Slider from './components/Slider';
 import Login from './components/Login';
+import Settings from './components/Settings';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-/*
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Slider />
-    </View>
-  );
-}
-*/
 const RootStack = createStackNavigator(
   {
     Slider: Slider,

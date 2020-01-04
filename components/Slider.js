@@ -1,19 +1,24 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert, TouchableOpacity } from 'react-native';
 import Slides from './Slides';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-export default function Slider() {
-    return (
-        <View style={styles.container}>
-            <Slides />
-            <TouchableOpacity
-                onPress={() => Alert.alert('Button pressed')}>
-                <Text style={styles.text}>Let's Get Started!</Text>
-            </TouchableOpacity>
-            <Button onPress={() => Alert.alert('Login Page')} title="I already have an account" />
-        </View>
-    );
+export default class Slider extends React.Component {
+    render() {
+        return (
+            <View style={styles.container}>
+                <Slides />
+                <TouchableOpacity
+                    onPress={() => Alert.alert('Button pressed')}>
+                    <Text style={styles.text}>Let's Get Started!</Text>
+                </TouchableOpacity>
+                <Button onPress={() => Alert.alert('Login Page')} title="I already have an account" />
+                <Button
+                    title="Go to Login Page"
+                    onPress={() => this.props.navigation.navigate('Login')}
+                />
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
