@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import Slider from './components/Slider';
 import Login from './components/Login';
-import Settings from './components/Settings';
+import Setting1 from './components/Setting1';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -10,7 +10,7 @@ const RootStack = createStackNavigator(
   {
     Slider: Slider,
     Login: Login,
-    Settings: Settings
+    Setting1: Setting1
   },
   {
     initialRouteName: 'Slider',

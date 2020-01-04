@@ -8,7 +8,7 @@ export default class Slider extends React.Component {
             <View style={styles.container}>
                 <Slides />
                 <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('Settings')}>
+                    onPress={() => this.props.navigation.navigate('Setting1')}>
                     <Text style={styles.text1}>Let's Get Started!</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
