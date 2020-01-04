@@ -4,7 +4,7 @@ import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 export default class Login extends Component {
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <Text style={styles.title}>Select Gender</Text>
                 <TouchableOpacity >
                     <Text style={styles.text}>Female</Text>
@@ -22,21 +22,25 @@ export default class Login extends Component {
 
 const styles = StyleSheet.create({
     title: {
-        color: "black",
+        color: "#2980b6",
         fontWeight: '700',
         textAlign: 'center',
         fontSize: 25,
         marginTop: 50,
-        marginBottom: 250
+        marginBottom: 200
     },
     text: {
         fontSize: 16,
         padding: 25,
         borderColor: 'white',
         backgroundColor: '#fff',
-        color: 'black',
+        color: '#2980b6',
         fontWeight: 'bold',
-        marginBottom: 10,
-        textAlign: 'center'
+        marginBottom: 15,
+        textAlign: 'center',
+    },
+    container: {
+        flex: 1,
+        backgroundColor: 'transparent'
     }
 });
