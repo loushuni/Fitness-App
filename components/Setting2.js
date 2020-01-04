@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default class Setting1 extends Component {
+export default class Setting2 extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>Select Gender</Text>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Setting2')}>
-                    <Text style={styles.text}>Female</Text>
+                <Text style={styles.title}>Select Goal</Text>
+                <TouchableOpacity >
+                    <Text style={styles.text}>Lose Weight</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Setting2')}>
-                    <Text style={styles.text}>Male</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Setting2')}>
-                    <Text style={styles.text}>Non-Binary</Text>
+                <TouchableOpacity>
+                    <Text style={styles.text}>Get Fitter</Text>
                 </TouchableOpacity>
             </View>
         );
