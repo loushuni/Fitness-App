@@ -8,14 +8,12 @@ export default class Slider extends React.Component {
             <View style={styles.container}>
                 <Slides />
                 <TouchableOpacity
-                    onPress={() => Alert.alert('Button pressed')}>
+                    onPress={() => this.props.navigation.navigate('Settings')}>
                     <Text style={styles.text}>Let's Get Started!</Text>
                 </TouchableOpacity>
-                <Button onPress={() => Alert.alert('Login Page')} title="I already have an account" />
                 <Button
-                    title="Go to Login Page"
                     onPress={() => this.props.navigation.navigate('Login')}
-                />
+                    title="I already have an account" />
             </View>
         );
     }
