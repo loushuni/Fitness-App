@@ -1,13 +1,36 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Slider from './components/Slider';
+import Login from './components/Login';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
+/*
 export default function App() {
   return (
     <View style={styles.container}>
       <Slider />
     </View>
   );
+}
+*/
+const RootStack = createStackNavigator(
+  {
+    Slider: Slider,
+    Login: Login,
+    Settings: Settings
+  },
+  {
+    initialRouteName: 'Slider',
+  }
+);
+
+const AppContainer = createAppContainer(RootStack);
+
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
 }
 
 const styles = StyleSheet.create({
