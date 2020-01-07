@@ -16,6 +16,9 @@ const RootStack = createStackNavigator(
   },
   {
     initialRouteName: 'Slider',
+    defaultNavigationOptions: {
+      headerShown: false
+    }
   }
 );
 
