@@ -6,16 +6,12 @@ export default class Login extends Component {
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/7.png')} style={styles.backgroundImage}>
-                    <View style={styles.inputcontainer}>
-                        <Text style={styles.title}>Fitness App</Text>
-                        <TextInput style={styles.input} placeholder="Username" />
-                        <TextInput style={styles.input} placeholder="Password" />
-                    </View>
-                    <View>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.buttontext}>Login</Text>
-                        </TouchableOpacity>
-                    </View>
+                    <Text style={styles.title}>Fitness App</Text>
+                    <TextInput style={styles.input} placeholder="Username" />
+                    <TextInput style={styles.input} placeholder="Password" />
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.buttontext}>Login</Text>
+                    </TouchableOpacity>
                 </ImageBackground>
             </View>
         );
@@ -27,34 +23,34 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'transparent'
-    },
-    inputcontainer: {
-        flexDirection: 'column',
-        justifyContent: 'center'
+        backgroundColor: 'transparent',
     },
     title: {
         fontSize: 30,
         textAlign: 'center',
-        marginBottom: 35,
         color: '#2980b6',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        paddingTop: 60,
+        paddingBottom: 150
     },
     input: {
         fontSize: 18,
-        paddingHorizontal: 10,
         height: 40,
         backgroundColor: 'rgba(225,225,225,1)',
         marginBottom: 10,
         padding: 10,
-        color: '#fff'
+        color: '#fff',
+        textAlign: 'center',
+        width: '50%',
+        alignSelf: 'center'
     },
     button: {
         padding: 15,
         width: '45%',
         backgroundColor: '#2980b6',
         paddingVertical: 15,
-        marginTop: 20
+        marginTop: 20,
+        alignSelf: 'center'
     },
     buttontext: {
         fontSize: 18,
