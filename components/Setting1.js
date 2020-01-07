@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 
 export default class Setting1 extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>Select Gender</Text>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Setting2')}>
-                    <Text style={styles.text}>Female</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Setting2')}>
-                    <Text style={styles.text}>Male</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Setting2')}>
-                    <Text style={styles.text}>Non-Binary</Text>
-                </TouchableOpacity>
+                <ImageBackground source={require('../assets/5.png')} style={styles.backgroundImage}>
+                    <Text style={styles.title}>Select Gender</Text>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Setting2')}>
+                        <Text style={styles.text}>Female</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Setting2')}>
+                        <Text style={styles.text}>Male</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Setting2')}>
+                        <Text style={styles.text}>Non-Binary</Text>
+                    </TouchableOpacity>
+                </ImageBackground>
             </View>
         );
     }
@@ -42,5 +44,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'transparent'
+    },
+    backgroundImage: {
+        width: '100%',
+        height: '100%'
     }
 });
