@@ -29,13 +29,12 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: '700',
         textAlign: 'center',
-        fontSize: 25,
+        fontSize: 27,
         marginTop: 50,
         marginBottom: 200
     },
     text: {
         fontSize: 16,
-        borderColor: 'white',
         backgroundColor: '#fff',
         color: 'black',
         fontWeight: 'bold',
@@ -56,6 +55,6 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     button: {
-        paddingTop: 180,
+        paddingTop: 200,
     }
 });

@@ -6,12 +6,12 @@ export default class Setting2 extends Component {
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/6.png')} style={styles.backgroundImage}>
-                    <Text style={styles.title}>Select Goal</Text>
+                    <Text style={styles.title}>Choose a Goal</Text>
                     <View style={styles.button}>
-                        <TouchableOpacity >
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Setting3')}>
                             <Text style={styles.text}>Lose Weight</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Setting3')}>
                             <Text style={styles.text}>Get Fitter</Text>
                         </TouchableOpacity>
                     </View>
@@ -26,13 +26,12 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: '700',
         textAlign: 'center',
-        fontSize: 25,
+        fontSize: 27,
         marginTop: 50,
         marginBottom: 200
     },
     text: {
         fontSize: 16,
-        borderColor: 'white',
         backgroundColor: '#fff',
         color: 'black',
         fontWeight: 'bold',
@@ -53,6 +52,6 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     button: {
-        paddingTop: 180
+        paddingTop: 200
     }
 });
