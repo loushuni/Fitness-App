@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 
 export default class Setting2 extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>Select Goal</Text>
-                <TouchableOpacity >
-                    <Text style={styles.text}>Lose Weight</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={styles.text}>Get Fitter</Text>
-                </TouchableOpacity>
+                <ImageBackground source={require('../assets/6.png')} style={styles.backgroundImage}>
+                    <Text style={styles.title}>Select Goal</Text>
+                    <TouchableOpacity >
+                        <Text style={styles.text}>Lose Weight</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Text style={styles.text}>Get Fitter</Text>
+                    </TouchableOpacity>
+                </ImageBackground>
             </View>
         );
     }
@@ -39,5 +41,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'transparent'
+    },
+    backgroundImage: {
+        width: '100%',
+        height: '100%'
     }
 });
