@@ -7,12 +7,14 @@ export default class Setting2 extends Component {
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/6.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Select Goal</Text>
-                    <TouchableOpacity >
-                        <Text style={styles.text}>Lose Weight</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Text style={styles.text}>Get Fitter</Text>
-                    </TouchableOpacity>
+                    <View style={styles.button}>
+                        <TouchableOpacity >
+                            <Text style={styles.text}>Lose Weight</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Text style={styles.text}>Get Fitter</Text>
+                        </TouchableOpacity>
+                    </View>
                 </ImageBackground>
             </View>
         );
@@ -21,7 +23,7 @@ export default class Setting2 extends Component {
 
 const styles = StyleSheet.create({
     title: {
-        color: "#2980b6",
+        color: "white",
         fontWeight: '700',
         textAlign: 'center',
         fontSize: 25,
@@ -30,13 +32,17 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 16,
-        padding: 25,
         borderColor: 'white',
         backgroundColor: '#fff',
-        color: '#2980b6',
+        color: 'black',
         fontWeight: 'bold',
-        marginBottom: 15,
+        marginBottom: 10,
+        marginTop: 5,
+        paddingTop: 12,
         textAlign: 'center',
+        width: '85%',
+        alignSelf: 'center',
+        height: 45,
     },
     container: {
         flex: 1,
@@ -45,5 +51,8 @@ const styles = StyleSheet.create({
     backgroundImage: {
         width: '100%',
         height: '100%'
+    },
+    button: {
+        paddingTop: 180
     }
 });

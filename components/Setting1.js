@@ -41,11 +41,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 10,
         marginTop: 5,
-        paddingTop: 10,
+        paddingTop: 12,
         textAlign: 'center',
         width: '85%',
         alignSelf: 'center',
-        height: 40,
+        height: 45,
     },
     container: {
         flex: 1,
@@ -56,6 +56,6 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     button: {
-        paddingTop: 200,
+        paddingTop: 180,
     }
 });
