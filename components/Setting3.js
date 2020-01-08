@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Button, StyleSheet, ImageBackground, Text } from 'react-native';
+import { View, StyleSheet, ImageBackground, Text } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -17,7 +17,7 @@ export default class Setting3 extends Component {
 
     render() {
         const { date } = this.state;
-        
+
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/8.png')} style={styles.backgroundImage}>
