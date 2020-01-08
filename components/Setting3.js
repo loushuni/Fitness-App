@@ -17,7 +17,7 @@ export default class Setting3 extends Component {
 
     render() {
         const { date } = this.state;
-
+        
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/8.png')} style={styles.backgroundImage}>

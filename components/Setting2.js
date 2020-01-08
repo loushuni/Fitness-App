@@ -4,7 +4,7 @@ import { Text, View, TouchableOpacity, StyleSheet, ImageBackground } from 'react
 export default class Setting2 extends Component {
     render() {
         return (
-            <View style={styles.container}>
+            <View>
                 <ImageBackground source={require('../assets/6.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Choose a Goal</Text>
                     <View style={styles.button}>
@@ -43,15 +43,11 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         height: 50,
     },
-    container: {
-        flex: 1,
-        backgroundColor: 'transparent'
-    },
     backgroundImage: {
         width: '100%',
         height: '100%'
     },
     button: {
-        paddingTop: 200
+        marginTop: 220
     }
 });
