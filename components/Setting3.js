@@ -24,7 +24,7 @@ export default class Setting3 extends Component {
                     <Text style={styles.title}>Date of Birth</Text>
                 </ImageBackground>
                 <View style={styles.datePicker}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Setting4')}>
                         <Text style={styles.buttontext}>Continue</Text>
                     </TouchableOpacity>
                     <DateTimePicker value={date} display="default" onChange={this.setDate} />
