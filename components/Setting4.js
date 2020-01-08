@@ -31,7 +31,6 @@ export default class Setting4 extends Component {
                             < Picker.Item label="inch" value="inch" />
                         </Picker>
                     </View>
-
                 </View>
             </View>
         );
