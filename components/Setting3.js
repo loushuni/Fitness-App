@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Button, StyleSheet, ImageBackground, Text } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class Setting3 extends Component {
     state = {
@@ -9,7 +10,6 @@ export default class Setting3 extends Component {
 
     setDate = (event, date) => {
         date = date || this.state.date;
-
         this.setState({
             date
         });
@@ -19,16 +19,16 @@ export default class Setting3 extends Component {
         const { date } = this.state;
 
         return (
-            <View>
+            <View style={styles.container}>
                 <ImageBackground source={require('../assets/8.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Date of Birth</Text>
                 </ImageBackground>
-                <Button onPress={this.datepicker} title="Show date picker!" />
-                <DateTimePicker
-                    value={date}
-                    display="default"
-                    onChange={this.setDate}
-                />
+                <View style={styles.datePicker}>
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.buttontext}>Continue</Text>
+                    </TouchableOpacity>
+                    <DateTimePicker value={date} display="default" onChange={this.setDate} />
+                </View>
             </View>
         );
     }
@@ -41,10 +41,28 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 27,
         marginTop: 50,
-        marginBottom: 200
     },
     backgroundImage: {
         width: '100%',
-        height: '75%'
+        height: '100%',
+        flex: 1.3
+    },
+    datePicker: {
+        flex: 0.7
+    },
+    button: {
+        width: '100%',
+        height: 60,
+        backgroundColor: '#333333',
+        paddingTop: 18
+    },
+    buttontext: {
+        color: 'white',
+        fontSize: 18,
+        textAlign: 'center',
+        fontWeight: 'bold',
+    },
+    container: {
+        flex: 1
     }
 }); 
