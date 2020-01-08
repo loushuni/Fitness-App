@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Picker } from 'react-native';
 
 export default class Setting4 extends Component {
-    state = { user: '' }
+    state = { number: '', unit: ''}
 
-    updateUser = (user) => {
-        this.setState({ user: user })
+    updateNumber = (number) => {
+        this.setState({ number: number })
+    }
+
+    updateUnit = (unit) => {
+        this.setState({ unit: unit })
     }
 
     render() {
@@ -21,12 +25,12 @@ export default class Setting4 extends Component {
                         <Text style={styles.buttonText}>Continue</Text>
                     </TouchableOpacity>
                     <View style={styles.pickerView}>
-                        <Picker selectedValue={this.state.user} onValueChange={this.updateUser} style={styles.picker}>
+                        <Picker selectedValue={this.state.number} onValueChange={this.updateNumber} style={styles.picker}>
                             {array.map((item, index) => {
                                 return (< Picker.Item label={item} value={index} key={index} />);
                             })}
                         </Picker>
-                        <Picker selectedValue={this.state.user} onValueChange={this.updateUser} style={styles.picker}>
+                        <Picker selectedValue={this.state.unit} onValueChange={this.updateUnit} style={styles.picker}>
                             < Picker.Item label="cm" value="cm" />
                             < Picker.Item label="inch" value="inch" />
                         </Picker>
