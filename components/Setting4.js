@@ -9,7 +9,7 @@ export default class Setting4 extends Component {
                     <Text style={styles.title}>Height</Text>
                 </ImageBackground>
                 <View style={styles.picker}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Setting5')}>
                         <Text style={styles.buttontext}>Continue</Text>
                     </TouchableOpacity>
                 </View>
