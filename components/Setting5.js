@@ -13,8 +13,7 @@ export default class Setting5 extends Component {
     }
 
     render() {
-        const array = ["80", "81", "82", "83", "84", "85", "86"];
-
+        const array = ["80", "81", "82", "83", "84", "85", "86"]; 
         return (
             <View style={styles.container1}>
                 <ImageBackground source={require('../assets/10.png')} style={styles.backgroundImage}>

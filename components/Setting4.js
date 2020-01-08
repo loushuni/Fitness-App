@@ -14,7 +14,6 @@ export default class Setting4 extends Component {
 
     render() {
         const array = ["130", "131", "132", "133", "134", "135", "136"];
-
         return (
             <View style={styles.container1}>
                 <ImageBackground source={require('../assets/9.png')} style={styles.backgroundImage}>
