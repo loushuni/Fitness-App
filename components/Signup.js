@@ -7,7 +7,7 @@ export default class Signup extends Component {
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/11.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Great choice! Now get your personal daily plan.</Text>
-                    <TouchableOpacity style={styles.button1}>
+                    <TouchableOpacity style={styles.button1} onPress={() => this.props.navigation.navigate('EmailSignup')}>
                         <Text style={styles.buttontext}>Sign Up With Email</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button2}>

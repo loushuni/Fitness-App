@@ -5,8 +5,8 @@ export default class EmailSignup extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <ImageBackground source={require('../assets/7.png')} style={styles.backgroundImage}>
-                    <Text style={styles.title}>Fitness App</Text>
+                <ImageBackground source={require('../assets/12.png')} style={styles.backgroundImage}>
+                    <Text style={styles.title}>Sign Up A New Account</Text>
                     <TextInput style={styles.input} placeholder="Username" />
                     <TextInput style={styles.input} placeholder="Password" />
                     <TouchableOpacity style={styles.button}>
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         textAlign: 'center',
-        color: '#2980b6',
+        color: 'white',
         fontWeight: 'bold',
         paddingTop: 60,
         paddingBottom: 150
