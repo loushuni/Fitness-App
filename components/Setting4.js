@@ -13,7 +13,18 @@ export default class Setting4 extends Component {
     }
 
     render() {
+
+        // This way works.
         const array = ["130", "131", "132", "133", "134", "135", "136"];
+        
+        // This way doesn't work.
+        // let array = new Array(7);
+        // let start = 130;
+        // for (let i = 0; i < array.length; i++) {
+        //     array[i] = start;
+        //     start++;
+        // }
+
         return (
             <View style={styles.container1}>
                 <ImageBackground source={require('../assets/9.png')} style={styles.backgroundImage}>

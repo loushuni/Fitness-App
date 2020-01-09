@@ -25,7 +25,11 @@ const RootStack = createStackNavigator(
   {
     initialRouteName: 'Slider',
     defaultNavigationOptions: {
-      headerShown: false
+      headerTransparent: true,
+      headerBackTitleVisible: false,
+      headerTitleStyle: {
+        color: 'transparent'
+      }
     }
   }
 );
