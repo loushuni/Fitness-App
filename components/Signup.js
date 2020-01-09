@@ -7,11 +7,16 @@ export default class Signup extends Component {
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/11.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Great choice! Now get your personal daily plan.</Text>
-                    <TextInput style={styles.input} placeholder="Username" />
-                    <TextInput style={styles.input} placeholder="Password" />
-                    <TouchableOpacity style={styles.button}>
-                        <Text style={styles.buttontext}>Login</Text>
+                    <TouchableOpacity style={styles.button1}>
+                        <Text style={styles.buttontext}>Sign Up With Email</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.button2}>
+                        <Text style={styles.buttontext}>Continue With Apple</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button3}>
+                        <Text style={styles.buttontext}>Sign Up With Facebook</Text>
+                    </TouchableOpacity>
+                    <Text style={styles.bottomText}>By signing up, I agree to the Terms of Use and Privacy Policy</Text>
                 </ImageBackground>
             </View>
         );
@@ -28,24 +33,29 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontWeight: 'bold',
-        marginTop: 110,
-        paddingBottom: 150
+        marginTop: 320,
+        paddingBottom: 30
     },
-    input: {
-        fontSize: 18,
-        height: 40,
-        backgroundColor: 'rgba(225,225,225,1)',
-        marginBottom: 10,
-        padding: 10,
-        color: '#fff',
-        textAlign: 'center',
-        width: '50%',
+    button1: {
+        padding: 15,
+        width: '85%',
+        backgroundColor: 'white',
+        paddingVertical: 15,
+        marginTop: 20,
         alignSelf: 'center'
     },
-    button: {
+    button2: {
         padding: 15,
-        width: '45%',
-        backgroundColor: '#2980b6',
+        width: '85%',
+        backgroundColor: 'white',
+        paddingVertical: 15,
+        marginTop: 20,
+        alignSelf: 'center'
+    },
+    button3: {
+        padding: 15,
+        width: '85%',
+        backgroundColor: '#3b5998',
         paddingVertical: 15,
         marginTop: 20,
         alignSelf: 'center'
@@ -54,11 +64,16 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         width: '100%',
-        color: '#fff',
-        fontWeight: '700',
+        color: 'black',
+        fontWeight: 'bold',
     },
     backgroundImage: {
         width: '100%',
         height: '100%'
+    },
+    bottomText: {
+        marginTop: 50,
+        color: 'white',
+        textAlign: 'center'
     }
 });
