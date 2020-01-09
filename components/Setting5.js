@@ -13,6 +13,14 @@ export default class Setting5 extends Component {
     }
 
     render() {
+        let pickerItems = null;
+        if (this.state.unit === 'kg') {
+            pickerItems = Array.from(Array(116), (_, x) => x).map((item, index) => (
+                <Picker.Item label={`${item + 35}`} key={index} value={index} />));
+        } else {
+            pickerItems = Array.from(Array(271), (_, x) => x).map((item, index) => (
+                <Picker.Item label={`${item + 80}`} key={index} value={index} />));
+        }
         return (
             <View style={styles.container1}>
                 <ImageBackground source={require('../assets/10.png')} style={styles.backgroundImage}>
@@ -24,13 +32,11 @@ export default class Setting5 extends Component {
                     </TouchableOpacity>
                     <View style={styles.pickerView}>
                         <Picker selectedValue={this.state.number} onValueChange={this.updateNumber} style={styles.picker}>
-                            {Array.from(Array(311), (_, x) => x).map((item, index) => (
-                                <Picker.Item label={`${item + 40}`} key={index} value={index} />
-                            ))}
+                            {pickerItems}
                         </Picker>
                         <Picker selectedValue={this.state.unit} onValueChange={this.updateUnit} style={styles.picker}>
-                            < Picker.Item label="kg" value="kg" />
                             < Picker.Item label="lbs" value="lbs" />
+                            < Picker.Item label="kg" value="kg" />
                         </Picker>
                     </View>
                 </View>
