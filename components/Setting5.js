@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Picker } from 'react-native';
 
 export default class Setting5 extends Component {
-    state = { number: '', unit: ''}
+    state = { number: '', unit: '' }
 
     updateNumber = (number) => {
         this.setState({ number: number })
@@ -13,7 +13,6 @@ export default class Setting5 extends Component {
     }
 
     render() {
-        const array = ["80", "81", "82", "83", "84", "85", "86"]; 
         return (
             <View style={styles.container1}>
                 <ImageBackground source={require('../assets/10.png')} style={styles.backgroundImage}>
@@ -25,9 +24,9 @@ export default class Setting5 extends Component {
                     </TouchableOpacity>
                     <View style={styles.pickerView}>
                         <Picker selectedValue={this.state.number} onValueChange={this.updateNumber} style={styles.picker}>
-                            {array.map((item, index) => {
-                                return (< Picker.Item label={item} value={index} key={index} />);
-                            })}
+                            {Array.from(Array(311), (_, x) => x).map((item, index) => (
+                                <Picker.Item label={`${item + 40}`} key={index} value={index} />
+                            ))}
                         </Picker>
                         <Picker selectedValue={this.state.unit} onValueChange={this.updateUnit} style={styles.picker}>
                             < Picker.Item label="kg" value="kg" />
