@@ -20,7 +20,7 @@ export default class Setting5 extends Component {
                     <Text style={styles.title}>Weight</Text>
                 </ImageBackground>
                 <View style={styles.container2}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Signup')}>
                         <Text style={styles.buttontext}>Continue</Text>
                     </TouchableOpacity>
                     <View style={styles.pickerView}>

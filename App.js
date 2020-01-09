@@ -7,6 +7,7 @@ import Setting2 from './components/Setting2';
 import Setting3 from './components/Setting3';
 import Setting4 from './components/Setting4';
 import Setting5 from './components/Setting5';
+import Signup from './components/Signup';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -18,7 +19,8 @@ const RootStack = createStackNavigator(
     Setting2: Setting2,
     Setting3: Setting3,
     Setting4: Setting4,
-    Setting5: Setting5
+    Setting5: Setting5,
+    Signup: Signup
   },
   {
     initialRouteName: 'Slider',
