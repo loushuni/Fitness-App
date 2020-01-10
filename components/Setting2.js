@@ -23,7 +23,7 @@ export default class Setting2 extends Component {
                         </Button>
                     </View>
                 </ImageBackground>
-            </View>     
+            </View>
         );
     }
 }
@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 27,
         marginTop: 80,
-        marginBottom: 200 
+        marginBottom: 200,
+        paddingTop: 10
     },
     text: {
         fontSize: 16,
@@ -51,10 +52,10 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     buttonContainer: {
-        marginTop: 200,
+        marginTop: 170,
         alignItems: 'center'
     },
-    button:{
+    button: {
         margin: 10,
         height: '20%',
         width: '85%'
