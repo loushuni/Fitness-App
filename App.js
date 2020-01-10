@@ -11,6 +11,8 @@ import Signup from './components/Signup';
 import EmailSignup from './components/EmailSignup';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { ApplicationProvider } from '@ui-kitten/components';
+import { mapping, dark as darkTheme } from '@eva-design/eva';
 
 const RootStack = createStackNavigator(
   {
@@ -40,7 +42,11 @@ const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
   render() {
-    return <AppContainer />;
+    return (
+      <ApplicationProvider mapping={mapping} theme={darkTheme}>
+        <AppContainer />
+      </ApplicationProvider>
+    );
   }
 }
 

@@ -8,7 +8,7 @@ export default class EmailSignup extends Component {
                 <ImageBackground source={require('../assets/12.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Sign Up A New Account</Text>
                     <TextInput style={styles.input} placeholder="Username" />
-                    <TextInput style={styles.input} placeholder="Password" />
+                    <TextInput style={styles.input} placeholder="Create Password" />
                     <TouchableOpacity style={styles.button}>
                         <Text style={styles.buttontext}>Sign Up</Text>
                     </TouchableOpacity>
