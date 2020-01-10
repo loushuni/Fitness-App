@@ -1,21 +1,28 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import Slides from './Slides';
-import { Text } from '@ui-kitten/components';
+import { Text, Button, Layout } from '@ui-kitten/components';
 
 
 export default class Slider extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Slides />
-                <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('Setting1')}>
-                    <Text style={styles.text1}>Let's Get Started!</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
-                    <Text style={styles.text2}>I already have an account</Text>
-                </TouchableOpacity>
+                <Slides style={styles.slides}/>
+                <Layout style={styles.layout}>
+                    <Button
+                        onPress={() => this.props.navigation.navigate('Setting1')}
+                        style={styles.button}
+                        textStyle={styles.text}>
+                        Let's Get Started!
+                    </Button>
+                    <Button
+                        onPress={() => this.props.navigation.navigate('Login')}
+                        style={styles.button}
+                        textStyle={styles.text}>
+                        I already have an account
+                    </Button>
+                </Layout>
             </View>
         );
     }
@@ -24,24 +31,29 @@ export default class Slider extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'transparent',
         alignItems: 'center',
         justifyContent: 'center',
     },
-    text1: {
+    text: {
         fontSize: 16,
-        borderWidth: 10,
-        padding: 25,
-        borderColor: 'white',
-        backgroundColor: '#2980b6',
         color: 'white',
-        fontWeight: 'bold',
+        fontWeight: 'bold'
     },
-    text2: {
-        color: '#2980b6',
-        fontSize: 16,
-        marginBottom: 20,
-        fontWeight: 'bold',
-        paddingTop: 10,
+    button: {
+        width: '60%',
+        alignContent: 'center',
+        margin: 10
+    },
+    slides: {
+        flex: 0.7
+    },
+    layout: {
+        flex: 0.3,
+        width: '100%',
+        flexDirection: 'column',
+        flexWrap: 'wrap',
+        alignContent: 'center',
+        paddingTop: 25
     }
 });
