@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { Text, Button, Layout } from '@ui-kitten/components';
 
 export default class Setting1 extends Component {
     render() {
@@ -7,16 +8,25 @@ export default class Setting1 extends Component {
             <View>
                 <ImageBackground source={require('../assets/5.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Select Gender</Text>
-                    <View style={styles.button}>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Setting2')}>
-                            <Text style={styles.text}>Female</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Setting2')}>
-                            <Text style={styles.text}>Male</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Setting2')}>
-                            <Text style={styles.text}>Non-Binary</Text>
-                        </TouchableOpacity>
+                    <View style={styles.buttonContainer}>
+                        <Button
+                            onPress={() => this.props.navigation.navigate('Setting2')}
+                            textStyle={styles.text}
+                            style={styles.button}>
+                            Female
+                        </Button>
+                        <Button
+                            onPress={() => this.props.navigation.navigate('Setting2')}
+                            textStyle={styles.text}
+                            style={styles.button}>
+                            Male
+                        </Button>
+                        <Button
+                            onPress={() => this.props.navigation.navigate('Setting2')}
+                            textStyle={styles.text}
+                            style={styles.button}>
+                            Non-Binary
+                        </Button>
                     </View>
                 </ImageBackground>
             </View>
@@ -30,27 +40,29 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         textAlign: 'center',
         fontSize: 27,
-        marginTop: 50,
+        marginTop: 80,
         marginBottom: 200
     },
     text: {
         fontSize: 16,
-        backgroundColor: '#fff',
-        color: 'black',
+        color: 'white',
         fontWeight: 'bold',
-        marginBottom: 10,
-        marginTop: 5,
-        paddingTop: 14,
+        paddingTop: 16,
         textAlign: 'center',
         width: '85%',
-        alignSelf: 'center',
         height: 50,
     },
     backgroundImage: {
         width: '100%',
         height: '100%'
     },
+    buttonContainer: {
+        marginTop: 200,
+        alignItems: 'center'
+    },
     button: {
-        marginTop: 220
+        margin: 10,
+        height: '16%',
+        width: '85%'
     }
 });
