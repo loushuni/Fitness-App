@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
-import { Text, Button, Layout } from '@ui-kitten/components';
+import { View, StyleSheet, ImageBackground } from 'react-native';
+import { Text, Button } from '@ui-kitten/components';
 
 export default class Setting2 extends Component {
     render() {
