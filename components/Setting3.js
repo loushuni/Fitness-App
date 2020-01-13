@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ImageBackground, Text } from 'react-native';
+import { View, StyleSheet, ImageBackground } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Text, Button } from '@ui-kitten/components';
 
 export default class Setting3 extends Component {
     state = {
@@ -24,9 +24,12 @@ export default class Setting3 extends Component {
                     <Text style={styles.title}>Date of Birth</Text>
                 </ImageBackground>
                 <View style={styles.datePicker}>
-                    <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Setting4')}>
-                        <Text style={styles.buttontext}>Continue</Text>
-                    </TouchableOpacity>
+                    <Button
+                        style={styles.button}
+                        onPress={() => this.props.navigation.navigate('Setting4')}
+                        textStyle={styles.buttontext}>
+                        Continue
+                    </Button>
                     <DateTimePicker value={date} display="default" onChange={this.setDate} />
                 </View>
             </View>
@@ -41,6 +44,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 27,
         marginTop: 50,
+        padding: 10
     },
     backgroundImage: {
         width: '100%',
@@ -53,7 +57,6 @@ const styles = StyleSheet.create({
     button: {
         width: '100%',
         height: 60,
-        backgroundColor: '#333333',
         paddingTop: 18
     },
     buttontext: {
@@ -61,6 +64,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         fontWeight: 'bold',
+        padding: 2
     },
     container: {
         flex: 1
