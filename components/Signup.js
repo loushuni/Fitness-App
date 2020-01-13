@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
-import { Text, Button } from '@ui-kitten/components';
+import { Text, Button, Icon } from '@ui-kitten/components';
 
 export default class Signup extends Component {
     render() {
@@ -19,17 +19,21 @@ export default class Signup extends Component {
                         textStyle={styles.buttonText}>
                         Continue With Apple
                     </Button>
-                    <Button
-                        style={styles.button3}
-                        textStyle={styles.buttonText}>
-                        Sign Up With Facebook
-                    </Button>
+                    <FacebookButton />
                     <Text style={styles.bottomText}>By signing up, I agree to the Terms of Use and Privacy Policy</Text>
                 </ImageBackground>
             </View>
         );
     }
 }
+
+const FacebookIcon = (style) => (
+    <Icon name='facebook' {...style} />
+);
+
+const FacebookButton = () => (
+    <Button icon={FacebookIcon} style={styles.button3}>Sign Up with Facebook</Button>
+  );
 
 const styles = StyleSheet.create({
     container: {
