@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import { Text, Button } from '@ui-kitten/components';
 
 export default class Slides extends Component {
   constructor(props) {
@@ -52,7 +53,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   text: {
-    color: '#fff',
     fontSize: 25,
     fontWeight: 'bold',
     marginBottom: 50,
