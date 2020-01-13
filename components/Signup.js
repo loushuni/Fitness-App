@@ -46,21 +46,18 @@ const styles = StyleSheet.create({
         padding: 10
     },
     button1: {
-        padding: 15,
         width: '85%',
         paddingVertical: 15,
         marginTop: 20,
         alignSelf: 'center'
     },
     button2: {
-        padding: 15,
         width: '85%',
         paddingVertical: 15,
         marginTop: 20,
         alignSelf: 'center'
     },
     button3: {
-        padding: 15,
         width: '85%',
         paddingVertical: 15,
         marginTop: 20,
@@ -70,7 +67,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         width: '100%',
-        color: 'black',
         fontWeight: 'bold',
         padding: 3
     },

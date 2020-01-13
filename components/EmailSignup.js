@@ -40,12 +40,11 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         padding: 10,
         textAlign: 'center',
-        width: '50%',
+        width: '55%',
         alignSelf: 'center'
     },
     button: {
-        padding: 15,
-        width: '45%',
+        width: '50%',
         paddingVertical: 15,
         marginTop: 20,
         alignSelf: 'center'
