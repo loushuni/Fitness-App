@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { TextInput, View, StyleSheet, TouchableOpacity, Text, ImageBackground } from 'react-native';
+import { View, StyleSheet, ImageBackground } from 'react-native';
+import { Text, Button } from '@ui-kitten/components';
 
 export default class Signup extends Component {
     render() {
@@ -7,15 +8,22 @@ export default class Signup extends Component {
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/11.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Great choice! Now get your personal daily plan.</Text>
-                    <TouchableOpacity style={styles.button1} onPress={() => this.props.navigation.navigate('EmailSignup')}>
-                        <Text style={styles.buttontext}>Sign Up With Email</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.button2}>
-                        <Text style={styles.buttontext}>Continue With Apple</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.button3}>
-                        <Text style={styles.buttontext}>Sign Up With Facebook</Text>
-                    </TouchableOpacity>
+                    <Button
+                        style={styles.button1}
+                        onPress={() => this.props.navigation.navigate('EmailSignup')}
+                        textStyle={styles.buttonText}>
+                        Sign Up With Email
+                    </Button>
+                    <Button
+                        style={styles.button2}
+                        textStyle={styles.buttonText}>
+                        Continue With Apple
+                    </Button>
+                    <Button
+                        style={styles.button3}
+                        textStyle={styles.buttonText}>
+                        Sign Up With Facebook
+                    </Button>
                     <Text style={styles.bottomText}>By signing up, I agree to the Terms of Use and Privacy Policy</Text>
                 </ImageBackground>
             </View>
@@ -34,12 +42,12 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         marginTop: 320,
-        paddingBottom: 30
+        paddingBottom: 30,
+        padding: 10
     },
     button1: {
         padding: 15,
         width: '85%',
-        backgroundColor: 'white',
         paddingVertical: 15,
         marginTop: 20,
         alignSelf: 'center'
@@ -47,7 +55,6 @@ const styles = StyleSheet.create({
     button2: {
         padding: 15,
         width: '85%',
-        backgroundColor: 'white',
         paddingVertical: 15,
         marginTop: 20,
         alignSelf: 'center'
@@ -55,17 +62,17 @@ const styles = StyleSheet.create({
     button3: {
         padding: 15,
         width: '85%',
-        backgroundColor: '#3b5998',
         paddingVertical: 15,
         marginTop: 20,
         alignSelf: 'center'
     },
-    buttontext: {
+    buttonText: {
         fontSize: 18,
         textAlign: 'center',
         width: '100%',
         color: 'black',
         fontWeight: 'bold',
+        padding: 3
     },
     backgroundImage: {
         width: '100%',
