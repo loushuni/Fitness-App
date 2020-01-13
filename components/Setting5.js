@@ -28,10 +28,10 @@ export default class Setting5 extends Component {
                     <Text style={styles.title}>Weight</Text>
                 </ImageBackground>
                 <View style={styles.container2}>
-                    <Button 
-                    style={styles.button} 
-                    onPress={() => this.props.navigation.navigate('Signup')}
-                    textStyle={styles.buttonText}>
+                    <Button
+                        style={styles.button}
+                        onPress={() => this.props.navigation.navigate('Signup')}
+                        textStyle={styles.buttonText}>
                         Continue
                     </Button>
                     <View style={styles.pickerView}>
