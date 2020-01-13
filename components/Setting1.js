@@ -5,7 +5,7 @@ import { Text, Button } from '@ui-kitten/components';
 export default class Setting1 extends Component {
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <ImageBackground source={require('../assets/5.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Select Gender</Text>
                     <View style={styles.buttonContainer}>
@@ -35,6 +35,9 @@ export default class Setting1 extends Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
     title: {
         color: "white",
         fontWeight: '700',
