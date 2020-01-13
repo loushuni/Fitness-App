@@ -27,7 +27,7 @@ export default class Setting3 extends Component {
                     <Button
                         style={styles.button}
                         onPress={() => this.props.navigation.navigate('Setting4')}
-                        textStyle={styles.buttontext}>
+                        textStyle={styles.buttonText}>
                         Continue
                     </Button>
                     <DateTimePicker value={date} display="default" onChange={this.setDate} />
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         height: 60,
         paddingTop: 18
     },
-    buttontext: {
+    buttonText: {
         color: 'white',
         fontSize: 18,
         textAlign: 'center',
