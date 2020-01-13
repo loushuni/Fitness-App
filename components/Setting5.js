@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Picker } from 'react-native';
+import { View, StyleSheet, ImageBackground, Picker } from 'react-native';
+import { Text, Button } from '@ui-kitten/components';
 
 export default class Setting5 extends Component {
     state = { number: '', unit: '' }
@@ -27,9 +28,12 @@ export default class Setting5 extends Component {
                     <Text style={styles.title}>Weight</Text>
                 </ImageBackground>
                 <View style={styles.container2}>
-                    <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Signup')}>
-                        <Text style={styles.buttontext}>Continue</Text>
-                    </TouchableOpacity>
+                    <Button 
+                    style={styles.button} 
+                    onPress={() => this.props.navigation.navigate('Signup')}
+                    textStyle={styles.buttonText}>
+                        Continue
+                    </Button>
                     <View style={styles.pickerView}>
                         <Picker selectedValue={this.state.number} onValueChange={this.updateNumber} style={styles.picker}>
                             {pickerItems}
@@ -52,6 +56,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 27,
         marginTop: 50,
+        padding: 10
     },
     backgroundImage: {
         width: '100%',
@@ -67,14 +72,14 @@ const styles = StyleSheet.create({
     button: {
         width: '100%',
         height: 60,
-        backgroundColor: '#333333',
         paddingTop: 18
     },
-    buttontext: {
+    buttonText: {
         color: 'white',
         fontSize: 18,
         textAlign: 'center',
         fontWeight: 'bold',
+        padding: 2
     },
     pickerView: {
         flex: 1,

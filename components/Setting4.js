@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         fontWeight: 'bold',
-        padding:5
+        padding: 2
     },
     pickerView: {
         flex: 1,

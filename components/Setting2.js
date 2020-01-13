@@ -12,13 +12,13 @@ export default class Setting2 extends Component {
                         <Button
                             onPress={() => this.props.navigation.navigate('Setting3')}
                             style={styles.button}
-                            textStyle={styles.text}>
+                            textStyle={styles.buttonText}>
                             Lose Weight
                         </Button>
                         <Button
                             onPress={() => this.props.navigation.navigate('Setting3')}
                             style={styles.button}
-                            textStyle={styles.text}>
+                            textStyle={styles.buttonText}>
                             Get Fitter
                         </Button>
                     </View>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         marginBottom: 200,
         paddingTop: 10
     },
-    text: {
+    buttonText: {
         fontSize: 16,
         color: 'white',
         fontWeight: 'bold',
