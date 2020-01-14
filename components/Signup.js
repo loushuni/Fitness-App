@@ -14,11 +14,7 @@ export default class Signup extends Component {
                         textStyle={styles.buttonText}>
                         Sign Up With Email
                     </Button>
-                    <Button
-                        style={styles.button2}
-                        textStyle={styles.buttonText}>
-                        Continue With Apple
-                    </Button>
+                    <AppleButton />
                     <FacebookButton />
                     <Text style={styles.bottomText}>By signing up, I agree to the Terms of Use and Privacy Policy</Text>
                 </ImageBackground>
@@ -27,8 +23,16 @@ export default class Signup extends Component {
     }
 }
 
+const AppleIcon = (style) => (
+    <Icon name='apple' {...style} />
+);
+
+const AppleButton = () => (
+    <Button icon={AppleIcon} style={styles.button2}>Continue With Apple</Button>
+  );
+
 const FacebookIcon = (style) => (
-    <Icon name='facebook' {...style} />
+    <Icon name='facebook-f' {...style} />
 );
 
 const FacebookButton = () => (
@@ -59,7 +63,7 @@ const styles = StyleSheet.create({
         width: '85%',
         paddingVertical: 15,
         marginTop: 20,
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
     button3: {
         width: '85%',
@@ -68,7 +72,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     buttonText: {
-        fontSize: 18,
+        fontSize: 14,
         textAlign: 'center',
         width: '100%',
         fontWeight: 'bold',

@@ -14,7 +14,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { mapping, dark as darkTheme } from '@eva-design/eva';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
-import { FeatherIconsPack } from './components/Icons';
+import { IconsPack } from './components/Icons';
 
 const RootStack = createStackNavigator(
   {
@@ -46,7 +46,7 @@ export default class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <IconRegistry icons={FeatherIconsPack} />
+        <IconRegistry icons={IconsPack} />
         <ApplicationProvider mapping={mapping} theme={darkTheme}>
           <AppContainer />
         </ApplicationProvider>
