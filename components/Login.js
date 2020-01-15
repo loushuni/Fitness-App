@@ -11,6 +11,7 @@ export default class Login extends Component {
                     <Input style={styles.input} placeholder="Username" />
                     <Input style={styles.input} placeholder="Password" />
                     <Button
+                        onPress={() => this.props.navigation.navigate('Profile')}
                         style={styles.button}
                         textStyle={styles.buttonText}>
                         Login

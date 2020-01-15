@@ -15,6 +15,7 @@ import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { mapping, dark as darkTheme } from '@eva-design/eva';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { IconsPack } from './components/Icons';
+import Profile from './components/Profile';
 
 const RootStack = createStackNavigator(
   {
@@ -26,7 +27,8 @@ const RootStack = createStackNavigator(
     Setting4: Setting4,
     Setting5: Setting5,
     Signup: Signup,
-    EmailSignup: EmailSignup
+    EmailSignup: EmailSignup,
+    Profile: Profile
   },
   {
     initialRouteName: 'Slider',
