@@ -59,26 +59,34 @@ const BottomNavigationWithIconsShowcase = () => {
                 style={styles.bottomNavigation}
                 selectedIndex={bottomSelectedIndex}
                 onSelect={setBottomSelectedIndex}>
-                <BottomNavigationTab title='Discover' icon={PersonIcon} />
-                <BottomNavigationTab title='Feed' icon={BellIcon} />
-                <BottomNavigationTab title='Train' icon={EmailIcon} />
-                <BottomNavigationTab title='Calendar' icon={EmailIcon} />
-                <BottomNavigationTab title='Profile' icon={EmailIcon} />
+                <BottomNavigationTab title='Discover' icon={Icon1} />
+                <BottomNavigationTab title='Feed' icon={Icon2} />
+                <BottomNavigationTab title='Train' icon={Icon3} />
+                <BottomNavigationTab title='Calendar' icon={Icon4} />
+                <BottomNavigationTab title='Profile' icon={Icon5} />
             </BottomNavigation>
         </Layout>
     );
 };
 
-const PersonIcon = (style) => (
-    <Icon {...style} name='person-outline' />
+const Icon1 = (style) => (
+    <Icon style={styles.icon} name='search' />
 );
 
-const BellIcon = (style) => (
-    <Icon {...style} name='bell-outline' />
+const Icon2 = (style) => (
+    <Icon style={styles.icon} name='user-friends' />
 );
 
-const EmailIcon = (style) => (
-    <Icon {...style} name='email-outline' />
+const Icon3 = (style) => (
+    <Icon style={styles.icon} name='bicycle' />
+);
+
+const Icon4 = (style) => (
+    <Icon style={styles.icon} name='calendar-alt' />
+);
+
+const Icon5 = (style) => (
+    <Icon style={styles.icon} name='user' />
 );
 
 const styles = StyleSheet.create({
@@ -99,5 +107,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 10,
         marginVertical: 8
+    },
+    icon:{
+        width: '90%'
     }
 });
