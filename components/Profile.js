@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Text, Layout, Button, BottomNavigation, BottomNavigationTab, Icon } from '@ui-kitten/components';
+import { Text, Layout, Button, BottomNavigation, BottomNavigationTab, Icon, Input } from '@ui-kitten/components';
 import { View, StyleSheet, Alert, Picker } from 'react-native';
 import SettingsList from 'react-native-settings-list';
 import ModalSelector from 'react-native-modal-selector';
 
 export default class Profile extends Component {
-    
+
     state = {
         showModal: false
     }
@@ -14,13 +14,16 @@ export default class Profile extends Component {
         Alert.alert('hjj');
     }
 
+    changeFirstNameHandler = () => {
+        this.props.navigation.navigate('InputFirstName');
+    }
+
     genderHandler = () => {
         let show = this.state.showModal;
-        this.setState({state : !show});
+        this.setState({ state: !show });
     }
 
     render() {
-
         return (
             <Layout style={styles.container}>
                 <Text style={styles.profilePhoto}>Profile Photo Here</Text>
@@ -29,6 +32,7 @@ export default class Profile extends Component {
                         <SettingsList.Header headerText='PROFILE' headerStyle={{ color: 'white', marginLeft: 15 }} />
                         <SettingsList.Item
                             arrowStyle={{ tintColor: '#8F9BB3' }}
+                            onPress={this.changeFirstNameHandler}
                             titleInfo='firstname'
                             hasNavArrow={false}
                             title='First Name' />
@@ -45,9 +49,11 @@ export default class Profile extends Component {
                         <SettingsList.Item
                             onPress={this.state.genderHandler}
                             arrowStyle={{ tintColor: '#8F9BB3' }}
+                            titleInfo='Male'
                             title='Gender' />
                         <SettingsList.Item
                             arrowStyle={{ tintColor: '#8F9BB3' }}
+                            titleInfo='kg'
                             title='Weight Units' />
                         <SettingsList.Item
                             arrowStyle={{ tintColor: '#8F9BB3' }}
