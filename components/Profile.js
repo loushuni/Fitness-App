@@ -1,10 +1,26 @@
 import React, { Component } from 'react';
-import { Text, Button, Input, Layout, Select, BottomNavigation, BottomNavigationTab, Icon } from '@ui-kitten/components';
-import { View, StyleSheet, Image } from 'react-native';
+import { Text, Layout, Button, BottomNavigation, BottomNavigationTab, Icon } from '@ui-kitten/components';
+import { View, StyleSheet, Alert, Picker } from 'react-native';
 import SettingsList from 'react-native-settings-list';
+import ModalSelector from 'react-native-modal-selector';
 
 export default class Profile extends Component {
+    
+    state = {
+        showModal: false
+    }
+
+    alert = () => {
+        Alert.alert('hjj');
+    }
+
+    genderHandler = () => {
+        let show = this.state.showModal;
+        this.setState({state : !show});
+    }
+
     render() {
+
         return (
             <Layout style={styles.container}>
                 <Text style={styles.profilePhoto}>Profile Photo Here</Text>
@@ -27,6 +43,7 @@ export default class Profile extends Component {
                             hasNavArrow={false}
                             title='Email' />
                         <SettingsList.Item
+                            onPress={this.state.genderHandler}
                             arrowStyle={{ tintColor: '#8F9BB3' }}
                             title='Gender' />
                         <SettingsList.Item
@@ -43,7 +60,7 @@ export default class Profile extends Component {
                             title='Log Out' />
                     </SettingsList>
                 </Layout>
-                <BottomNavigationWithIconsShowcase style={styles.bottomTabs}/>
+                <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
             </Layout>
         );
     }
@@ -108,7 +125,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginVertical: 8
     },
-    icon:{
+    icon: {
         width: '90%'
     }
 });
