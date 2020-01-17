@@ -1,76 +1,50 @@
 import React, { Component } from 'react';
-import { Text, Layout, Button, BottomNavigation, BottomNavigationTab, Icon, Input } from '@ui-kitten/components';
-import { View, StyleSheet, Alert, Picker } from 'react-native';
-import SettingsList from 'react-native-settings-list';
-import ModalSelector from 'react-native-modal-selector';
+import { Text, Layout, Modal, Button, BottomNavigation, BottomNavigationTab, Icon, Input } from '@ui-kitten/components';
+import { View, StyleSheet, Alert, Picker, TouchableHighlight, TextInput, Switch, TouchableOpacity } from 'react-native';
 
 export default class Profile extends Component {
-
-    state = {
-        showModal: false
-    }
-
-    alert = () => {
-        Alert.alert('hjj');
-    }
-
-    changeFirstNameHandler = () => {
-        this.props.navigation.navigate('InputFirstName');
-    }
-
-    genderHandler = () => {
-        let show = this.state.showModal;
-        this.setState({ state: !show });
-    }
 
     render() {
         return (
             <Layout style={styles.container}>
                 <Text style={styles.profilePhoto}>Profile Photo Here</Text>
-                <Layout style={styles.settingsList}>
-                    <SettingsList backgroundColor='#2E3A59' defaultTitleStyle={{ color: 'white' }}>
-                        <SettingsList.Header headerText='PROFILE' headerStyle={{ color: 'white', marginLeft: 15 }} />
-                        <SettingsList.Item
-                            arrowStyle={{ tintColor: '#8F9BB3' }}
-                            onPress={this.changeFirstNameHandler}
-                            titleInfo='firstname'
-                            hasNavArrow={false}
-                            title='First Name' />
-                        <SettingsList.Item
-                            arrowStyle={{ tintColor: '#8F9BB3' }}
-                            title='Last Name'
-                            titleInfo='lastname'
-                            hasNavArrow={false} />
-                        <SettingsList.Item
-                            arrowStyle={{ tintColor: '#8F9BB3' }}
-                            titleInfo='emailaddress'
-                            hasNavArrow={false}
-                            title='Email' />
-                        <SettingsList.Item
-                            onPress={this.state.genderHandler}
-                            arrowStyle={{ tintColor: '#8F9BB3' }}
-                            titleInfo='Male'
-                            title='Gender' />
-                        <SettingsList.Item
-                            arrowStyle={{ tintColor: '#8F9BB3' }}
-                            titleInfo='kg'
-                            title='Weight Units' />
-                        <SettingsList.Item
-                            arrowStyle={{ tintColor: '#8F9BB3' }}
-                            title='Sync with Health App' />
-                        <SettingsList.Item
-                            arrowStyle={{ tintColor: '#8F9BB3' }}
-                            title='Notifications' />
-                        <SettingsList.Item
-                            arrowStyle={{ tintColor: '#8F9BB3' }}
-                            title='Log Out' />
-                    </SettingsList>
-                </Layout>
+                
+                    <View style={styles.elementContainer}>
+                        <View style={styles.element}>
+                            <Text style={styles.text}>First Name</Text>
+                            <TextInput placeholder='First Name' style={styles.input} />
+                        </View>
+                        <View style={styles.element}>
+                            <Text style={styles.text}>Last Name</Text>
+                            <TextInput placeholder='Last Name' style={styles.input} />
+                        </View>
+                        <View style={styles.element}>
+                            <Text style={styles.text}>Email</Text>
+                            <TextInput placeholder='Email' style={styles.input} />
+                        </View>
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={styles.text}>Gender</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={styles.text}>Weight Units</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={styles.text}>Sync with Health App</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={styles.text}>Notifications</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={styles.text}>Log Out</Text>
+                        </TouchableOpacity>
+                    </View>
+                
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
             </Layout>
         );
     }
 }
+
 
 const BottomNavigationWithIconsShowcase = () => {
 
@@ -116,14 +90,16 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
+    elementContainer: {
+        flex: 0.8,
+        justifyContent: 'center',
+        flexDirection: 'column'
+    },
     profilePhoto: {
         flex: 0.19,
         textAlign: 'center',
         marginTop: 50,
         paddingTop: 50
-    },
-    settingsList: {
-        flex: 0.8
     },
     bottomTabs: {
         flex: 0.01,
@@ -133,5 +109,28 @@ const styles = StyleSheet.create({
     },
     icon: {
         width: '90%'
+    },
+    element: {
+        width: '100%',
+        borderWidth: 1,
+        height: 45,
+        flexDirection: 'row',
+    },
+    text: {
+        width: '50%',
+        paddingTop: 10,
+        paddingLeft: 20
+    },
+    input: {
+        width: '50%',
+        paddingTop: 1,
+        textAlign: 'right',
+        paddingRight: 20
+    },
+    button: {
+        alignSelf: 'stretch',
+        borderWidth: 1,
+        height: 45,
+        borderColor: 'black'
     }
 });
