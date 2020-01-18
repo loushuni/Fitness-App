@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Text, Layout, BottomNavigation, BottomNavigationTab, Icon, Input, Button, Modal } from '@ui-kitten/components';
+import { Text, Layout, BottomNavigation, BottomNavigationTab, Icon, Input, Button } from '@ui-kitten/components';
 import { View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
-import Modalla from './Modal';
+import Modal from './Modal';
 
 export default class Profile extends Component {
     changeGenderHandler = () => {
@@ -26,11 +26,11 @@ export default class Profile extends Component {
                         <Text style={styles.text}>Email</Text>
                         <Input placeholder='Email' style={styles.input} textStyle={styles.inputText} />
                     </View>
-                    <Modalla name='Gender' />
-                    <Modalla name='Weight Units' />
-                    <Modalla name='Sync with Health App' />
-                    <Modalla name='Notifications' />
-                    <Modalla name='Log Out' />
+                    <Modal name='Gender' />
+                    <Modal name='Weight Units' />
+                    <Modal name='Sync with Health App' />
+                    <Modal name='Notifications' />
+                    <Modal name='Log Out' />
                 </View>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
             </Layout>
