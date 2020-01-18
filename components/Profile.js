@@ -1,49 +1,42 @@
 import React, { Component } from 'react';
-import { Text, Layout, BottomNavigation, BottomNavigationTab, Icon, Input } from '@ui-kitten/components';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, Layout, BottomNavigation, BottomNavigationTab, Icon, Input, Button, Modal } from '@ui-kitten/components';
+import { View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import Modalla from './Modal';
 
 export default class Profile extends Component {
-
+    changeGenderHandler = () => {
+        return (
+            Alert.alert('gender')
+        );
+    }
     render() {
         return (
             <Layout style={styles.container}>
                 <Text style={styles.profilePhoto}>Profile Photo Here</Text>
-                
-                    <View style={styles.elementContainer}>
-                        <View style={styles.element}>
-                            <Text style={styles.text}>First Name</Text>
-                            <Input placeholder='First Name' style={styles.input} textStyle={styles.inputText}/>
-                        </View>
-                        <View style={styles.element}>
-                            <Text style={styles.text}>Last Name</Text>
-                            <Input placeholder='Last Name' style={styles.input} textStyle={styles.inputText}/>
-                        </View>
-                        <View style={styles.element}>
-                            <Text style={styles.text}>Email</Text>
-                            <Input placeholder='Email' style={styles.input} textStyle={styles.inputText}/>
-                        </View>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.text}>Gender</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.text}>Weight Units</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.text}>Sync with Health App</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.text}>Notifications</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.lastButton}>
-                            <Text style={styles.text}>Log Out</Text>
-                        </TouchableOpacity>
+                <View style={styles.elementContainer}>
+                    <View style={styles.element}>
+                        <Text style={styles.text}>First Name</Text>
+                        <Input placeholder='First Name' style={styles.input} textStyle={styles.inputText} />
                     </View>
+                    <View style={styles.element}>
+                        <Text style={styles.text}>Last Name</Text>
+                        <Input placeholder='Last Name' style={styles.input} textStyle={styles.inputText} />
+                    </View>
+                    <View style={styles.element}>
+                        <Text style={styles.text}>Email</Text>
+                        <Input placeholder='Email' style={styles.input} textStyle={styles.inputText} />
+                    </View>
+                    <Modalla name='Gender' />
+                    <Modalla name='Weight Units' />
+                    <Modalla name='Sync with Health App' />
+                    <Modalla name='Notifications' />
+                    <Modalla name='Log Out' />
+                </View>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
             </Layout>
         );
     }
 }
-
 
 const BottomNavigationWithIconsShowcase = () => {
 
@@ -121,6 +114,7 @@ const styles = StyleSheet.create({
         width: '50%',
         paddingTop: 15,
         paddingLeft: 20,
+        fontWeight: '500'
     },
     input: {
         width: '50%',
@@ -132,14 +126,6 @@ const styles = StyleSheet.create({
     },
     inputText: {
         textAlign: 'right'
-    },
-    button: {
-        alignSelf: 'stretch',
-        borderWidth: 1,
-        height: 50,
-        borderColor: 'black',
-        borderBottomWidth: 0,
-        backgroundColor: '#2E3A59'
     },
     lastButton: {
         alignSelf: 'stretch',
