@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, Layout, Modal, Button, BottomNavigation, BottomNavigationTab, Icon, Input } from '@ui-kitten/components';
-import { View, StyleSheet, Alert, Picker, TouchableHighlight, TextInput, Switch, TouchableOpacity } from 'react-native';
+import { Text, Layout, BottomNavigation, BottomNavigationTab, Icon, Input } from '@ui-kitten/components';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 
 export default class Profile extends Component {
 
@@ -12,15 +12,15 @@ export default class Profile extends Component {
                     <View style={styles.elementContainer}>
                         <View style={styles.element}>
                             <Text style={styles.text}>First Name</Text>
-                            <TextInput placeholder='First Name' style={styles.input} />
+                            <Input placeholder='First Name' style={styles.input} textStyle={styles.inputText}/>
                         </View>
                         <View style={styles.element}>
                             <Text style={styles.text}>Last Name</Text>
-                            <TextInput placeholder='Last Name' style={styles.input} />
+                            <Input placeholder='Last Name' style={styles.input} textStyle={styles.inputText}/>
                         </View>
                         <View style={styles.element}>
                             <Text style={styles.text}>Email</Text>
-                            <TextInput placeholder='Email' style={styles.input} />
+                            <Input placeholder='Email' style={styles.input} textStyle={styles.inputText}/>
                         </View>
                         <TouchableOpacity style={styles.button}>
                             <Text style={styles.text}>Gender</Text>
@@ -34,11 +34,10 @@ export default class Profile extends Component {
                         <TouchableOpacity style={styles.button}>
                             <Text style={styles.text}>Notifications</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={styles.lastButton}>
                             <Text style={styles.text}>Log Out</Text>
                         </TouchableOpacity>
                     </View>
-                
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
             </Layout>
         );
@@ -113,24 +112,41 @@ const styles = StyleSheet.create({
     element: {
         width: '100%',
         borderWidth: 1,
-        height: 45,
+        height: 50,
         flexDirection: 'row',
+        borderBottomWidth: 0,
+        backgroundColor: '#2E3A59'
     },
     text: {
         width: '50%',
-        paddingTop: 10,
-        paddingLeft: 20
+        paddingTop: 15,
+        paddingLeft: 20,
     },
     input: {
         width: '50%',
-        paddingTop: 1,
-        textAlign: 'right',
-        paddingRight: 20
+        paddingTop: 2,
+        marginTop: 2.5,
+        borderColor: '#2E3A59',
+        height: 50,
+        backgroundColor: '#2E3A59'
+    },
+    inputText: {
+        textAlign: 'right'
     },
     button: {
         alignSelf: 'stretch',
         borderWidth: 1,
-        height: 45,
-        borderColor: 'black'
+        height: 50,
+        borderColor: 'black',
+        borderBottomWidth: 0,
+        backgroundColor: '#2E3A59'
+    },
+    lastButton: {
+        alignSelf: 'stretch',
+        borderWidth: 1,
+        height: 50,
+        borderColor: 'black',
+        borderBottomWidth: 1,
+        backgroundColor: '#2E3A59'
     }
 });
