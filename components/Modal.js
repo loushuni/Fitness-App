@@ -11,55 +11,100 @@ const ModalWithBackdropShowcase = (props) => {
         setVisible(!visible);
     };
 
-    const renderModalElement = () => (
+    const genderElement = () => (
         <Layout
             level='3'
-            style={styles.modalContainer}>
-            <Text>Modal</Text>
+            style={styles.optionContainer}>
+            <Button style={styles.optionButton}>Male</Button>
+            <Button style={styles.optionButton}>Female</Button>
+            <Button style={styles.optionButton}>Other</Button>
+            <Button style={styles.optionButton}>Cancel</Button>
+        </Layout>
+    );
+
+    const weightElement = () => (
+        <Layout
+            level='3'
+            style={styles.optionContainer}>
+            <Button style={styles.optionButton}>kg</Button>
+            <Button style={styles.optionButton}>lb</Button>
+            <Button style={styles.optionButton}>Cancel</Button>
         </Layout>
     );
 
     return (
-        <Layout >
-            <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText}>
-                {props.name}
-            </Button>
+        <Layout>
+            <Layout style={styles.elementContainer}>
+                <Text style={styles.text}>{props.name}</Text>
+                <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText}>
+                    {props.button}
+                </Button>
+            </Layout>
             <Modal
                 allowBackdrop={true}
+                style={styles.modal}
                 backdropStyle={styles.backdrop}
                 onBackdropPress={toggleModal}
                 visible={visible}>
-                {renderModalElement()}
+                {genderElement()}
             </Modal>
         </Layout>
     );
 };
 
 const styles = StyleSheet.create({
-    modalContainer: {
+    optionContainer: {
         justifyContent: 'center',
         alignItems: 'center',
-        width: 256,
-        padding: 16,
+        width: '100%'
+    },
+    optionButton: {
+        width: '100%',
+        backgroundColor: '#2E3A59',
+        alignSelf: 'stretch',
+        borderColor: 'black',
+        height: 50,
+        borderBottomWidth: 0
     },
     backdrop: {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
     },
     button: {
-        alignSelf: 'stretch',
-        borderWidth: 1,
         height: 50,
-        borderColor: 'black',
-        borderBottomWidth: 0,
-        backgroundColor: '#2E3A59'
+        borderWidth: 0,
+        backgroundColor: '#2E3A59',
+        borderRadius: 0,
+        width: '50%'
     },
     buttonText: {
-        width: '100%',
-        fontWeight: '500',
         fontSize: 15,
-        paddingLeft: 10
+        fontWeight: 'normal',
+        textAlign: 'right',
+        color: '#8F9BB3'
+    },
+    cancelButton: {
+        width: '100%',
+        backgroundColor: '#2E3A59',
+        alignSelf: 'stretch',
+        borderColor: 'black',
+        height: 50
+    },
+    modal: {
+        width: '100%'
+    },
+    text: {
+        width: '50%',
+        paddingTop: 15,
+        paddingLeft: 20,
+        fontWeight: '500',
+        backgroundColor: '#2E3A59'
+    },
+    elementContainer: {
+        flexDirection: 'row',
+        borderWidth: 1,
+        borderColor: 'black',
+        borderBottomWidth: 0
     }
-  }
-);
+});
 
 export default ModalWithBackdropShowcase;

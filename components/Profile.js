@@ -26,11 +26,11 @@ export default class Profile extends Component {
                         <Text style={styles.text}>Email</Text>
                         <Input placeholder='Email' style={styles.input} textStyle={styles.inputText} />
                     </View>
-                    <Modal name='Gender' />
-                    <Modal name='Weight Units' />
-                    <Modal name='Sync with Health App' />
-                    <Modal name='Notifications' />
-                    <Modal name='Log Out' />
+                    <Modal button='' name='Gender' element='genderElement'/>
+                    <Modal button='' name='Weight Units' element='weightElement'/>
+                    <Modal button='' name='Sync with Health App' />
+                    <Modal button='' name='Notifications' />
+                    <Modal button='' name='Log Out' />
                 </View>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
             </Layout>
@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
     },
     elementContainer: {
         flex: 0.8,
-        justifyContent: 'center',
         flexDirection: 'column'
     },
     profilePhoto: {
