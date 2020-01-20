@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Button, Layout, Modal, Text } from '@ui-kitten/components';
+import { Button, Layout, Modal, Text, Icon } from '@ui-kitten/components';
 import { FlexStyleProps } from '@ui-kitten/components/ui/support/typings';
 
-const ModalWithBackdropShowcase = (props) => {
+const ModalWithBackdrop = (props) => {
 
     const [visible, setVisible] = React.useState(false);
 
@@ -32,11 +32,15 @@ const ModalWithBackdropShowcase = (props) => {
         </Layout>
     );
 
+    const arrowIcon = (style) => (
+        <Icon name='angle-right' style={{color: '#8F9BB3', marginLeft: 180}} />
+    );
+
     return (
         <Layout>
             <Layout style={styles.elementContainer}>
                 <Text style={styles.text}>{props.name}</Text>
-                <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText}>
+                <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
                     {props.button}
                 </Button>
             </Layout>
@@ -107,4 +111,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ModalWithBackdropShowcase;
+export default ModalWithBackdrop;
