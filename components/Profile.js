@@ -26,11 +26,11 @@ export default class Profile extends Component {
                         <Text style={styles.text}>Email</Text>
                         <Input placeholder='Email' style={styles.input} textStyle={styles.inputText} />
                     </View>
-                    <ModalWithBackdrop button='' name='Gender' element='genderElement' />
-                    <ModalWithBackdrop button='' name='Weight Units' element='weightElement' />
-                    <ModalWithBackdrop button='' name='Sync with Health App' />
-                    <ModalWithBackdrop button='' name='Notifications' />
-                    <ModalWithBackdrop button='' name='Log Out' />
+                    <ModalWithBackdrop option='' name='Gender' element='genderElement' />
+                    <ModalWithBackdrop option='' name='Weight Units' element='weightElement' />
+                    <ModalWithBackdrop option='' name='Sync with Health App' />
+                    <ModalWithBackdrop option='' name='Notifications' />
+                    <ModalWithBackdrop option='' name='Log Out' />
                 </View>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
             </Layout>

@@ -24,7 +24,7 @@ const ModalWithBackdrop = (props) => {
                 <Button style={styles.optionButton}>Male</Button>
                 <Button style={styles.optionButton}>Female</Button>
                 <Button style={styles.optionButton}>Other</Button>
-                <Button style={styles.optionButton}>Cancel</Button>
+                <Button style={styles.optionButton} onPress={toggleModal}>Cancel</Button>
             </Layout>
         );
     } else if (props.element == 'weightElement') {
@@ -34,7 +34,7 @@ const ModalWithBackdrop = (props) => {
                 style={styles.optionContainer}>
                 <Button style={styles.optionButton}>kg</Button>
                 <Button style={styles.optionButton}>lb</Button>
-                <Button style={styles.optionButton}>Cancel</Button>
+                <Button style={styles.optionButton} onPress={toggleModal}>Cancel</Button>
             </Layout>
         );
     }
@@ -44,7 +44,7 @@ const ModalWithBackdrop = (props) => {
             <Layout style={styles.elementContainer}>
                 <Text style={styles.text}>{props.name}</Text>
                 <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
-                    {props.button}
+                    {props.option}
                 </Button>
             </Layout>
             <Modal
@@ -81,7 +81,8 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         backgroundColor: '#2E3A59',
         borderRadius: 0,
-        width: '50%'
+        width: '50%',
+        textAlign: 'left'
     },
     buttonText: {
         fontSize: 15,
