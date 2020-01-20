@@ -11,30 +11,33 @@ const ModalWithBackdrop = (props) => {
         setVisible(!visible);
     };
 
-    const genderElement = () => (
-        <Layout
-            level='3'
-            style={styles.optionContainer}>
-            <Button style={styles.optionButton}>Male</Button>
-            <Button style={styles.optionButton}>Female</Button>
-            <Button style={styles.optionButton}>Other</Button>
-            <Button style={styles.optionButton}>Cancel</Button>
-        </Layout>
-    );
-
-    const weightElement = () => (
-        <Layout
-            level='3'
-            style={styles.optionContainer}>
-            <Button style={styles.optionButton}>kg</Button>
-            <Button style={styles.optionButton}>lb</Button>
-            <Button style={styles.optionButton}>Cancel</Button>
-        </Layout>
-    );
-
     const arrowIcon = (style) => (
-        <Icon name='angle-right' style={{color: '#8F9BB3', marginLeft: 180}} />
+        <Icon name='angle-right' style={{ color: '#8F9BB3', marginLeft: 180 }} />
     );
+
+    let renderElement = null;
+    if (props.element == 'genderElement') {
+        renderElement = (
+            <Layout
+                level='3'
+                style={styles.optionContainer}>
+                <Button style={styles.optionButton}>Male</Button>
+                <Button style={styles.optionButton}>Female</Button>
+                <Button style={styles.optionButton}>Other</Button>
+                <Button style={styles.optionButton}>Cancel</Button>
+            </Layout>
+        );
+    } else if (props.element == 'weightElement') {
+        renderElement = (
+            <Layout
+                level='3'
+                style={styles.optionContainer}>
+                <Button style={styles.optionButton}>kg</Button>
+                <Button style={styles.optionButton}>lb</Button>
+                <Button style={styles.optionButton}>Cancel</Button>
+            </Layout>
+        );
+    }
 
     return (
         <Layout>
@@ -50,7 +53,7 @@ const ModalWithBackdrop = (props) => {
                 backdropStyle={styles.backdrop}
                 onBackdropPress={toggleModal}
                 visible={visible}>
-                {genderElement()}
+                {renderElement}
             </Modal>
         </Layout>
     );
