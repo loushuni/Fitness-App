@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Button, Layout, Modal, Text, Icon } from '@ui-kitten/components';
-import { FlexStyleProps } from '@ui-kitten/components/ui/support/typings';
 
 const ModalWithBackdrop = (props) => {
 
     const [visible, setVisible] = React.useState(false);
+
+    const [option, setOption] = React.useState('');
 
     const toggleModal = () => {
         setVisible(!visible);
     };
 
     const arrowIcon = (style) => (
-        <Icon name='angle-right' style={{ color: '#8F9BB3', marginLeft: 180 }} />
+        <Icon name='angle-right' style={{ color: '#8F9BB3', paddingLeft: 10 }} />
     );
 
     let renderElement = null;
@@ -21,10 +22,10 @@ const ModalWithBackdrop = (props) => {
             <Layout
                 level='3'
                 style={styles.optionContainer}>
-                <Button style={styles.optionButton}>Male</Button>
-                <Button style={styles.optionButton}>Female</Button>
-                <Button style={styles.optionButton}>Other</Button>
-                <Button style={styles.optionButton} onPress={toggleModal}>Cancel</Button>
+                <Button style={styles.optionButton} onPress={(option) => setOption('Male')}>Male</Button>
+                <Button style={styles.optionButton} onPress={(option) => setOption('Female')}>Female</Button>
+                <Button style={styles.optionButton} onPress={(option) => setOption('Other')}>Other</Button>
+                <Button style={styles.optionButton} onPress={toggleModal}>Submit</Button>
             </Layout>
         );
     } else if (props.element == 'weightElement') {
@@ -32,9 +33,9 @@ const ModalWithBackdrop = (props) => {
             <Layout
                 level='3'
                 style={styles.optionContainer}>
-                <Button style={styles.optionButton}>kg</Button>
-                <Button style={styles.optionButton}>lb</Button>
-                <Button style={styles.optionButton} onPress={toggleModal}>Cancel</Button>
+                <Button style={styles.optionButton} onPress={(option) => setOption('kg')}>kg</Button>
+                <Button style={styles.optionButton} onPress={(option) => setOption('lb')}>lb</Button>
+                <Button style={styles.optionButton} onPress={toggleModal}>Submit</Button>
             </Layout>
         );
     }
@@ -44,7 +45,7 @@ const ModalWithBackdrop = (props) => {
             <Layout style={styles.elementContainer}>
                 <Text style={styles.text}>{props.name}</Text>
                 <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
-                    {props.option}
+                    {option}
                 </Button>
             </Layout>
             <Modal
@@ -82,13 +83,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#2E3A59',
         borderRadius: 0,
         width: '50%',
-        textAlign: 'left'
+        flexDirection: 'row-reverse',
+        justifyContent: 'flex-start'
     },
     buttonText: {
         fontSize: 15,
         fontWeight: 'normal',
-        textAlign: 'right',
-        color: '#8F9BB3'
+        color: '#8F9BB3',
+        marginRight: 0
     },
     cancelButton: {
         width: '100%',
