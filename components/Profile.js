@@ -124,7 +124,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#2E3A59'
     },
     inputText: {
-        textAlign: 'right'
+        textAlign: 'right',
+        color: '#8F9BB3'
     },
     lastButton: {
         alignSelf: 'stretch',
