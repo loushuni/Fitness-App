@@ -25,7 +25,7 @@ const ModalWithBackdrop = (props) => {
                 <Button style={styles.optionButton} onPress={(option) => setOption('Male')}>Male</Button>
                 <Button style={styles.optionButton} onPress={(option) => setOption('Female')}>Female</Button>
                 <Button style={styles.optionButton} onPress={(option) => setOption('Other')}>Other</Button>
-                <Button style={styles.optionButton} onPress={toggleModal}>Submit</Button>
+                <Button style={styles.optionButton} status='success' onPress={toggleModal}>Submit</Button>
             </Layout>
         );
     } else if (props.element == 'weightElement') {
@@ -35,7 +35,7 @@ const ModalWithBackdrop = (props) => {
                 style={styles.optionContainer}>
                 <Button style={styles.optionButton} onPress={(option) => setOption('kg')}>kg</Button>
                 <Button style={styles.optionButton} onPress={(option) => setOption('lb')}>lb</Button>
-                <Button style={styles.optionButton} onPress={toggleModal}>Submit</Button>
+                <Button style={styles.optionButton} status='success' onPress={toggleModal}>Submit</Button>
             </Layout>
         );
     }
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     },
     optionButton: {
         width: '100%',
-        backgroundColor: '#2E3A59',
+        //backgroundColor: '#2E3A59',
         alignSelf: 'stretch',
         borderColor: 'black',
         height: 50,
