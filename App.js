@@ -9,11 +9,11 @@ import Setting4 from './components/Setting4';
 import Setting5 from './components/Setting5';
 import Signup from './components/Signup';
 import EmailSignup from './components/EmailSignup';
+import BMI from './components/BMI';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { mapping, dark as darkTheme } from '@eva-design/eva';
-import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { IconsPack } from './components/Icons';
 import Profile from './components/Profile';
 
@@ -28,7 +28,8 @@ const RootStack = createStackNavigator(
     Setting5: Setting5,
     Signup: Signup,
     EmailSignup: EmailSignup,
-    Profile: Profile
+    Profile: Profile,
+    BMI: BMI
   },
   {
     initialRouteName: 'Slider',

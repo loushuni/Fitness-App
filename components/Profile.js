@@ -36,7 +36,11 @@ export default class Profile extends Component {
 
                     <Text style={styles.header}>Fitness Calculators</Text>
                     <View>
-                        <Button style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>BMI Calculator</Button>
+                        <Button
+                            style={styles.button}
+                            textStyle={styles.buttonText}
+                            icon={arrowIcon}
+                            onPress={() => this.props.navigation.navigate('BMI')}>BMI Calculator</Button>
                     </View>
                 </ScrollView>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
