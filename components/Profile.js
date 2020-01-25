@@ -14,7 +14,7 @@ export default class Profile extends Component {
             <Layout style={styles.container}>
                 <Text style={styles.profilePhoto}>Profile Photo Here</Text>
                 <ScrollView>
-                    <Text>Profile</Text>
+                    <Text style={styles.header}>Profile</Text>
                     <View style={styles.elementContainer}>
                         <View style={styles.element}>
                             <Text style={styles.text}>First Name</Text>
@@ -32,6 +32,11 @@ export default class Profile extends Component {
                         <ModalWithBackdrop option='' name='Weight Units' element='weightElement' />
                         <ModalWithBackdrop option='' name='Notifications' />
                         <ModalWithBackdrop option='' name='Log Out' />
+                    </View>
+
+                    <Text style={styles.header}>Fitness Calculators</Text>
+                    <View>
+                        <Button style={styles.button} textStyle={styles.buttonText}>BMI Calculator</Button>
                     </View>
                 </ScrollView>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
@@ -92,7 +97,8 @@ const styles = StyleSheet.create({
         flex: 0.19,
         textAlign: 'center',
         marginTop: 50,
-        paddingTop: 50
+        paddingTop: 50,
+        paddingBottom: 30
     },
     bottomTabs: {
         flex: 0.01,
@@ -136,5 +142,24 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderBottomWidth: 1,
         backgroundColor: '#2E3A59'
+    },
+    header: {
+        fontWeight: 'bold',
+        paddingLeft: 20,
+        marginTop: 30,
+        marginBottom: 5
+    },
+    button: {
+        width: '100%',
+        borderWidth: 1,
+        height: 50,
+        flexDirection: 'row',
+        borderBottomWidth: 0,
+        backgroundColor: '#2E3A59',
+        borderColor: '#2E3A59'
+    },
+    buttonText: {
+        fontWeight: '500',
+        marginRight: 285
     }
 });
