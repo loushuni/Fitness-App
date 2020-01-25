@@ -36,7 +36,7 @@ export default class Profile extends Component {
 
                     <Text style={styles.header}>Fitness Calculators</Text>
                     <View>
-                        <Button style={styles.button} textStyle={styles.buttonText}>BMI Calculator</Button>
+                        <Button style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>BMI Calculator</Button>
                     </View>
                 </ScrollView>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
@@ -44,6 +44,10 @@ export default class Profile extends Component {
         );
     }
 }
+
+const arrowIcon = (style) => (
+    <Icon name='angle-right' style={{ color: '#8F9BB3', paddingLeft: 10 }} />
+);
 
 const BottomNavigationWithIconsShowcase = () => {
 
@@ -156,10 +160,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderBottomWidth: 0,
         backgroundColor: '#2E3A59',
-        borderColor: '#2E3A59'
+        borderColor: '#2E3A59',
+        flexDirection: 'row-reverse',
+        justifyContent: 'flex-start'
     },
     buttonText: {
         fontWeight: '500',
-        marginRight: 285
+        marginRight: 245
     }
 });
