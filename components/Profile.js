@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, Layout, BottomNavigation, BottomNavigationTab, Icon, Input, Button } from '@ui-kitten/components';
-import { View, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, StyleSheet, ScrollView, Alert } from 'react-native';
 import ModalWithBackdrop from './ModalWithBackdrop';
 
 export default class Profile extends Component {
@@ -13,25 +13,27 @@ export default class Profile extends Component {
         return (
             <Layout style={styles.container}>
                 <Text style={styles.profilePhoto}>Profile Photo Here</Text>
-                <View style={styles.elementContainer}>
-                    <View style={styles.element}>
-                        <Text style={styles.text}>First Name</Text>
-                        <Input placeholder='First Name' style={styles.input} textStyle={styles.inputText} />
+                <ScrollView>
+                    <Text>Profile</Text>
+                    <View style={styles.elementContainer}>
+                        <View style={styles.element}>
+                            <Text style={styles.text}>First Name</Text>
+                            <Input placeholder='First Name' style={styles.input} textStyle={styles.inputText} />
+                        </View>
+                        <View style={styles.element}>
+                            <Text style={styles.text}>Last Name</Text>
+                            <Input placeholder='Last Name' style={styles.input} textStyle={styles.inputText} />
+                        </View>
+                        <View style={styles.element}>
+                            <Text style={styles.text}>Email</Text>
+                            <Input placeholder='Email' style={styles.input} textStyle={styles.inputText} />
+                        </View>
+                        <ModalWithBackdrop option='' name='Gender' element='genderElement' />
+                        <ModalWithBackdrop option='' name='Weight Units' element='weightElement' />
+                        <ModalWithBackdrop option='' name='Notifications' />
+                        <ModalWithBackdrop option='' name='Log Out' />
                     </View>
-                    <View style={styles.element}>
-                        <Text style={styles.text}>Last Name</Text>
-                        <Input placeholder='Last Name' style={styles.input} textStyle={styles.inputText} />
-                    </View>
-                    <View style={styles.element}>
-                        <Text style={styles.text}>Email</Text>
-                        <Input placeholder='Email' style={styles.input} textStyle={styles.inputText} />
-                    </View>
-                    <ModalWithBackdrop option='' name='Gender' element='genderElement' />
-                    <ModalWithBackdrop option='' name='Weight Units' element='weightElement' />
-                    <ModalWithBackdrop option='' name='Sync with Health App' />
-                    <ModalWithBackdrop option='' name='Notifications' />
-                    <ModalWithBackdrop option='' name='Log Out' />
-                </View>
+                </ScrollView>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
             </Layout>
         );
