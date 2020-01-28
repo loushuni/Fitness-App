@@ -13,6 +13,8 @@ const BMI = () => {
 
     const [height, setHeight] = React.useState('');
 
+    const [result, setResult] = React.useState(0);
+
     return (
         <Layout style={styles.container}>
             <Text style={styles.title}>BMI Calculator</Text>
@@ -48,8 +50,8 @@ const BMI = () => {
                     <Text style={{ paddingTop: 10 }}>inch</Text>
                 </Layout>
                 <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
-                    <Text style={{ marginRight: 10, marginTop: 10, fontWeight: 'bold' }}>Your BMI:</Text>
-                    <Text style={styles.result}>{+height == 0 || +weight == 0 ? 0 : (+weight * 703 / height / height).toFixed(2)}</Text>
+                    <Button style={styles.button} onPress={() => setResult((+weight * 703 / height / height).toFixed(2))}>Calculate BMI</Button>
+                    <Text style={styles.result}>{result}</Text>
                 </Layout>
             </Layout>
         </Layout>
@@ -81,7 +83,7 @@ const styles = StyleSheet.create({
         paddingTop: 10
     },
     button: {
-        width: '35%',
+        width: '50%',
         marginRight: 10
     },
     input: {
