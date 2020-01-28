@@ -5,14 +5,21 @@ import { Layout, Text, Input, Button, Select } from '@ui-kitten/components';
 
 const BMI = () => {
 
-    const [selectedOption, setSelectedOption] = React.useState(null);
+    const [selectedOption1, setSelectedOption1] = React.useState(null);
+
+    const [selectedOption2, setSelectedOption2] = React.useState(null);
 
     const [weight, setWeight] = React.useState('');
 
     const [height, setHeight] = React.useState('');
 
-   // let res = `${weight} + ${1}`;
-   let res = weight;
+    let res = null;
+
+    if (selectedOption1 == "kg" && selectedOption2 == "cm") {
+        res = weight;
+    } else if (selectedOption1 === 'lb' && selectedOption2 === 'inch') {
+        res = height;
+    }
 
     return (
         <Layout style={styles.container}>
@@ -26,9 +33,9 @@ const BMI = () => {
                     onChangeText={setWeight} />
                 <Select
                     data={weightData}
-                    selectedOption={selectedOption}
-                    onSelect={setSelectedOption}
-                    style={{width: '28%'}}
+                    selectedOption={selectedOption1}
+                    onSelect={setSelectedOption1}
+                    style={{ width: '28%' }}
                 />
             </Layout>
             <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
@@ -40,14 +47,14 @@ const BMI = () => {
                     onChangeText={setHeight} />
                 <Select
                     data={heightData}
-                    selectedOption={selectedOption}
-                    onSelect={setSelectedOption}
-                    style={{width: '28%'}}
+                    selectedOption={selectedOption2}
+                    onSelect={setSelectedOption2}
+                    style={{ width: '28%' }}
                 />
             </Layout>
             <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
                 <Text style={{ marginRight: 10, marginTop: 10, fontWeight: 'bold' }}>Your BMI:</Text>
-                <Input placeholder={res} style={{ width: '30%', marginTop: 3 }} />
+                <Text style={styles.result}>{height}</Text>
             </Layout>
         </Layout>
     );
@@ -85,6 +92,14 @@ const styles = StyleSheet.create({
     input: {
         width: '40%',
         paddingRight: 10
+    },
+    result: {
+        borderWidth: 1,
+        borderColor: '#101426',
+        paddingHorizontal: 40,
+        paddingTop: 8,
+        paddingBottom: 8,
+        backgroundColor: '#1A2138'
     }
 })
 
