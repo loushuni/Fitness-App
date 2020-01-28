@@ -10,6 +10,7 @@ import Setting5 from './components/Setting5';
 import Signup from './components/Signup';
 import EmailSignup from './components/EmailSignup';
 import BMI from './components/BMI';
+import TDEE from './components/TDEE';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
@@ -29,7 +30,8 @@ const RootStack = createStackNavigator(
     Signup: Signup,
     EmailSignup: EmailSignup,
     Profile: Profile,
-    BMI: BMI
+    BMI: BMI,
+    TDEE: TDEE
   },
   {
     initialRouteName: 'Slider',

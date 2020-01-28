@@ -35,12 +35,17 @@ export default class Profile extends Component {
                     </View>
 
                     <Text style={styles.header}>Fitness Calculators</Text>
-                    <View>
+                    <View style={{flexDirection: 'column', alignContent: 'flex-start', alignItems: 'flex-start'}}>
                         <Button
                             style={styles.button}
-                            textStyle={styles.buttonText}
+                            textStyle={{fontWeight: '500', marginRight: 245}}
                             icon={arrowIcon}
                             onPress={() => this.props.navigation.navigate('BMI')}>BMI Calculator</Button>
+                        <Button
+                            style={styles.button}
+                            textStyle={{fontWeight: '500', marginRight: 235}}
+                            icon={arrowIcon}
+                            onPress={() => this.props.navigation.navigate('TDEE')}>TDEE Calculator</Button>
                     </View>
                 </ScrollView>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
@@ -164,12 +169,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderBottomWidth: 0,
         backgroundColor: '#2E3A59',
-        borderColor: '#2E3A59',
+        borderColor: '#101426',
         flexDirection: 'row-reverse',
         justifyContent: 'flex-start'
-    },
-    buttonText: {
-        fontWeight: '500',
-        marginRight: 245
     }
 });
