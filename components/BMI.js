@@ -13,12 +13,10 @@ const BMI = () => {
 
     const [height, setHeight] = React.useState('');
 
-    let res = null;
-
     return (
         <Layout style={styles.container}>
             <Text style={styles.title}>BMI Calculator</Text>
-            <Layout style={{flexDirection: 'column', marginLeft: 50 }}>
+            <Layout style={{ flexDirection: 'column', marginLeft: 50 }}>
                 <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
                     <Text style={{ marginRight: 10, marginTop: 8 }}>Weight:</Text>
                     <Input
@@ -51,12 +49,11 @@ const BMI = () => {
                 </Layout>
                 <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
                     <Text style={{ marginRight: 10, marginTop: 10, fontWeight: 'bold' }}>Your BMI:</Text>
-                    <Text style={styles.result}>{height}</Text>
+                    <Text style={styles.result}>{+height == 0 || +weight == 0 ? 0 : (+weight * 703 / height / height).toFixed(2)}</Text>
                 </Layout>
             </Layout>
         </Layout>
     );
-
 }
 
 // const weightData = [
