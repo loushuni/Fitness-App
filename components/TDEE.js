@@ -68,8 +68,6 @@ const TDEE = () => {
     let agePicker = (
         <Layout style={styles.pickerContainer}>
             <Picker selectedValue={age} onValueChange={setAge} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white', backgroundColor: '#2E3A59' }}>
-                {/* < Picker.Item label="1" value="1" />
-                < Picker.Item label="2" value="2" /> */}
                 {agePickerItems}
             </Picker>
         </Layout>
@@ -101,13 +99,23 @@ const TDEE = () => {
 
     let res = null;
     if (selectedIndex == 0 && weightUnit == 'lb') {
-        res = (66.47 + (6.24 * +weight) + (12.7 * +height) - (6.755 * +age)).toFixed(2);
+        res = 66.47 + (6.24 * +weight) + (12.7 * +height) - (6.755 * +age);
     } else if (selectedIndex == 0 && weightUnit == 'kg') {
-        res = ((+height * 6.25) + (+weight * 9.99) - (+age * 4.92) + 5).toFixed(2);
-    } else if (selectedIndex == 1 && weightUnit == 'lb'){
-        res = (655.1 + (4.35 * +weight) + (4.7 * +height) - (4.7 * +age)).toFixed(2);
+        res = (+height * 6.25) + (+weight * 9.99) - (+age * 4.92) + 5;
+    } else if (selectedIndex == 1 && weightUnit == 'lb') {
+        res = 655.1 + (4.35 * +weight) + (4.7 * +height) - (4.7 * +age);
     } else if (selectedIndex == 1 && weightUnit == 'kg') {
-        res = ((+height * 6.25) + (+weight * 9.99) - (+age * 4.92) - 161).toFixed(2);
+        res = (+height * 6.25) + (+weight * 9.99) - (+age * 4.92) - 161;
+    }
+
+    if (selectedOption.text == 'Sedentary (Office Job)') {
+        res = (res * 1.1).toFixed(2);
+    } else if (selectedOption.text == 'Light Exercise (1-2 days/week)') {
+        res = (res * 1.275).toFixed(2);
+    } else if (selectedOption.text == 'Moderate Exercise (3-5 days/week)') {
+        res = (res * 1.35).toFixed(2);
+    } else if (selectedOption.text == 'Heavy Exercise (6-7 days/week)') {
+        res = (res * 1.525).toFixed(2);
     }
 
     return (
@@ -211,9 +219,9 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginLeft: 10,
         paddingTop: 20,
-        paddingBottom: 10,
+        paddingBottom: 20,
         backgroundColor: '#1A2138',
-        width: '35%'
+        width: '40%'
     },
     backdrop: {
         backgroundColor: 'rgba(0, 0, 0, 0.6)',
