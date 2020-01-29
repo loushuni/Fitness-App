@@ -24,6 +24,8 @@ const TDEE = () => {
 
     const [selectedOption, setSelectedOption] = React.useState('');
 
+    const [result, setResult] = React.useState('');
+
     const toggleAgeModal = () => {
         setAgeVisible(!ageVisible);
     };
@@ -49,32 +51,32 @@ const TDEE = () => {
     }
 
     let heightPickerItems = null;
-        if (heightUnit === 'cm') {
-            heightPickerItems = Array.from(Array(121), (_, x) => x).map((item, index) => (
-                <Picker.Item label={`${item + 130}`} key={index} value={index} />));
-        } else {
-            heightPickerItems = Array.from(Array(47), (_, x) => x).map((item, index) => (
-                <Picker.Item label={`${item + 52}`} key={index} value={index} />));
-        }
+    if (heightUnit === 'cm') {
+        heightPickerItems = Array.from(Array(121), (_, x) => x).map((item, index) => (
+            <Picker.Item label={`${item + 130}`} key={index} value={index} />));
+    } else {
+        heightPickerItems = Array.from(Array(47), (_, x) => x).map((item, index) => (
+            <Picker.Item label={`${item + 52}`} key={index} value={index} />));
+    }
 
-    const activities = [{ text: 'Sedentary (Office Job)' }, { text: 'Light Exercise (1-2 days/week)' }, { text: 'Moderate Exercise (3-5 days/week)' }, { text: 'Heavy Exercise (6-7 days/week)' }, { text: 'Athlete (2x per day)' }];
+    const activities = [{ text: 'Sedentary (Office Job)' }, { text: 'Light Exercise (1-2 days/week)' }, { text: 'Moderate Exercise (3-5 days/week)' }, { text: 'Heavy Exercise (6-7 days/week)' }];
 
     const onCheckedChange = (index) => {
         setSelectedIndex(index);
     };
 
     let agePicker = (
-        <View style={styles.pickerView}>
+        <Layout style={styles.pickerContainer}>
             <Picker selectedValue={age} onValueChange={setAge} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white', backgroundColor: '#2E3A59' }}>
                 {/* < Picker.Item label="1" value="1" />
                 < Picker.Item label="2" value="2" /> */}
                 {agePickerItems}
             </Picker>
-        </View>
+        </Layout>
     );
 
     let weightPicker = (
-        <View style={styles.pickerView}>
+        <Layout style={styles.pickerContainer}>
             <Picker selectedValue={weight} onValueChange={setWeight} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white', backgroundColor: '#2E3A59' }}>
                 {weightPickerItems}
             </Picker>
@@ -82,11 +84,11 @@ const TDEE = () => {
                 < Picker.Item label="lb" value="lb" />
                 < Picker.Item label="kg" value="kg" />
             </Picker>
-        </View>
+        </Layout>
     );
 
     let heightPicker = (
-        <View style={styles.pickerView}>
+        <Layout style={styles.pickerContainer}>
             <Picker selectedValue={height} onValueChange={setHeight} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white', backgroundColor: '#2E3A59' }}>
                 {heightPickerItems}
             </Picker>
@@ -94,17 +96,27 @@ const TDEE = () => {
                 < Picker.Item label="inch" value="inch" />
                 < Picker.Item label="cm" value="cm" />
             </Picker>
-        </View>
+        </Layout>
     );
+
+    let res = 123;
+    if (selectedIndex == 0 && weightUnit == 'lb') {
+        res = (66.47 + (6.24 * +weight) + (12.7 * +height) - (6.755 * +age)).toFixed(2);
+    } else if (selectedIndex == 0 && weightUnit == 'kg') {
+        res = ((+height * 6.25) + (+weight * 9.99) - (+age * 4.92) + 5).toFixed(2);
+    } else if (selectedIndex == 1 && weightUnit == 'lb'){
+        res = (655.1 + (4.35 * +weight) + (4.7 * +height) - (4.7 * +age)).toFixed(2);
+    } else if (selectedIndex == 1 && weightUnit == 'kg') {
+        res = ((+height * 6.25) + (+weight * 9.99) - (+age * 4.92) - 161).toFixed(2);
+    }
 
     return (
         <Layout style={styles.container}>
             <Text style={styles.title}>TDEE Calculator</Text>
             <Layout style={{ alignContent: 'center', paddingLeft: 40 }}>
 
-
                 <Layout style={{ flexDirection: 'row' }}>
-                    <Text style={{ paddingTop: 10, paddingRight: 10 }}>Gender</Text>
+                    <Text style={{ paddingTop: 10, paddingRight: 20 }}>Gender:</Text>
                     <RadioGroup
                         selectedIndex={selectedIndex}
                         onChange={onCheckedChange}
@@ -114,9 +126,8 @@ const TDEE = () => {
                     </RadioGroup>
                 </Layout>
 
-
                 <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
-                    <Text style={{ paddingTop: 7, paddingRight: 33 }}>Age:</Text>
+                    <Text style={{ paddingTop: 7, paddingRight: 45 }}>Age:</Text>
                     <Text onPress={toggleAgeModal} style={styles.placeholder}>{age}</Text>
                     <Modal
                         allowBackdrop={true}
@@ -127,10 +138,8 @@ const TDEE = () => {
                     </Modal>
                 </Layout>
 
-
-
                 <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
-                    <Text style={{ paddingTop: 7, paddingRight: 33 }}>Weight:</Text>
+                    <Text style={{ paddingTop: 7, paddingRight: 23 }}>Weight:</Text>
                     <Text onPress={toggleWeightModal} style={styles.placeholder}>{weight + ' ' + weightUnit}</Text>
                     <Modal
                         allowBackdrop={true}
@@ -141,9 +150,8 @@ const TDEE = () => {
                     </Modal>
                 </Layout>
 
-
                 <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
-                    <Text style={{ paddingTop: 7, paddingRight: 33 }}>Height:</Text>
+                    <Text style={{ paddingTop: 7, paddingRight: 26 }}>Height:</Text>
                     <Text onPress={toggleHeightModal} style={styles.placeholder}>{height + ' ' + heightUnit}</Text>
                     <Modal
                         allowBackdrop={true}
@@ -154,8 +162,6 @@ const TDEE = () => {
                     </Modal>
                 </Layout>
 
-
-
                 <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
                     <Text>Activities:</Text>
                     <Select
@@ -163,15 +169,14 @@ const TDEE = () => {
                         selectedOption={selectedOption}
                         onSelect={setSelectedOption}
                         style={styles.select}
-                        textStyle={{color: '#8F9BB3', fontWeight: 'normal'}}
+                        textStyle={{ color: '#8F9BB3', fontWeight: 'normal' }}
                     />
                 </Layout>
 
-
             </Layout >
             <Layout style={{ flexDirection: 'row' }}>
-                <Button style={styles.button}>Calculate TDEE</Button>
-                <Text style={styles.result}>Result</Text>
+                <Button style={styles.button} onPress={() => setResult(res)}>Calculate TDEE</Button>
+                <Text style={styles.result}>{result}</Text>
             </Layout>
         </Layout>
     );
@@ -213,7 +218,7 @@ const styles = StyleSheet.create({
     backdrop: {
         backgroundColor: 'rgba(0, 0, 0, 0.6)',
     },
-    pickerView: {
+    pickerContainer: {
         flex: 1,
         flexDirection: 'row'
     },
