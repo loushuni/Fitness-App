@@ -36,13 +36,28 @@ const TDEE = () => {
         setHeightVisible(!heightVisible);
     };
 
-    //const data = [{ text: '1' }, { text: '2' }, { text: '3' }, { text: '4' }, { text: '5' }, { text: '6' }, { text: '7' }, { text: '8' }, { text: '9' }, { text: '10' }];
-    //const data = ['1', '2'];
-
     let agePickerItems = Array.from(Array(91), (_, x) => x).map((item, index) => (
         <Picker.Item label={`${item + 10}`} key={index} value={index} />));
 
-    const activities = [{text: 'Sedentary (Office Job)'}, {text: 'Light Exercise (1-2 days/week)'}, {text: 'Moderate Exercise (3-5 days/week)'}, {text: 'Heavy Exercise (6-7 days/week)'}, {text: 'Athlete (2x per day)'}];
+    let weightPickerItems = null;
+    if (weightUnit === 'kg') {
+        weightPickerItems = Array.from(Array(116), (_, x) => x).map((item, index) => (
+            <Picker.Item label={`${item + 35}`} key={index} value={index} />));
+    } else {
+        weightPickerItems = Array.from(Array(271), (_, x) => x).map((item, index) => (
+            <Picker.Item label={`${item + 80}`} key={index} value={index} />));
+    }
+
+    let heightPickerItems = null;
+        if (heightUnit === 'cm') {
+            heightPickerItems = Array.from(Array(121), (_, x) => x).map((item, index) => (
+                <Picker.Item label={`${item + 130}`} key={index} value={index} />));
+        } else {
+            heightPickerItems = Array.from(Array(47), (_, x) => x).map((item, index) => (
+                <Picker.Item label={`${item + 52}`} key={index} value={index} />));
+        }
+
+    const activities = [{ text: 'Sedentary (Office Job)' }, { text: 'Light Exercise (1-2 days/week)' }, { text: 'Moderate Exercise (3-5 days/week)' }, { text: 'Heavy Exercise (6-7 days/week)' }, { text: 'Athlete (2x per day)' }];
 
     const onCheckedChange = (index) => {
         setSelectedIndex(index);
@@ -61,8 +76,7 @@ const TDEE = () => {
     let weightPicker = (
         <View style={styles.pickerView}>
             <Picker selectedValue={weight} onValueChange={setWeight} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white' }}>
-                < Picker.Item label="1" value="1" />
-                < Picker.Item label="2" value="2" />
+                {weightPickerItems}
             </Picker>
             <Picker selectedValue={weightUnit} onValueChange={setWeightUnit} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white' }}>
                 < Picker.Item label="lb" value="lb" />
@@ -74,8 +88,7 @@ const TDEE = () => {
     let heightPicker = (
         <View style={styles.pickerView}>
             <Picker selectedValue={height} onValueChange={setHeight} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white' }}>
-                < Picker.Item label="1" value="1" />
-                < Picker.Item label="2" value="2" />
+                {heightPickerItems}
             </Picker>
             <Picker selectedValue={heightUnit} onValueChange={setHeightUnit} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white' }}>
                 < Picker.Item label="inch" value="inch" />
