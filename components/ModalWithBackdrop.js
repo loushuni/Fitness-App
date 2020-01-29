@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     },
     optionButton: {
         width: '100%',
-        //backgroundColor: '#2E3A59',
         alignSelf: 'stretch',
         borderColor: 'black',
         height: 50,
