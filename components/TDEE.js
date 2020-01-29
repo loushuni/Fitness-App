@@ -65,7 +65,7 @@ const TDEE = () => {
 
     let agePicker = (
         <View style={styles.pickerView}>
-            <Picker selectedValue={age} onValueChange={setAge} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white' }}>
+            <Picker selectedValue={age} onValueChange={setAge} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white', backgroundColor: '#2E3A59' }}>
                 {/* < Picker.Item label="1" value="1" />
                 < Picker.Item label="2" value="2" /> */}
                 {agePickerItems}
@@ -75,10 +75,10 @@ const TDEE = () => {
 
     let weightPicker = (
         <View style={styles.pickerView}>
-            <Picker selectedValue={weight} onValueChange={setWeight} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white' }}>
+            <Picker selectedValue={weight} onValueChange={setWeight} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white', backgroundColor: '#2E3A59' }}>
                 {weightPickerItems}
             </Picker>
-            <Picker selectedValue={weightUnit} onValueChange={setWeightUnit} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white' }}>
+            <Picker selectedValue={weightUnit} onValueChange={setWeightUnit} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white', backgroundColor: '#2E3A59' }}>
                 < Picker.Item label="lb" value="lb" />
                 < Picker.Item label="kg" value="kg" />
             </Picker>
@@ -87,10 +87,10 @@ const TDEE = () => {
 
     let heightPicker = (
         <View style={styles.pickerView}>
-            <Picker selectedValue={height} onValueChange={setHeight} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white' }}>
+            <Picker selectedValue={height} onValueChange={setHeight} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white', backgroundColor: '#2E3A59' }}>
                 {heightPickerItems}
             </Picker>
-            <Picker selectedValue={heightUnit} onValueChange={setHeightUnit} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white' }}>
+            <Picker selectedValue={heightUnit} onValueChange={setHeightUnit} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white', backgroundColor: '#2E3A59' }}>
                 < Picker.Item label="inch" value="inch" />
                 < Picker.Item label="cm" value="cm" />
             </Picker>
@@ -163,6 +163,7 @@ const TDEE = () => {
                         selectedOption={selectedOption}
                         onSelect={setSelectedOption}
                         style={styles.select}
+                        textStyle={{color: '#8F9BB3', fontWeight: 'normal'}}
                     />
                 </Layout>
 
@@ -191,7 +192,7 @@ const styles = StyleSheet.create({
         paddingTop: 10
     },
     select: {
-        width: '65%',
+        width: '70%',
         paddingBottom: 10,
         paddingLeft: 10
     },
@@ -210,7 +211,7 @@ const styles = StyleSheet.create({
         width: '35%'
     },
     backdrop: {
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
     },
     pickerView: {
         flex: 1,
