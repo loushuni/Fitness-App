@@ -12,13 +12,13 @@ const TDEE = () => {
 
     const [heightVisible, setHeightVisible] = React.useState(false);
 
-    const [age, setAge] = React.useState(0);
+    const [age, setAge] = React.useState('Choose Your Age');
 
-    const [weight, setWeight] = React.useState(0);
+    const [weight, setWeight] = React.useState('Choose Your Weight');
 
     const [weightUnit, setWeightUnit] = React.useState('');
 
-    const [height, setHeight] = React.useState(0);
+    const [height, setHeight] = React.useState('Choose Your Height');
 
     const [heightUnit, setHeightUnit] = React.useState('');
 
@@ -38,6 +38,10 @@ const TDEE = () => {
 
     //const data = [{ text: '1' }, { text: '2' }, { text: '3' }, { text: '4' }, { text: '5' }, { text: '6' }, { text: '7' }, { text: '8' }, { text: '9' }, { text: '10' }];
     //const data = ['1', '2'];
+
+    let agePickerItems = Array.from(Array(91), (_, x) => x).map((item, index) => (
+        <Picker.Item label={`${item + 10}`} key={index} value={index} />));
+
     const activities = [{text: 'Sedentary (Office Job)'}, {text: 'Light Exercise (1-2 days/week)'}, {text: 'Moderate Exercise (3-5 days/week)'}, {text: 'Heavy Exercise (6-7 days/week)'}, {text: 'Athlete (2x per day)'}];
 
     const onCheckedChange = (index) => {
@@ -47,8 +51,9 @@ const TDEE = () => {
     let agePicker = (
         <View style={styles.pickerView}>
             <Picker selectedValue={age} onValueChange={setAge} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white' }}>
-                < Picker.Item label="1" value="1" />
-                < Picker.Item label="2" value="2" />
+                {/* < Picker.Item label="1" value="1" />
+                < Picker.Item label="2" value="2" /> */}
+                {agePickerItems}
             </Picker>
         </View>
     );
@@ -99,7 +104,7 @@ const TDEE = () => {
 
                 <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
                     <Text style={{ paddingTop: 7, paddingRight: 33 }}>Age:</Text>
-                    <Text onPress={toggleAgeModal}>{age}</Text>
+                    <Text onPress={toggleAgeModal} style={styles.placeholder}>{age}</Text>
                     <Modal
                         allowBackdrop={true}
                         backdropStyle={styles.backdrop}
@@ -113,7 +118,7 @@ const TDEE = () => {
 
                 <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
                     <Text style={{ paddingTop: 7, paddingRight: 33 }}>Weight:</Text>
-                    <Text onPress={toggleWeightModal}>{weight + ' ' + weightUnit}</Text>
+                    <Text onPress={toggleWeightModal} style={styles.placeholder}>{weight + ' ' + weightUnit}</Text>
                     <Modal
                         allowBackdrop={true}
                         backdropStyle={styles.backdrop}
@@ -126,7 +131,7 @@ const TDEE = () => {
 
                 <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
                     <Text style={{ paddingTop: 7, paddingRight: 33 }}>Height:</Text>
-                    <Text onPress={toggleHeightModal}>{height + ' ' + heightUnit}</Text>
+                    <Text onPress={toggleHeightModal} style={styles.placeholder}>{height + ' ' + heightUnit}</Text>
                     <Modal
                         allowBackdrop={true}
                         backdropStyle={styles.backdrop}
@@ -144,10 +149,9 @@ const TDEE = () => {
                         data={activities}
                         selectedOption={selectedOption}
                         onSelect={setSelectedOption}
+                        style={styles.select}
                     />
                 </Layout>
-
-
 
 
             </Layout >
@@ -174,7 +178,9 @@ const styles = StyleSheet.create({
         paddingTop: 10
     },
     select: {
-        width: '70%'
+        width: '65%',
+        paddingBottom: 10,
+        paddingLeft: 10
     },
     button: {
         marginTop: 20
@@ -199,6 +205,16 @@ const styles = StyleSheet.create({
     },
     picker: {
         flex: 0.5
+    },
+    placeholder: {
+        borderColor: '#101426',
+        borderWidth: 1,
+        backgroundColor: '#1A2138',
+        width: '55%',
+        color: '#8F9BB3',
+        paddingTop: 5,
+        paddingBottom: 10,
+        paddingLeft: 10
     }
 });
 
