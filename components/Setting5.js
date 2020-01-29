@@ -17,10 +17,10 @@ export default class Setting5 extends Component {
         let pickerItems = null;
         if (this.state.unit === 'kg') {
             pickerItems = Array.from(Array(116), (_, x) => x).map((item, index) => (
-                <Picker.Item label={`${item + 35}`} key={index} value={index} />));
+                <Picker.Item label={`${item + 35}`} key={index} value={`${item + 35}`} />));
         } else {
             pickerItems = Array.from(Array(271), (_, x) => x).map((item, index) => (
-                <Picker.Item label={`${item + 80}`} key={index} value={index} />));
+                <Picker.Item label={`${item + 80}`} key={index} value={`${item + 80}`} />));
         }
         return (
             <View style={styles.container1}>

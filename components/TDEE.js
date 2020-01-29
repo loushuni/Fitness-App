@@ -39,24 +39,24 @@ const TDEE = () => {
     };
 
     let agePickerItems = Array.from(Array(91), (_, x) => x).map((item, index) => (
-        <Picker.Item label={`${item + 10}`} key={index} value={index} />));
+        <Picker.Item label={`${item + 10}`} key={index} value={`${item + 10}`} />));
 
     let weightPickerItems = null;
     if (weightUnit === 'kg') {
         weightPickerItems = Array.from(Array(116), (_, x) => x).map((item, index) => (
-            <Picker.Item label={`${item + 35}`} key={index} value={index} />));
+            <Picker.Item label={`${item + 35}`} key={index} value={`${item + 35}`} />));
     } else {
         weightPickerItems = Array.from(Array(271), (_, x) => x).map((item, index) => (
-            <Picker.Item label={`${item + 80}`} key={index} value={index} />));
+            <Picker.Item label={`${item + 80}`} key={index} value={`${item + 80}`} />));
     }
 
     let heightPickerItems = null;
     if (heightUnit === 'cm') {
         heightPickerItems = Array.from(Array(121), (_, x) => x).map((item, index) => (
-            <Picker.Item label={`${item + 130}`} key={index} value={index} />));
+            <Picker.Item label={`${item + 130}`} key={index} value={`${item + 130}`} />));
     } else {
         heightPickerItems = Array.from(Array(47), (_, x) => x).map((item, index) => (
-            <Picker.Item label={`${item + 52}`} key={index} value={index} />));
+            <Picker.Item label={`${item + 52}`} key={index} value={`${item + 52}`} />));
     }
 
     const activities = [{ text: 'Sedentary (Office Job)' }, { text: 'Light Exercise (1-2 days/week)' }, { text: 'Moderate Exercise (3-5 days/week)' }, { text: 'Heavy Exercise (6-7 days/week)' }];
@@ -99,7 +99,7 @@ const TDEE = () => {
         </Layout>
     );
 
-    let res = 123;
+    let res = null;
     if (selectedIndex == 0 && weightUnit == 'lb') {
         res = (66.47 + (6.24 * +weight) + (12.7 * +height) - (6.755 * +age)).toFixed(2);
     } else if (selectedIndex == 0 && weightUnit == 'kg') {
