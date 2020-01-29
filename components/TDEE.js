@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Picker, View } from 'react-native';
-import { Layout, Text, Input, Button, Select, Radio, RadioGroup, Modal } from '@ui-kitten/components';
-import ModalWithBackdrop from './ModalWithBackdrop';
+import { Layout, Text, Input, Button, Radio, RadioGroup, Modal, Select } from '@ui-kitten/components';
 
 const TDEE = () => {
 
@@ -11,11 +10,19 @@ const TDEE = () => {
 
     const [weightVisible, setWeightVisible] = React.useState(false);
 
-    const [age, setAge] = React.useState('');
+    const [heightVisible, setHeightVisible] = React.useState(false);
 
-    const [weight, setWeight] = React.useState('');
+    const [age, setAge] = React.useState(0);
+
+    const [weight, setWeight] = React.useState(0);
 
     const [weightUnit, setWeightUnit] = React.useState('');
+
+    const [height, setHeight] = React.useState(0);
+
+    const [heightUnit, setHeightUnit] = React.useState('');
+
+    const [selectedOption, setSelectedOption] = React.useState('');
 
     const toggleAgeModal = () => {
         setAgeVisible(!ageVisible);
@@ -25,8 +32,13 @@ const TDEE = () => {
         setWeightVisible(!weightVisible);
     };
 
+    const toggleHeightModal = () => {
+        setHeightVisible(!heightVisible);
+    };
+
     //const data = [{ text: '1' }, { text: '2' }, { text: '3' }, { text: '4' }, { text: '5' }, { text: '6' }, { text: '7' }, { text: '8' }, { text: '9' }, { text: '10' }];
     //const data = ['1', '2'];
+    const activities = [{text: 'Sedentary (Office Job)'}, {text: 'Light Exercise (1-2 days/week)'}, {text: 'Moderate Exercise (3-5 days/week)'}, {text: 'Heavy Exercise (6-7 days/week)'}, {text: 'Athlete (2x per day)'}];
 
     const onCheckedChange = (index) => {
         setSelectedIndex(index);
@@ -48,6 +60,19 @@ const TDEE = () => {
                 < Picker.Item label="2" value="2" />
             </Picker>
             <Picker selectedValue={weightUnit} onValueChange={setWeightUnit} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white' }}>
+                < Picker.Item label="lb" value="lb" />
+                < Picker.Item label="kg" value="kg" />
+            </Picker>
+        </View>
+    );
+
+    let heightPicker = (
+        <View style={styles.pickerView}>
+            <Picker selectedValue={height} onValueChange={setHeight} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white' }}>
+                < Picker.Item label="1" value="1" />
+                < Picker.Item label="2" value="2" />
+            </Picker>
+            <Picker selectedValue={heightUnit} onValueChange={setHeightUnit} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white' }}>
                 < Picker.Item label="inch" value="inch" />
                 < Picker.Item label="cm" value="cm" />
             </Picker>
@@ -99,8 +124,33 @@ const TDEE = () => {
                 </Layout>
 
 
+                <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
+                    <Text style={{ paddingTop: 7, paddingRight: 33 }}>Height:</Text>
+                    <Text onPress={toggleHeightModal}>{height + ' ' + heightUnit}</Text>
+                    <Modal
+                        allowBackdrop={true}
+                        backdropStyle={styles.backdrop}
+                        onBackdropPress={toggleHeightModal}
+                        visible={heightVisible}>
+                        {heightPicker}
+                    </Modal>
+                </Layout>
 
-            </Layout>
+
+
+                <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
+                    <Text>Activities:</Text>
+                    <Select
+                        data={activities}
+                        selectedOption={selectedOption}
+                        onSelect={setSelectedOption}
+                    />
+                </Layout>
+
+
+
+
+            </Layout >
             <Layout style={{ flexDirection: 'row' }}>
                 <Button style={styles.button}>Calculate TDEE</Button>
                 <Text style={styles.result}>Result</Text>
@@ -141,7 +191,7 @@ const styles = StyleSheet.create({
         width: '35%'
     },
     backdrop: {
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
     },
     pickerView: {
         flex: 1,
