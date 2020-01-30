@@ -100,14 +100,22 @@ const TDEE = () => {
     );
 
     let res = null;
-    if (selectedIndex == 0 && weightUnit == 'lb') {
-        res = 66.47 + (6.24 * +weight) + (12.7 * +height) - (6.755 * +age);
-    } else if (selectedIndex == 0 && weightUnit == 'kg') {
-        res = (+height * 6.25) + (+weight * 10) - (+age * 5) + 5;
-    } else if (selectedIndex == 1 && weightUnit == 'lb') {
-        res = 655.1 + (4.35 * +weight) + (4.7 * +height) - (4.7 * +age);
-    } else if (selectedIndex == 1 && weightUnit == 'kg') {
-        res = (+height * 6.25) + (+weight * 10) - (+age * 5) - 151;
+    if (bodyFat == '') {
+        if (selectedIndex == 0 && weightUnit == 'lb') {
+            res = 66.47 + (6.24 * +weight) + (12.7 * +height) - (6.755 * +age);
+        } else if (selectedIndex == 0 && weightUnit == 'kg') {
+            res = (+height * 6.25) + (+weight * 10) - (+age * 5) + 5;
+        } else if (selectedIndex == 1 && weightUnit == 'lb') {
+            res = 655.1 + (4.35 * +weight) + (4.7 * +height) - (4.7 * +age);
+        } else if (selectedIndex == 1 && weightUnit == 'kg') {
+            res = (+height * 6.25) + (+weight * 10) - (+age * 5) - 151;
+        }
+    } else {
+        if (weightUnit == 'lb') {
+            res = 370 + (21.6 * +weight * 0.4536 * (1 - +bodyFat / 100));
+        } else if (weightUnit == 'kg') {
+            res = 370 + (21.6 * +weight * (1 - +bodyFat / 100));
+        }
     }
 
     if (selectedOption.text == 'Sedentary (Office Job)') {
@@ -185,7 +193,7 @@ const TDEE = () => {
 
                 <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
                     <Text style={{ paddingRight: 15, paddingTop: 5 }}>Body Fat % (Optional):</Text>
-                    <Input style={{ width: 60 }} value={bodyFat} onChangeText={setBodyFat}/>
+                    <Input style={{ width: 60 }} value={bodyFat} onChangeText={setBodyFat} />
                 </Layout>
 
             </Layout >
