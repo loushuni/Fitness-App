@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Picker, View } from 'react-native';
+import { StyleSheet, Picker } from 'react-native';
 import { Layout, Text, Input, Button, Radio, RadioGroup, Modal, Select } from '@ui-kitten/components';
 
 const TDEE = () => {
@@ -101,11 +101,11 @@ const TDEE = () => {
     if (selectedIndex == 0 && weightUnit == 'lb') {
         res = 66.47 + (6.24 * +weight) + (12.7 * +height) - (6.755 * +age);
     } else if (selectedIndex == 0 && weightUnit == 'kg') {
-        res = (+height * 6.25) + (+weight * 9.99) - (+age * 4.92) + 5;
+        res = (+height * 6.25) + (+weight * 10) - (+age * 5) + 5;
     } else if (selectedIndex == 1 && weightUnit == 'lb') {
         res = 655.1 + (4.35 * +weight) + (4.7 * +height) - (4.7 * +age);
     } else if (selectedIndex == 1 && weightUnit == 'kg') {
-        res = (+height * 6.25) + (+weight * 9.99) - (+age * 4.92) - 161;
+        res = (+height * 6.25) + (+weight * 10) - (+age * 5) - 151;
     }
 
     if (selectedOption.text == 'Sedentary (Office Job)') {
@@ -179,6 +179,11 @@ const TDEE = () => {
                         style={styles.select}
                         textStyle={{ color: '#8F9BB3', fontWeight: 'normal' }}
                     />
+                </Layout>
+
+                <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
+                    <Text>Body Fat % (Optional):</Text>
+                    <Input />
                 </Layout>
 
             </Layout >
