@@ -24,6 +24,8 @@ const TDEE = () => {
 
     const [selectedOption, setSelectedOption] = React.useState('');
 
+    const [bodyFat, setBodyFat] = React.useState('');
+
     const [result, setResult] = React.useState('');
 
     const toggleAgeModal = () => {
@@ -182,8 +184,8 @@ const TDEE = () => {
                 </Layout>
 
                 <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
-                    <Text>Body Fat % (Optional):</Text>
-                    <Input />
+                    <Text style={{ paddingRight: 15, paddingTop: 5 }}>Body Fat % (Optional):</Text>
+                    <Input style={{ width: 60 }} value={bodyFat} onChangeText={setBodyFat}/>
                 </Layout>
 
             </Layout >
@@ -211,7 +213,6 @@ const styles = StyleSheet.create({
     },
     select: {
         width: '70%',
-        paddingBottom: 10,
         paddingLeft: 10
     },
     button: {
