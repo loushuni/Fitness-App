@@ -193,7 +193,7 @@ const TDEE = () => {
 
                 <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
                     <Text style={{ paddingRight: 15, paddingTop: 5 }}>Body Fat % (Optional):</Text>
-                    <Input style={{ width: 60 }} value={bodyFat} onChangeText={setBodyFat} />
+                    <Input style={{ width: 60 }} value={bodyFat} onChangeText={setBodyFat} placeholder='%'/>
                 </Layout>
 
             </Layout >
