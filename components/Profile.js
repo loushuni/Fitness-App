@@ -48,7 +48,7 @@ export default class Profile extends Component {
                             onPress={() => this.props.navigation.navigate('TDEE')}>TDEE Calculator</Button>
                         <Button
                             style={styles.button}
-                            textStyle={{ fontWeight: '500', marginRight: 235 }}
+                            textStyle={{ fontWeight: '500', marginRight: 228 }}
                             icon={arrowIcon}
                             onPress={() => this.props.navigation.navigate('Macro')}>Macro Calculator</Button>
                     </View>
