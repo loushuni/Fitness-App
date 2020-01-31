@@ -35,17 +35,22 @@ export default class Profile extends Component {
                     </View>
 
                     <Text style={styles.header}>Fitness Calculators</Text>
-                    <View style={{flexDirection: 'column', alignContent: 'flex-start', alignItems: 'flex-start'}}>
+                    <View style={{ flexDirection: 'column', alignContent: 'flex-start', alignItems: 'flex-start' }}>
                         <Button
                             style={styles.button}
-                            textStyle={{fontWeight: '500', marginRight: 245}}
+                            textStyle={{ fontWeight: '500', marginRight: 245 }}
                             icon={arrowIcon}
                             onPress={() => this.props.navigation.navigate('BMI')}>BMI Calculator</Button>
                         <Button
                             style={styles.button}
-                            textStyle={{fontWeight: '500', marginRight: 235}}
+                            textStyle={{ fontWeight: '500', marginRight: 235 }}
                             icon={arrowIcon}
                             onPress={() => this.props.navigation.navigate('TDEE')}>TDEE Calculator</Button>
+                        <Button
+                            style={styles.button}
+                            textStyle={{ fontWeight: '500', marginRight: 235 }}
+                            icon={arrowIcon}
+                            onPress={() => this.props.navigation.navigate('Macro')}>Macro Calculator</Button>
                     </View>
                 </ScrollView>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
