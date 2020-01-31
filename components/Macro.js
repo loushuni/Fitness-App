@@ -24,6 +24,8 @@ const Macro = () => {
 
     const [selectedOption, setSelectedOption] = React.useState('');
 
+    const [selectedGoal, setSelectedGoal] = React.useState('');
+
     const [bodyFat, setBodyFat] = React.useState('');
 
     const [result, setResult] = React.useState('');
@@ -62,6 +64,8 @@ const Macro = () => {
     }
 
     const activities = [{ text: 'Sedentary (Office Job)' }, { text: 'Light Exercise (1-2 days/week)' }, { text: 'Moderate Exercise (3-5 days/week)' }, { text: 'Heavy Exercise (6-7 days/week)' }];
+    
+    const goals = [{text: 'Maintain'}, {text: 'Bulk'}, {text: 'Shred'}];
 
     const onCheckedChange = (index) => {
         setSelectedIndex(index);
@@ -130,7 +134,7 @@ const Macro = () => {
 
     return (
         <Layout style={styles.container}>
-            <Text style={styles.title}>TDEE Calculator</Text>
+            <Text style={styles.title}>Macro Calculator</Text>
             <Layout style={{ alignContent: 'center', paddingLeft: 40 }}>
 
                 <Layout style={{ flexDirection: 'row' }}>
@@ -192,13 +196,24 @@ const Macro = () => {
                 </Layout>
 
                 <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
+                    <Text>Workout Goal:</Text>
+                    <Select
+                        data={goals}
+                        selectedOption={selectedGoal}
+                        onSelect={setSelectedGoal}
+                        style={styles.select}
+                        textStyle={{ color: '#8F9BB3', fontWeight: 'normal' }}
+                    />
+                </Layout>
+
+                <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
                     <Text style={{ paddingRight: 15, paddingTop: 5 }}>Body Fat % (Optional):</Text>
                     <Input style={{ width: 60 }} value={bodyFat} onChangeText={setBodyFat} placeholder='%'/>
                 </Layout>
 
             </Layout >
             <Layout style={{ flexDirection: 'row' }}>
-                <Button style={styles.button} onPress={() => setResult(res)}>Calculate TDEE</Button>
+                <Button style={styles.button} onPress={() => setResult(res)}>Calculate Macro</Button>
                 <Text style={styles.result}>{result}</Text>
             </Layout>
         </Layout>
@@ -216,7 +231,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 27,
         marginTop: 80,
-        marginBottom: 200,
+        marginBottom: 180,
         paddingTop: 10
     },
     select: {
