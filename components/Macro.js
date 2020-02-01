@@ -114,29 +114,6 @@ const Macro = () => {
         </Layout>
     );
 
-    let resultPicker = (
-        <Layout style={{ flexDirection: 'row', alignItems: 'center', width: 180, marginRight: 210 }}>
-            <Layout style={{ flexDirection: 'column', width: 130 }}>
-                <Text>Moderate Carb (30/35/35)</Text>
-                <Text style={styles.resultText}>a</Text>
-                <Text style={styles.resultText}>a</Text>
-                <Text style={styles.resultText}>a</Text>
-            </Layout>
-            <Layout style={{ flexDirection: 'column', width: 130 }}>
-                <Text>Lower Carb (40/40/20)</Text>
-                <Text style={styles.resultText}>a</Text>
-                <Text style={styles.resultText}>a</Text>
-                <Text style={styles.resultText}>a</Text>
-            </Layout>
-            <Layout style={{ flexDirection: 'column', width: 130 }}>
-                <Text>Higher Carb (30/20/50)</Text>
-                <Text style={styles.resultText}>a</Text>
-                <Text style={styles.resultText}>a</Text>
-                <Text style={styles.resultText}>a</Text>
-            </Layout>
-        </Layout>
-    );
-
     let res = null;
     if (bodyFat == '') {
         if (selectedIndex == 0 && weightUnit == 'lb') {
@@ -165,6 +142,73 @@ const Macro = () => {
     } else if (selectedOption.text == 'Heavy Exercise (6-7 days/week)') {
         res = (res * 1.525).toFixed(2);
     }
+
+    let mp = 0;
+    let mf = 0;
+    let mc = 0;
+    let lp = 0;
+    let lf = 0;
+    let lc = 0;
+    let hp = 0;
+    let hf = 0;
+    let hc = 0;
+
+    if (selectedGoal.text == 'Maintain') {
+        mp = (res * 0.3 / 4).toFixed(0);
+        mf = (res * 0.35 / 9).toFixed(0);
+        mc = (res * 0.35 / 4).toFixed(0);
+        lp = (res * 0.4 / 4).toFixed(0);
+        lf = (res * 0.4 / 9).toFixed(0);
+        lc = (res * 0.2 / 4).toFixed(0);
+        hp = (res * 0.3 / 4).toFixed(0);
+        hf = (res * 0.2 / 9).toFixed(0);
+        hc = (res * 0.5 / 4).toFixed(0);
+    } else if (selectedGoal.text == 'Bulk') {
+        res = res + 500;
+        mp = (res * 0.3 / 4).toFixed(0);
+        mf = (res * 0.35 / 9).toFixed(0);
+        mc = (res * 0.35 / 4).toFixed(0);
+        lp = (res * 0.4 / 4).toFixed(0);
+        lf = (res * 0.4 / 9).toFixed(0);
+        lc = (res * 0.2 / 4).toFixed(0);
+        hp = (res * 0.3 / 4).toFixed(0);
+        hf = (res * 0.2 / 9).toFixed(0);
+        hc = (res * 0.5 / 4).toFixed(0);
+    } else if (selectedGoal.text == 'Shred') {
+        res = res - 500;
+        mp = (res * 0.3 / 4).toFixed(0);
+        mf = (res * 0.35 / 9).toFixed(0);
+        mc = (res * 0.35 / 4).toFixed(0);
+        lp = (res * 0.4 / 4).toFixed(0);
+        lf = (res * 0.4 / 9).toFixed(0);
+        lc = (res * 0.2 / 4).toFixed(0);
+        hp = (res * 0.3 / 4).toFixed(0);
+        hf = (res * 0.2 / 9).toFixed(0);
+        hc = (res * 0.5 / 4).toFixed(0);
+    }
+
+    let resultPicker = (
+        <Layout style={{ flexDirection: 'row', alignItems: 'center', width: 180, marginRight: 210 }}>
+            <Layout style={{ flexDirection: 'column', width: 130 }}>
+                <Text>Moderate Carb (30/35/35)</Text>
+                <Text style={styles.resultText}>{mp}</Text>
+                <Text style={styles.resultText}>{mf}</Text>
+                <Text style={styles.resultText}>{mc}</Text>
+            </Layout>
+            <Layout style={{ flexDirection: 'column', width: 130 }}>
+                <Text>Lower Carb (40/40/20)</Text>
+                <Text style={styles.resultText}>{lp}</Text>
+                <Text style={styles.resultText}>{lf}</Text>
+                <Text style={styles.resultText}>{lc}</Text>
+            </Layout>
+            <Layout style={{ flexDirection: 'column', width: 130 }}>
+                <Text>Higher Carb (30/20/50)</Text>
+                <Text style={styles.resultText}>{hp}</Text>
+                <Text style={styles.resultText}>{hf}</Text>
+                <Text style={styles.resultText}>{hc}</Text>
+            </Layout>
+        </Layout>
+    );
 
     return (
         <Layout style={styles.container}>
