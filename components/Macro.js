@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Picker } from 'react-native';
-import { Layout, Text, Input, Button, Radio, RadioGroup, Modal, Select } from '@ui-kitten/components';
+import { Layout, Text, Input, Button, Radio, RadioGroup, Modal, Select, Tab, TabView } from '@ui-kitten/components';
 
 const Macro = () => {
 
@@ -11,6 +11,8 @@ const Macro = () => {
     const [weightVisible, setWeightVisible] = React.useState(false);
 
     const [heightVisible, setHeightVisible] = React.useState(false);
+
+    const [resultVisible, setResultVisible] = React.useState(false);
 
     const [age, setAge] = React.useState('Choose Your Age');
 
@@ -42,6 +44,23 @@ const Macro = () => {
         setHeightVisible(!heightVisible);
     };
 
+    const toggleResultModal = () => {
+        setResultVisible(!resultVisible);
+    };
+
+    const buttonPressed = () => {
+        setResult(res);
+        toggleResultModal();
+    }
+
+    const activities = [{ text: 'Sedentary (Office Job)' }, { text: 'Light Exercise (1-2 days/week)' }, { text: 'Moderate Exercise (3-5 days/week)' }, { text: 'Heavy Exercise (6-7 days/week)' }];
+
+    const goals = [{ text: 'Maintain' }, { text: 'Bulk' }, { text: 'Shred' }];
+
+    const onCheckedChange = (index) => {
+        setSelectedIndex(index);
+    };
+
     let agePickerItems = Array.from(Array(91), (_, x) => x).map((item, index) => (
         <Picker.Item label={`${item + 10}`} key={index} value={`${item + 10}`} />));
 
@@ -62,14 +81,6 @@ const Macro = () => {
         heightPickerItems = Array.from(Array(47), (_, x) => x).map((item, index) => (
             <Picker.Item label={`${item + 52}`} key={index} value={`${item + 52}`} />));
     }
-
-    const activities = [{ text: 'Sedentary (Office Job)' }, { text: 'Light Exercise (1-2 days/week)' }, { text: 'Moderate Exercise (3-5 days/week)' }, { text: 'Heavy Exercise (6-7 days/week)' }];
-    
-    const goals = [{text: 'Maintain'}, {text: 'Bulk'}, {text: 'Shred'}];
-
-    const onCheckedChange = (index) => {
-        setSelectedIndex(index);
-    };
 
     let agePicker = (
         <Layout style={styles.pickerContainer}>
@@ -100,6 +111,29 @@ const Macro = () => {
                 < Picker.Item label="inch" value="inch" />
                 < Picker.Item label="cm" value="cm" />
             </Picker>
+        </Layout>
+    );
+
+    let resultPicker = (
+        <Layout style={{ flexDirection: 'row', alignItems: 'center', width: 180, marginRight: 210 }}>
+            <Layout style={{ flexDirection: 'column', width: 130 }}>
+                <Text>Moderate Carb (30/35/35)</Text>
+                <Text style={styles.resultText}>a</Text>
+                <Text style={styles.resultText}>a</Text>
+                <Text style={styles.resultText}>a</Text>
+            </Layout>
+            <Layout style={{ flexDirection: 'column', width: 130 }}>
+                <Text>Lower Carb (40/40/20)</Text>
+                <Text style={styles.resultText}>a</Text>
+                <Text style={styles.resultText}>a</Text>
+                <Text style={styles.resultText}>a</Text>
+            </Layout>
+            <Layout style={{ flexDirection: 'column', width: 130 }}>
+                <Text>Higher Carb (30/20/50)</Text>
+                <Text style={styles.resultText}>a</Text>
+                <Text style={styles.resultText}>a</Text>
+                <Text style={styles.resultText}>a</Text>
+            </Layout>
         </Layout>
     );
 
@@ -208,14 +242,22 @@ const Macro = () => {
 
                 <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
                     <Text style={{ paddingRight: 15, paddingTop: 5 }}>Body Fat % (Optional):</Text>
-                    <Input style={{ width: 60 }} value={bodyFat} onChangeText={setBodyFat} placeholder='%'/>
+                    <Input style={{ width: 60 }} value={bodyFat} onChangeText={setBodyFat} placeholder='%' />
                 </Layout>
 
             </Layout >
+
             <Layout style={{ flexDirection: 'row' }}>
-                <Button style={styles.button} onPress={() => setResult(res)}>Calculate Macro</Button>
-                <Text style={styles.result}>{result}</Text>
+                <Button style={styles.button} onPress={buttonPressed}>Calculate Macro</Button>
+                <Modal
+                    allowBackdrop={true}
+                    backdropStyle={styles.backdrop}
+                    onBackdropPress={toggleResultModal}
+                    visible={resultVisible}>
+                    {resultPicker}
+                </Modal>
             </Layout>
+
         </Layout>
     );
 }
@@ -231,7 +273,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 27,
         marginTop: 80,
-        marginBottom: 180,
+        marginBottom: 100,
         paddingTop: 10
     },
     select: {
@@ -271,6 +313,13 @@ const styles = StyleSheet.create({
         paddingTop: 5,
         paddingBottom: 10,
         paddingLeft: 10
+    },
+    resultText: {
+        borderColor: '#151A30',
+        backgroundColor: '#1A2138',
+        borderWidth: 1,
+        width: '100%',
+        height: 50
     }
 });
 
