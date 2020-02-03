@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Picker } from 'react-native';
+import { StyleSheet, Picker, ScrollView } from 'react-native';
 import { Layout, Text, Input, Button, Radio, RadioGroup, Modal, Select, Tab, TabView } from '@ui-kitten/components';
 
 const Macro = () => {
@@ -11,8 +11,6 @@ const Macro = () => {
     const [weightVisible, setWeightVisible] = React.useState(false);
 
     const [heightVisible, setHeightVisible] = React.useState(false);
-
-    const [resultVisible, setResultVisible] = React.useState(false);
 
     const [age, setAge] = React.useState('Choose Your Age');
 
@@ -30,7 +28,7 @@ const Macro = () => {
 
     const [bodyFat, setBodyFat] = React.useState('');
 
-    const [result, setResult] = React.useState('');
+    const [result, setResult] = React.useState(0);
 
     const toggleAgeModal = () => {
         setAgeVisible(!ageVisible);
@@ -43,15 +41,6 @@ const Macro = () => {
     const toggleHeightModal = () => {
         setHeightVisible(!heightVisible);
     };
-
-    const toggleResultModal = () => {
-        setResultVisible(!resultVisible);
-    };
-
-    const buttonPressed = () => {
-        setResult(res);
-        toggleResultModal();
-    }
 
     const activities = [{ text: 'Sedentary (Office Job)' }, { text: 'Light Exercise (1-2 days/week)' }, { text: 'Moderate Exercise (3-5 days/week)' }, { text: 'Heavy Exercise (6-7 days/week)' }];
 
@@ -143,164 +132,203 @@ const Macro = () => {
         res = (res * 1.525).toFixed(2);
     }
 
-    let mp = 0;
-    let mf = 0;
-    let mc = 0;
-    let lp = 0;
-    let lf = 0;
-    let lc = 0;
-    let hp = 0;
-    let hf = 0;
-    let hc = 0;
+    // let mp = 0;
+    // let mf = 0;
+    // let mc = 0;
+    // let lp = 0;
+    // let lf = 0;
+    // let lc = 0;
+    // let hp = 0;
+    // let hf = 0;
+    // let hc = 0;
 
-    if (selectedGoal.text == 'Maintain') {
-        mp = (res * 0.3 / 4).toFixed(0);
-        mf = (res * 0.35 / 9).toFixed(0);
-        mc = (res * 0.35 / 4).toFixed(0);
-        lp = (res * 0.4 / 4).toFixed(0);
-        lf = (res * 0.4 / 9).toFixed(0);
-        lc = (res * 0.2 / 4).toFixed(0);
-        hp = (res * 0.3 / 4).toFixed(0);
-        hf = (res * 0.2 / 9).toFixed(0);
-        hc = (res * 0.5 / 4).toFixed(0);
-    } else if (selectedGoal.text == 'Bulk') {
-        res = res + 500;
-        mp = (res * 0.3 / 4).toFixed(0);
-        mf = (res * 0.35 / 9).toFixed(0);
-        mc = (res * 0.35 / 4).toFixed(0);
-        lp = (res * 0.4 / 4).toFixed(0);
-        lf = (res * 0.4 / 9).toFixed(0);
-        lc = (res * 0.2 / 4).toFixed(0);
-        hp = (res * 0.3 / 4).toFixed(0);
-        hf = (res * 0.2 / 9).toFixed(0);
-        hc = (res * 0.5 / 4).toFixed(0);
-    } else if (selectedGoal.text == 'Shred') {
-        res = res - 500;
-        mp = (res * 0.3 / 4).toFixed(0);
-        mf = (res * 0.35 / 9).toFixed(0);
-        mc = (res * 0.35 / 4).toFixed(0);
-        lp = (res * 0.4 / 4).toFixed(0);
-        lf = (res * 0.4 / 9).toFixed(0);
-        lc = (res * 0.2 / 4).toFixed(0);
-        hp = (res * 0.3 / 4).toFixed(0);
-        hf = (res * 0.2 / 9).toFixed(0);
-        hc = (res * 0.5 / 4).toFixed(0);
+    // if (selectedGoal.text == 'Maintain') {
+    //     mp = (result * 0.3 / 4).toFixed(0);
+    //     mf = (result * 0.35 / 9).toFixed(0);
+    //     mc = (result * 0.35 / 4).toFixed(0);
+    //     lp = (result * 0.4 / 4).toFixed(0);
+    //     lf = (result * 0.4 / 9).toFixed(0);
+    //     lc = (result * 0.2 / 4).toFixed(0);
+    //     hp = (result * 0.3 / 4).toFixed(0);
+    //     hf = (result * 0.2 / 9).toFixed(0);
+    //     hc = (result * 0.5 / 4).toFixed(0);
+    // } else if (selectedGoal.text == 'Bulk') {
+    //     //result = result + 500;
+    //     mp = ((result + 500) * 0.3 / 4).toFixed(0);
+    //     mf = (result * 0.35 / 9).toFixed(0);
+    //     mc = (result * 0.35 / 4).toFixed(0);
+    //     lp = (result * 0.4 / 4).toFixed(0);
+    //     lf = (result * 0.4 / 9).toFixed(0);
+    //     lc = (result * 0.2 / 4).toFixed(0);
+    //     hp = (result * 0.3 / 4).toFixed(0);
+    //     hf = (result * 0.2 / 9).toFixed(0);
+    //     hc = (result * 0.5 / 4).toFixed(0);
+    // } else if (selectedGoal.text == 'Shred') {
+    //     //result = result - 500;
+    //     mp = ((result - 500) * 0.3 / 4).toFixed(0);
+    //     mf = (result * 0.35 / 9).toFixed(0);
+    //     mc = (result * 0.35 / 4).toFixed(0);
+    //     lp = (result * 0.4 / 4).toFixed(0);
+    //     lf = (result * 0.4 / 9).toFixed(0);
+    //     lc = (result * 0.2 / 4).toFixed(0);
+    //     hp = (result * 0.3 / 4).toFixed(0);
+    //     hf = (result * 0.2 / 9).toFixed(0);
+    //     hc = (result * 0.5 / 4).toFixed(0);
+    // }
+
+    const [mp, setMP] = React.useState(0);
+    const [mf, setMF] = React.useState(0);
+    const [mc, setMC] = React.useState(0);
+    const [lp, setLP] = React.useState(0);
+    const [lf, setLF] = React.useState(0);
+    const [lc, setLC] = React.useState(0);
+    const [hp, setHP] = React.useState(0);
+    const [hf, setHF] = React.useState(0);
+    const [hc, setHC] = React.useState(0);
+
+    const onPressed = () => {
+        if (selectedGoal.text == 'Maintain') {
+            setMP((res * 0.3 / 4).toFixed(0));
+            setMF((res * 0.35 / 9).toFixed(0));
+            setMC((res * 0.35 / 4).toFixed(0));
+            setLP((res * 0.4 / 4).toFixed(0));
+            setLF((res * 0.4 / 9).toFixed(0));
+            setLC((res * 0.2 / 4).toFixed(0));
+            setHP((res * 0.3 / 4).toFixed(0));
+            setHF((res * 0.2 / 9).toFixed(0));
+            setHC((res * 0.5 / 4).toFixed(0));
+        } else if (selectedGoal.text == 'Bulk') {
+            res = res + 500;
+            setMP((res * 0.3 / 4).toFixed(0));
+            setMF((res * 0.35 / 9).toFixed(0));
+            setMC((res * 0.35 / 4).toFixed(0));
+            setLP((res * 0.4 / 4).toFixed(0));
+            setLF((res * 0.4 / 9).toFixed(0));
+            setLC((res * 0.2 / 4).toFixed(0));
+            setHP((res * 0.3 / 4).toFixed(0));
+            setHF((res * 0.2 / 9).toFixed(0));
+            setHC((res * 0.5 / 4).toFixed(0));
+        } else if (selectedGoal.text == 'Shred') {
+            res = res - 500;
+            setMP((res * 0.3 / 4).toFixed(0));
+            setMF((res * 0.35 / 9).toFixed(0));
+            setMC((res * 0.35 / 4).toFixed(0));
+            setLP((res * 0.4 / 4).toFixed(0));
+            setLF((res * 0.4 / 9).toFixed(0));
+            setLC((res * 0.2 / 4).toFixed(0));
+            setHP((res * 0.3 / 4).toFixed(0));
+            setHF((res * 0.2 / 9).toFixed(0));
+            setHC((res * 0.5 / 4).toFixed(0));
+        }
     }
-
-    let resultPicker = (
-        <Layout style={{ flexDirection: 'row', alignItems: 'center', width: 180, marginRight: 210 }}>
-            <Layout style={{ flexDirection: 'column', width: 130 }}>
-                <Text>Moderate Carb (30/35/35)</Text>
-                <Text style={styles.resultText}>{mp}</Text>
-                <Text style={styles.resultText}>{mf}</Text>
-                <Text style={styles.resultText}>{mc}</Text>
-            </Layout>
-            <Layout style={{ flexDirection: 'column', width: 130 }}>
-                <Text>Lower Carb (40/40/20)</Text>
-                <Text style={styles.resultText}>{lp}</Text>
-                <Text style={styles.resultText}>{lf}</Text>
-                <Text style={styles.resultText}>{lc}</Text>
-            </Layout>
-            <Layout style={{ flexDirection: 'column', width: 130 }}>
-                <Text>Higher Carb (30/20/50)</Text>
-                <Text style={styles.resultText}>{hp}</Text>
-                <Text style={styles.resultText}>{hf}</Text>
-                <Text style={styles.resultText}>{hc}</Text>
-            </Layout>
-        </Layout>
-    );
 
     return (
         <Layout style={styles.container}>
             <Text style={styles.title}>Macro Calculator</Text>
-            <Layout style={{ alignContent: 'center', paddingLeft: 40 }}>
+            <ScrollView>
+                <Layout style={{ alignContent: 'center', paddingLeft: 40 }}>
+
+                    <Layout style={{ flexDirection: 'row' }}>
+                        <Text style={{ paddingTop: 10, paddingRight: 20 }}>Gender:</Text>
+                        <RadioGroup
+                            selectedIndex={selectedIndex}
+                            onChange={onCheckedChange}
+                            style={{ flexDirection: 'row' }}>
+                            <Radio text='Male' />
+                            <Radio text='Female' />
+                        </RadioGroup>
+                    </Layout>
+
+                    <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
+                        <Text style={{ paddingTop: 7, paddingRight: 45 }}>Age:</Text>
+                        <Text onPress={toggleAgeModal} style={styles.placeholder}>{age}</Text>
+                        <Modal
+                            allowBackdrop={true}
+                            backdropStyle={styles.backdrop}
+                            onBackdropPress={toggleAgeModal}
+                            visible={ageVisible}>
+                            {agePicker}
+                        </Modal>
+                    </Layout>
+
+                    <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
+                        <Text style={{ paddingTop: 7, paddingRight: 23 }}>Weight:</Text>
+                        <Text onPress={toggleWeightModal} style={styles.placeholder}>{weight + ' ' + weightUnit}</Text>
+                        <Modal
+                            allowBackdrop={true}
+                            backdropStyle={styles.backdrop}
+                            onBackdropPress={toggleWeightModal}
+                            visible={weightVisible}>
+                            {weightPicker}
+                        </Modal>
+                    </Layout>
+
+                    <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
+                        <Text style={{ paddingTop: 7, paddingRight: 26 }}>Height:</Text>
+                        <Text onPress={toggleHeightModal} style={styles.placeholder}>{height + ' ' + heightUnit}</Text>
+                        <Modal
+                            allowBackdrop={true}
+                            backdropStyle={styles.backdrop}
+                            onBackdropPress={toggleHeightModal}
+                            visible={heightVisible}>
+                            {heightPicker}
+                        </Modal>
+                    </Layout>
+
+                    <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
+                        <Text>Activities:</Text>
+                        <Select
+                            data={activities}
+                            selectedOption={selectedOption}
+                            onSelect={setSelectedOption}
+                            style={styles.select}
+                            textStyle={{ color: '#8F9BB3', fontWeight: 'normal' }}
+                        />
+                    </Layout>
+
+                    <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
+                        <Text>Workout Goal:</Text>
+                        <Select
+                            data={goals}
+                            selectedOption={selectedGoal}
+                            onSelect={setSelectedGoal}
+                            style={styles.select}
+                            textStyle={{ color: '#8F9BB3', fontWeight: 'normal' }}
+                        />
+                    </Layout>
+
+                    <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
+                        <Text style={{ paddingRight: 15, paddingTop: 5 }}>Body Fat % (Optional):</Text>
+                        <Input style={{ width: 60 }} value={bodyFat} onChangeText={setBodyFat} placeholder='%' />
+                    </Layout>
+
+                </Layout >
 
                 <Layout style={{ flexDirection: 'row' }}>
-                    <Text style={{ paddingTop: 10, paddingRight: 20 }}>Gender:</Text>
-                    <RadioGroup
-                        selectedIndex={selectedIndex}
-                        onChange={onCheckedChange}
-                        style={{ flexDirection: 'row' }}>
-                        <Radio text='Male' />
-                        <Radio text='Female' />
-                    </RadioGroup>
+                    <Button style={styles.button} onPress={onPressed}>Calculate Macro</Button>
                 </Layout>
 
-                <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
-                    <Text style={{ paddingTop: 7, paddingRight: 45 }}>Age:</Text>
-                    <Text onPress={toggleAgeModal} style={styles.placeholder}>{age}</Text>
-                    <Modal
-                        allowBackdrop={true}
-                        backdropStyle={styles.backdrop}
-                        onBackdropPress={toggleAgeModal}
-                        visible={ageVisible}>
-                        {agePicker}
-                    </Modal>
+                <Layout style={{ flexDirection: 'row', alignItems: 'center', width: 180, marginRight: 210, marginTop: 30, marginBottom: 30 }}>
+                    <Layout style={{ flexDirection: 'column', width: 130 }}>
+                        <Text>Moderate Carb (30/35/35)</Text>
+                        <Text style={styles.resultText}>{mp}</Text>
+                        <Text style={styles.resultText}>{mf}</Text>
+                        <Text style={styles.resultText}>{mc}</Text>
+                    </Layout>
+                    <Layout style={{ flexDirection: 'column', width: 130 }}>
+                        <Text>Lower Carb (40/40/20)</Text>
+                        <Text style={styles.resultText}>{lp}</Text>
+                        <Text style={styles.resultText}>{lf}</Text>
+                        <Text style={styles.resultText}>{lc}</Text>
+                    </Layout>
+                    <Layout style={{ flexDirection: 'column', width: 130 }}>
+                        <Text>Higher Carb (30/20/50)</Text>
+                        <Text style={styles.resultText}>{hp}</Text>
+                        <Text style={styles.resultText}>{hf}</Text>
+                        <Text style={styles.resultText}>{hc}</Text>
+                    </Layout>
                 </Layout>
-
-                <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
-                    <Text style={{ paddingTop: 7, paddingRight: 23 }}>Weight:</Text>
-                    <Text onPress={toggleWeightModal} style={styles.placeholder}>{weight + ' ' + weightUnit}</Text>
-                    <Modal
-                        allowBackdrop={true}
-                        backdropStyle={styles.backdrop}
-                        onBackdropPress={toggleWeightModal}
-                        visible={weightVisible}>
-                        {weightPicker}
-                    </Modal>
-                </Layout>
-
-                <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
-                    <Text style={{ paddingTop: 7, paddingRight: 26 }}>Height:</Text>
-                    <Text onPress={toggleHeightModal} style={styles.placeholder}>{height + ' ' + heightUnit}</Text>
-                    <Modal
-                        allowBackdrop={true}
-                        backdropStyle={styles.backdrop}
-                        onBackdropPress={toggleHeightModal}
-                        visible={heightVisible}>
-                        {heightPicker}
-                    </Modal>
-                </Layout>
-
-                <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
-                    <Text>Activities:</Text>
-                    <Select
-                        data={activities}
-                        selectedOption={selectedOption}
-                        onSelect={setSelectedOption}
-                        style={styles.select}
-                        textStyle={{ color: '#8F9BB3', fontWeight: 'normal' }}
-                    />
-                </Layout>
-
-                <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
-                    <Text>Workout Goal:</Text>
-                    <Select
-                        data={goals}
-                        selectedOption={selectedGoal}
-                        onSelect={setSelectedGoal}
-                        style={styles.select}
-                        textStyle={{ color: '#8F9BB3', fontWeight: 'normal' }}
-                    />
-                </Layout>
-
-                <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
-                    <Text style={{ paddingRight: 15, paddingTop: 5 }}>Body Fat % (Optional):</Text>
-                    <Input style={{ width: 60 }} value={bodyFat} onChangeText={setBodyFat} placeholder='%' />
-                </Layout>
-
-            </Layout >
-
-            <Layout style={{ flexDirection: 'row' }}>
-                <Button style={styles.button} onPress={buttonPressed}>Calculate Macro</Button>
-                <Modal
-                    allowBackdrop={true}
-                    backdropStyle={styles.backdrop}
-                    onBackdropPress={toggleResultModal}
-                    visible={resultVisible}>
-                    {resultPicker}
-                </Modal>
-            </Layout>
+            </ScrollView>
 
         </Layout>
     );
@@ -325,7 +353,8 @@ const styles = StyleSheet.create({
         paddingLeft: 10
     },
     button: {
-        marginTop: 20
+        marginTop: 20,
+        alignItems: 'center'
     },
     result: {
         borderWidth: 1,
