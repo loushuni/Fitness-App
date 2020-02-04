@@ -132,50 +132,6 @@ const Macro = () => {
         res = (res * 1.525).toFixed(2);
     }
 
-    // let mp = 0;
-    // let mf = 0;
-    // let mc = 0;
-    // let lp = 0;
-    // let lf = 0;
-    // let lc = 0;
-    // let hp = 0;
-    // let hf = 0;
-    // let hc = 0;
-
-    // if (selectedGoal.text == 'Maintain') {
-    //     mp = (result * 0.3 / 4).toFixed(0);
-    //     mf = (result * 0.35 / 9).toFixed(0);
-    //     mc = (result * 0.35 / 4).toFixed(0);
-    //     lp = (result * 0.4 / 4).toFixed(0);
-    //     lf = (result * 0.4 / 9).toFixed(0);
-    //     lc = (result * 0.2 / 4).toFixed(0);
-    //     hp = (result * 0.3 / 4).toFixed(0);
-    //     hf = (result * 0.2 / 9).toFixed(0);
-    //     hc = (result * 0.5 / 4).toFixed(0);
-    // } else if (selectedGoal.text == 'Bulk') {
-    //     //result = result + 500;
-    //     mp = ((result + 500) * 0.3 / 4).toFixed(0);
-    //     mf = (result * 0.35 / 9).toFixed(0);
-    //     mc = (result * 0.35 / 4).toFixed(0);
-    //     lp = (result * 0.4 / 4).toFixed(0);
-    //     lf = (result * 0.4 / 9).toFixed(0);
-    //     lc = (result * 0.2 / 4).toFixed(0);
-    //     hp = (result * 0.3 / 4).toFixed(0);
-    //     hf = (result * 0.2 / 9).toFixed(0);
-    //     hc = (result * 0.5 / 4).toFixed(0);
-    // } else if (selectedGoal.text == 'Shred') {
-    //     //result = result - 500;
-    //     mp = ((result - 500) * 0.3 / 4).toFixed(0);
-    //     mf = (result * 0.35 / 9).toFixed(0);
-    //     mc = (result * 0.35 / 4).toFixed(0);
-    //     lp = (result * 0.4 / 4).toFixed(0);
-    //     lf = (result * 0.4 / 9).toFixed(0);
-    //     lc = (result * 0.2 / 4).toFixed(0);
-    //     hp = (result * 0.3 / 4).toFixed(0);
-    //     hf = (result * 0.2 / 9).toFixed(0);
-    //     hc = (result * 0.5 / 4).toFixed(0);
-    // }
-
     const [mp, setMP] = React.useState(0);
     const [mf, setMF] = React.useState(0);
     const [mc, setMC] = React.useState(0);
@@ -186,40 +142,24 @@ const Macro = () => {
     const [hf, setHF] = React.useState(0);
     const [hc, setHC] = React.useState(0);
 
+    if (selectedGoal.text == 'Maintain') {
+        res = res;
+    } else if (selectedGoal.text == 'Bulk') {
+        res = res + 500;
+    } else if (selectedGoal.text == 'Shred') {
+        res = res - 500;
+    }
+
     const onPressed = () => {
-        if (selectedGoal.text == 'Maintain') {
-            setMP((res * 0.3 / 4).toFixed(0));
-            setMF((res * 0.35 / 9).toFixed(0));
-            setMC((res * 0.35 / 4).toFixed(0));
-            setLP((res * 0.4 / 4).toFixed(0));
-            setLF((res * 0.4 / 9).toFixed(0));
-            setLC((res * 0.2 / 4).toFixed(0));
-            setHP((res * 0.3 / 4).toFixed(0));
-            setHF((res * 0.2 / 9).toFixed(0));
-            setHC((res * 0.5 / 4).toFixed(0));
-        } else if (selectedGoal.text == 'Bulk') {
-            res = res + 500;
-            setMP((res * 0.3 / 4).toFixed(0));
-            setMF((res * 0.35 / 9).toFixed(0));
-            setMC((res * 0.35 / 4).toFixed(0));
-            setLP((res * 0.4 / 4).toFixed(0));
-            setLF((res * 0.4 / 9).toFixed(0));
-            setLC((res * 0.2 / 4).toFixed(0));
-            setHP((res * 0.3 / 4).toFixed(0));
-            setHF((res * 0.2 / 9).toFixed(0));
-            setHC((res * 0.5 / 4).toFixed(0));
-        } else if (selectedGoal.text == 'Shred') {
-            res = res - 500;
-            setMP((res * 0.3 / 4).toFixed(0));
-            setMF((res * 0.35 / 9).toFixed(0));
-            setMC((res * 0.35 / 4).toFixed(0));
-            setLP((res * 0.4 / 4).toFixed(0));
-            setLF((res * 0.4 / 9).toFixed(0));
-            setLC((res * 0.2 / 4).toFixed(0));
-            setHP((res * 0.3 / 4).toFixed(0));
-            setHF((res * 0.2 / 9).toFixed(0));
-            setHC((res * 0.5 / 4).toFixed(0));
-        }
+        setMP((res * 0.3 / 4).toFixed(0));
+        setMF((res * 0.35 / 9).toFixed(0));
+        setMC((res * 0.35 / 4).toFixed(0));
+        setLP((res * 0.4 / 4).toFixed(0));
+        setLF((res * 0.4 / 9).toFixed(0));
+        setLC((res * 0.2 / 4).toFixed(0));
+        setHP((res * 0.3 / 4).toFixed(0));
+        setHF((res * 0.2 / 9).toFixed(0));
+        setHC((res * 0.5 / 4).toFixed(0));
     }
 
     return (
