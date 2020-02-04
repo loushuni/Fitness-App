@@ -242,7 +242,7 @@ const Macro = () => {
 
                 </Layout >
 
-                <Layout style={{ flexDirection: 'row' }}>
+                <Layout style={{ flexDirection: 'row', alignSelf: 'center' }}>
                     <Button style={styles.button} onPress={onPressed}>Calculate Macro</Button>
                 </Layout>
 
