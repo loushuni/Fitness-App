@@ -142,10 +142,8 @@ const Macro = () => {
     const [hf, setHF] = React.useState(0);
     const [hc, setHC] = React.useState(0);
 
-    if (selectedGoal.text == 'Maintain') {
-        res = res;
-    } else if (selectedGoal.text == 'Bulk') {
-        res = res + 500;
+    if (selectedGoal.text == 'Bulk') {
+        res = +res + 500;
     } else if (selectedGoal.text == 'Shred') {
         res = res - 500;
     }
@@ -248,7 +246,7 @@ const Macro = () => {
                     <Button style={styles.button} onPress={onPressed}>Calculate Macro</Button>
                 </Layout>
 
-                <Layout style={{ flexDirection: 'row', alignItems: 'center', width: 180, marginRight: 210, marginTop: 30, marginBottom: 30 }}>
+                <Layout style={{ flexDirection: 'row', alignItems: 'center', width: 180, marginRight: 210, marginTop: 30, marginBottom: 50 }}>
                     <Layout style={{ flexDirection: 'column', width: 130 }}>
                         <Text>Moderate Carb (30/35/35)</Text>
                         <Text style={styles.resultText}>{mp}</Text>
