@@ -64,6 +64,11 @@ const OneRM = () => {
             </Layout>
             <Button style={styles.button} onPress={() => setResult(lift / (map.get(rep.text) / 100))}>Calculate 1RM</Button>
             <Text style={styles.result}>{result}</Text>
+            <Text style={{ backgroundColor: '#8F9BB3', width: 410, height: 5, marginTop: 20 }}></Text>
+            <Text style={{ alignSelf: 'center', fontWeight: '700', marginTop: 10 }}>Percentages</Text>
+            <ScrollView>
+
+            </ScrollView>
         </Layout>
     );
 }
