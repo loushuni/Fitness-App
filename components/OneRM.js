@@ -24,7 +24,7 @@ const OneRM = () => {
                         placeholder='Weight Lifted'
                         value={lift}
                         onChangeText={setLift}
-                        style={{width: '40%'}} />
+                        style={{ width: '40%' }} />
                     <Select
                         data={units}
                         placeholder=''
@@ -46,6 +46,8 @@ const OneRM = () => {
                     />
                 </Layout>
             </Layout>
+            <Button style={styles.button}>Calculate 1RM</Button>
+            <Text style={styles.result}>Result</Text>
         </Layout>
     );
 }
@@ -64,6 +66,19 @@ const styles = StyleSheet.create({
         marginBottom: 100,
         paddingTop: 10
     },
+    button: {
+        marginTop: 10,
+        marginBottom: 20
+    },
+    result: {
+        borderWidth: 1,
+        borderColor: '#101426',
+        paddingHorizontal: 40,
+        paddingTop: 11,
+        paddingBottom: 11,
+        backgroundColor: '#1A2138',
+        width: '35%'
+    }
 });
 
 export default OneRM;
