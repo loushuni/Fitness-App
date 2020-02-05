@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import { Layout, Text, Input, Button, Select } from '@ui-kitten/components';
 
 const OneRM = () => {
@@ -9,10 +9,26 @@ const OneRM = () => {
 
     const [rep, setRep] = React.useState('');
 
+    const [result, setResult] = React.useState(0);
+
     const units = [{ text: 'lb' }, { text: 'kg' }];
 
-    const reps = Array.from(Array(31), (_, x) => x).map((item, index) => (
-        { text: `${item}` }));
+    const reps = Array.from(Array(12), (_, x) => x).map((item, index) => (
+        { text: `${item + 1}` }));
+
+    let map = new Map();
+    map.set('1', '100');
+    map.set('2', '95');
+    map.set('3', '93');
+    map.set('4', '90');
+    map.set('5', '87');
+    map.set('6', '85');
+    map.set('7', '83');
+    map.set('8', '80');
+    map.set('9', '77');
+    map.set('10', '75');
+    map.set('11', '73');
+    map.set('12', '70');
 
     return (
         <Layout style={styles.container}>
@@ -46,8 +62,8 @@ const OneRM = () => {
                     />
                 </Layout>
             </Layout>
-            <Button style={styles.button}>Calculate 1RM</Button>
-            <Text style={styles.result}>Result</Text>
+            <Button style={styles.button} onPress={() => setResult(lift / (map.get(rep.text) / 100))}>Calculate 1RM</Button>
+            <Text style={styles.result}>{result}</Text>
         </Layout>
     );
 }
