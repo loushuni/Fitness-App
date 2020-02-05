@@ -5,16 +5,27 @@ import { Layout, Text, Input, Button, Select } from '@ui-kitten/components';
 const OneRM = () => {
     const [lift, setLift] = React.useState('');
 
+    const [unit, setUnit] = React.useState('');
+
+    const units = [{text: 'lb'}, {text: 'kg'}];
+
     return (
         <Layout style={styles.container}>
             <Text style={styles.title}>1RM Calculator</Text>
             <Layout>
-                <Layout style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{marginRight: 10}}>Lift:</Text>
+                <Layout style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+                    <Text style={{ marginRight: 10 }}>Lift:</Text>
                     <Input placeholder='Weight Lifted' value={lift} onChangeText={setLift} />
+                    <Select
+                        data={units}
+                        selectedOption={unit}
+                        onSelect={setUnit}
+                        style={{width: 95, marginLeft: 5, paddingBottom: 4}}
+                        textStyle={{ color: '#8F9BB3', fontWeight: 'normal' }}
+                    />
                 </Layout>
                 <Layout style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{marginRight: 10}}>Repetitions:</Text>
+                    <Text style={{ marginRight: 10 }}>Repetitions:</Text>
                     <Input placeholder='Repetitions' />
                 </Layout>
             </Layout>
