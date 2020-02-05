@@ -7,7 +7,12 @@ const OneRM = () => {
 
     const [unit, setUnit] = React.useState('');
 
-    const units = [{text: 'lb'}, {text: 'kg'}];
+    const [rep, setRep] = React.useState('');
+
+    const units = [{ text: 'lb' }, { text: 'kg' }];
+
+    const reps = Array.from(Array(31), (_, x) => x).map((item, index) => (
+        { text: `${item}` }));
 
     return (
         <Layout style={styles.container}>
@@ -15,21 +20,32 @@ const OneRM = () => {
             <Layout>
                 <Layout style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
                     <Text style={{ marginRight: 10 }}>Lift:</Text>
-                    <Input placeholder='Weight Lifted' value={lift} onChangeText={setLift} />
+                    <Input
+                        placeholder='Weight Lifted'
+                        value={lift}
+                        onChangeText={setLift}
+                        style={{width: '40%'}} />
                     <Select
                         data={units}
+                        placeholder=''
                         selectedOption={unit}
                         onSelect={setUnit}
-                        style={{width: 95, marginLeft: 5, paddingBottom: 4}}
+                        style={{ width: 95, marginLeft: 5, paddingBottom: 4 }}
                         textStyle={{ color: '#8F9BB3', fontWeight: 'normal' }}
                     />
                 </Layout>
                 <Layout style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Text style={{ marginRight: 10 }}>Repetitions:</Text>
-                    <Input placeholder='Repetitions' />
+                    <Select
+                        data={reps}
+                        placeholder=''
+                        selectedOption={rep}
+                        onSelect={setRep}
+                        style={{ width: 95, marginLeft: 5, paddingBottom: 4 }}
+                        textStyle={{ color: '#8F9BB3', fontWeight: 'normal' }}
+                    />
                 </Layout>
             </Layout>
-
         </Layout>
     );
 }
