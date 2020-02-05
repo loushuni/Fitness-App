@@ -51,6 +51,11 @@ export default class Profile extends Component {
                             textStyle={{ fontWeight: '500', marginRight: 228 }}
                             icon={arrowIcon}
                             onPress={() => this.props.navigation.navigate('Macro')}>Macro Calculator</Button>
+                        <Button
+                            style={styles.button}
+                            textStyle={{ fontWeight: '500', marginRight: 241 }}
+                            icon={arrowIcon}
+                            onPress={() => this.props.navigation.navigate('OneRM')}>1RM Calculator</Button>
                     </View>
                 </ScrollView>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />

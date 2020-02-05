@@ -12,6 +12,7 @@ import EmailSignup from './components/EmailSignup';
 import BMI from './components/BMI';
 import TDEE from './components/TDEE';
 import Macro from './components/Macro';
+import OneRM from './components/OneRM';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
@@ -33,7 +34,8 @@ const RootStack = createStackNavigator(
     Profile: Profile,
     BMI: BMI,
     TDEE: TDEE,
-    Macro: Macro
+    Macro: Macro,
+    OneRM: OneRM
   },
   {
     initialRouteName: 'Slider',
