@@ -54,6 +54,7 @@ const OneRM = () => {
                         placeholder='Weight Lifted'
                         value={lift}
                         onChangeText={setLift}
+                        textStyle={{ color: '#8F9BB3' }}
                         style={{ width: '40%' }} />
                     <Select
                         data={units}
@@ -117,11 +118,13 @@ const styles = StyleSheet.create({
     result: {
         borderWidth: 1,
         borderColor: '#101426',
-        paddingHorizontal: 40,
-        paddingTop: 11,
+        paddingTop: 18,
         paddingBottom: 11,
         backgroundColor: '#1A2138',
-        width: '35%'
+        width: '35%',
+        fontWeight: '700',
+        fontSize: 25,
+        textAlign: 'center'
     }
 });
 
