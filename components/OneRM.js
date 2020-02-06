@@ -30,6 +30,20 @@ const OneRM = () => {
     map.set('11', '73');
     map.set('12', '70');
 
+    const items = [
+        { key: '2', value: map.get('2') },
+        { key: '3', value: map.get('3') },
+        { key: '4', value: map.get('4') },
+        { key: '5', value: map.get('5') },
+        { key: '6', value: map.get('6') },
+        { key: '7', value: map.get('7') },
+        { key: '8', value: map.get('8') },
+        { key: '9', value: map.get('9') },
+        { key: '10', value: map.get('10') },
+        { key: '11', value: map.get('11') },
+        { key: '12', value: map.get('12') }
+    ];
+
     return (
         <Layout style={styles.container}>
             <Text style={styles.title}>1RM Calculator</Text>
@@ -64,10 +78,19 @@ const OneRM = () => {
             </Layout>
             <Button style={styles.button} onPress={() => setResult(lift / (map.get(rep.text) / 100))}>Calculate 1RM</Button>
             <Text style={styles.result}>{result}</Text>
-            <Text style={{ backgroundColor: '#8F9BB3', width: 410, height: 5, marginTop: 20 }}></Text>
-            <Text style={{ alignSelf: 'center', fontWeight: '700', marginTop: 10 }}>Percentages</Text>
+            <Text style={{ backgroundColor: '#8F9BB3', width: 410, height: 2, marginTop: 20 }}></Text>
+            <Text style={{ alignSelf: 'center', fontWeight: '700', marginTop: 10, marginBottom: 10 }}>Percentages</Text>
             <ScrollView>
-
+                {items.map(each => (
+                    <Layout style={{flexDirection: 'column', alignItems: 'center'}}>
+                        <Layout style={{ flexDirection: 'row' }}>
+                            <Text style={{ marginRight: 100 }}>{each.value + '%'}</Text>
+                            <Text style={{ marginRight: 100 }}>{result * each.value / 100}</Text>
+                            <Text>{each.key + ' ' + 'Reps'}</Text>
+                        </Layout>
+                        <Text style={{ backgroundColor: '#2E3A59', width: 410, height: 1, marginTop: 10, marginBottom: 10 }}></Text>
+                    </Layout>
+                ))}
             </ScrollView>
         </Layout>
     );
