@@ -82,10 +82,10 @@ const OneRM = () => {
             <Text style={{ alignSelf: 'center', fontWeight: '700', marginTop: 10, marginBottom: 10 }}>Percentages</Text>
             <ScrollView>
                 {items.map(each => (
-                    <Layout style={{flexDirection: 'column', alignItems: 'center'}}>
+                    <Layout style={{ flexDirection: 'column', alignItems: 'center' }}>
                         <Layout style={{ flexDirection: 'row' }}>
                             <Text style={{ marginRight: 100 }}>{each.value + '%'}</Text>
-                            <Text style={{ marginRight: 100 }}>{result * each.value / 100}</Text>
+                            <Text style={{ marginRight: 100 }}>{result * each.value / 100 + ' ' + unit.text}</Text>
                             <Text>{each.key + ' ' + 'Reps'}</Text>
                         </Layout>
                         <Text style={{ backgroundColor: '#2E3A59', width: 410, height: 1, marginTop: 10, marginBottom: 10 }}></Text>
