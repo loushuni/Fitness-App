@@ -78,7 +78,10 @@ const OneRM = () => {
                 </Layout>
             </Layout>
             <Button style={styles.button} onPress={() => setResult(lift / (map.get(rep.text) / 100))}>Calculate 1RM</Button>
-            <Text style={styles.result}>{result}</Text>
+            <Layout style={{flexDirection: 'row'}}>
+                <Text style={styles.result}>{result}</Text>
+                <Text style={{fontSize: 25, paddingTop: 20, paddingLeft: 10, fontWeight: '700'}}>{unit.text}</Text>
+            </Layout>
             <Text style={{ backgroundColor: '#8F9BB3', width: 410, height: 2, marginTop: 20 }}></Text>
             <Text style={{ alignSelf: 'center', fontWeight: '700', marginTop: 10, marginBottom: 10 }}>Percentages</Text>
             <ScrollView>
@@ -86,7 +89,7 @@ const OneRM = () => {
                     <Layout style={{ flexDirection: 'column', alignItems: 'center' }}>
                         <Layout style={{ flexDirection: 'row' }}>
                             <Text style={{ marginRight: 100 }}>{each.value + '%'}</Text>
-                            <Text style={{ marginRight: 100 }}>{result * each.value / 100 + ' ' + unit.text}</Text>
+                            <Text style={{ marginRight: 100 }}>{result * each.value / 100}</Text>
                             <Text>{each.key + ' ' + 'Reps'}</Text>
                         </Layout>
                         <Text style={{ backgroundColor: '#2E3A59', width: 410, height: 1, marginTop: 10, marginBottom: 10 }}></Text>
