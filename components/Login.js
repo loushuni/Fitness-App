@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ImageBackground } from 'react-native';
+import { View, StyleSheet, ImageBackground, Alert } from 'react-native';
 import { Text, Button, Input } from '@ui-kitten/components';
-import ValidationComponent from 'react-native-form-validator';
 
-export default class Login extends ValidationComponent {
+export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = { username: "", password: "" };
     }
 
     onPressed = () => {
-        this.validate({
-            username: { minlength: 3, maxlength: 10, required: true },
-            password: { minlength: 8, required: true }
-        });
+        if (this.state.username == "") {
+            Alert.alert("Please enter your username");
+        } else if (this.state.password == "") {
+            Alert.alert("Please enter your password");
+        } else if (this.state.password.length < 8) {
+            Alert.alert("Password must be at least 8 characters long");
+        }
         this.props.navigation.navigate('Profile');
     }
 
@@ -30,9 +32,6 @@ export default class Login extends ValidationComponent {
                         textStyle={styles.buttonText}>
                         Login
                     </Button>
-                    <Text style={styles.error}>
-                        {this.getErrorMessages()}
-                    </Text>
                 </ImageBackground>
             </View>
         );
