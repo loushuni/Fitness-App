@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ImageBackground } from 'react-native';
+import { View, StyleSheet, ImageBackground, Alert } from 'react-native';
 import { Text, Button, Input } from '@ui-kitten/components';
-import ValidationComponent from 'react-native-form-validator';
 
-export default class EmailSignup extends ValidationComponent {
+export default class EmailSignup extends Component {
     constructor(props) {
         super(props);
         this.state = { username: "", password: "" };
     }
 
-    pressed = () => {
-        this.validate({
-            username: { minlength: 3, maxlength: 10, required: true },
-            password: { minlength: 8, required: true }
-        });
+    onPressed = () => {
+        if (this.state.username == "") {
+            Alert.alert("Please enter your username");
+        } else if (this.state.password == "") {
+            Alert.alert("Please enter your password");
+        } else if (this.state.password.length < 8) {
+            Alert.alert("Password must be at least 8 characters long");
+        }
     }
 
     render() {
@@ -23,10 +25,7 @@ export default class EmailSignup extends ValidationComponent {
                     <Text style={styles.title}>Sign Up A New Account</Text>
                     <Input placeholder='Enter Your Username' style={styles.input} onChangeText={(username) => this.setState({ username })} value={this.state.username} />
                     <Input placeholder='Enter Your Password' style={styles.input} onChangeText={(password) => this.setState({ password })} value={this.state.password} />
-                    <Button onPress={this.pressed} textStyle={StyleSheet.buttonText} style={styles.button}>Sign Up</Button>
-                    <Text style={styles.error}>
-                        {this.getErrorMessages()}
-                    </Text>
+                    <Button onPress={this.onPressed} textStyle={StyleSheet.buttonText} style={styles.button}>Sign Up</Button>
                 </ImageBackground>
             </View>
         );
