@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Picker } from 'react-native';
+import { StyleSheet, Picker, Alert } from 'react-native';
 import { Layout, Text, Input, Button, Radio, RadioGroup, Modal, Select } from '@ui-kitten/components';
 
 const TDEE = () => {
@@ -128,6 +128,20 @@ const TDEE = () => {
         res = (res * 1.525).toFixed(2);
     }
 
+    const onPressed = () => {
+        setResult(res);
+
+        if (age == "Choose Your Age") {
+            Alert.alert("Please enter your age");
+        } else if (weight == "Choose Your Weight") {
+            Alert.alert("Please enter your weight");
+        } else if (height == "Choose Your Height") {
+            Alert.alert("Please enter your height");
+        } else if (selectedOption == "") {
+            Alert.alert("Please select from the activities");
+        }
+    }
+
     return (
         <Layout style={styles.container}>
             <Text style={styles.title}>TDEE Calculator</Text>
@@ -193,12 +207,12 @@ const TDEE = () => {
 
                 <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
                     <Text style={{ paddingRight: 15, paddingTop: 5 }}>Body Fat % (Optional):</Text>
-                    <Input style={{ width: 60 }} value={bodyFat} onChangeText={setBodyFat} placeholder='%'/>
+                    <Input style={{ width: 60 }} value={bodyFat} onChangeText={setBodyFat} placeholder='%' />
                 </Layout>
 
             </Layout >
             <Layout style={{ flexDirection: 'row' }}>
-                <Button style={styles.button} onPress={() => setResult(res)}>Calculate TDEE</Button>
+                <Button style={styles.button} onPress={onPressed}>Calculate TDEE</Button>
                 <Text style={styles.result}>{result}</Text>
             </Layout>
         </Layout>
