@@ -4,8 +4,25 @@ import { View, StyleSheet, ScrollView, Alert } from 'react-native';
 import ModalWithBackdrop from './ModalWithBackdrop';
 import ValidationComponent from 'react-native-form-validator';
 
-export default class Profile extends ValidationComponent{
-    
+export default class Profile extends ValidationComponent {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+        }
+    };
+
+    // onEmailSubmit = (email) => {
+    //     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    //     if (reg.test(email) === false) {
+    //         Alert.alert("Email is Not Correct");
+    //     }
+    //     else {
+    //         Alert.alert("Email is Correct");
+    //     }
+    // }
+
     render() {
         return (
             <Layout style={styles.container}>
@@ -23,7 +40,7 @@ export default class Profile extends ValidationComponent{
                         </View>
                         <View style={styles.element}>
                             <Text style={styles.text}>Email</Text>
-                            <Input placeholder='Email' style={styles.input} textStyle={styles.inputText} />
+                            <Input placeholder='Email' style={styles.input} textStyle={styles.inputText} onChangeText={(email) => this.setState({ email: email })} value={this.state.email} />
                         </View>
                         <ModalWithBackdrop option='' name='Gender' element='genderElement' />
                         <ModalWithBackdrop option='' name='Weight Units' element='weightElement' />
