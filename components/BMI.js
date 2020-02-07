@@ -5,10 +5,6 @@ import { Layout, Text, Input, Button, Select } from '@ui-kitten/components';
 
 const BMI = () => {
 
-    // const [selectedOption1, setSelectedOption1] = React.useState(null);
-
-    // const [selectedOption2, setSelectedOption2] = React.useState(null);
-
     const [weight, setWeight] = React.useState('');
 
     const [height, setHeight] = React.useState('');
@@ -41,12 +37,6 @@ const BMI = () => {
                         style={styles.input}
                         value={height}
                         onChangeText={setHeight} />
-                    {/* <Select
-                    data={heightData}
-                    selectedOption={selectedOption2}
-                    onSelect={setSelectedOption2}
-                    style={{ width: '28%' }}
-                /> */}
                     <Text style={{ paddingTop: 10 }}>inch</Text>
                 </Layout>
                 <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
@@ -57,16 +47,6 @@ const BMI = () => {
         </Layout>
     );
 }
-
-// const weightData = [
-//     { text: 'kg' },
-//     { text: 'lb' }
-// ];
-
-// const heightData = [
-//     { text: 'cm' },
-//     { text: 'inch' }
-// ];
 
 const styles = StyleSheet.create({
     container: {
