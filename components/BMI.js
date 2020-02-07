@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Alert } from 'react-native';
 import { Layout, Text, Input, Button, Select } from '@ui-kitten/components';
 
 
@@ -10,6 +10,19 @@ const BMI = () => {
     const [height, setHeight] = React.useState('');
 
     const [result, setResult] = React.useState(0);
+
+    const onPressed = () => {
+        if (weight == "") {
+            Alert.alert("Please enter your weight");
+        } else if (isNaN(weight)) {
+            Alert.alert("Please enter a valid number for your weight");
+        } else if (height == "") {
+            Alert.alert("Please enter your height");
+        } else if (isNaN(height)) {
+            Alert.alert("Please enter a valid number for your height");
+        }
+        setResult((+weight * 703 / height / height).toFixed(2));
+    }
 
     return (
         <Layout style={styles.container}>
@@ -22,12 +35,6 @@ const BMI = () => {
                         style={styles.input}
                         value={weight}
                         onChangeText={setWeight} />
-                    {/* <Select
-                    data={weightData}
-                    selectedOption={selectedOption1}
-                    onSelect={setSelectedOption1}
-                    style={{ width: '28%' }}
-                /> */}
                     <Text style={{ paddingTop: 10 }}>lb</Text>
                 </Layout>
                 <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
@@ -40,7 +47,7 @@ const BMI = () => {
                     <Text style={{ paddingTop: 10 }}>inch</Text>
                 </Layout>
                 <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
-                    <Button style={styles.button} onPress={() => setResult((+weight * 703 / height / height).toFixed(2))}>Calculate BMI</Button>
+                    <Button style={styles.button} onPress={onPressed}>Calculate BMI</Button>
                     <Text style={styles.result}>{result}</Text>
                 </Layout>
             </Layout>
