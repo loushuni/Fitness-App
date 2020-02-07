@@ -129,8 +129,6 @@ const TDEE = () => {
     }
 
     const onPressed = () => {
-        setResult(res);
-
         if (age == "Choose Your Age") {
             Alert.alert("Please enter your age");
         } else if (weight == "Choose Your Weight") {
@@ -140,6 +138,7 @@ const TDEE = () => {
         } else if (selectedOption == "") {
             Alert.alert("Please select from the activities");
         }
+        setResult(res);
     }
 
     return (

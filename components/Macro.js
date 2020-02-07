@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Picker, ScrollView } from 'react-native';
+import { StyleSheet, Picker, ScrollView, Alert } from 'react-native';
 import { Layout, Text, Input, Button, Radio, RadioGroup, Modal, Select, Tab, TabView } from '@ui-kitten/components';
 
 const Macro = () => {
@@ -149,6 +149,17 @@ const Macro = () => {
     }
 
     const onPressed = () => {
+        if (age == "Choose Your Age") {
+            Alert.alert("Please enter your age");
+        } else if (weight == "Choose Your Weight") {
+            Alert.alert("Please enter your weight");
+        } else if (height == "Choose Your Height") {
+            Alert.alert("Please enter your height");
+        } else if (selectedOption == "") {
+            Alert.alert("Please select from the activities");
+        } else if (selectedGoal == "") {
+            Alert.alert("Please select your workout goal");
+        }
         setMP((res * 0.3 / 4).toFixed(0));
         setMF((res * 0.35 / 9).toFixed(0));
         setMC((res * 0.35 / 4).toFixed(0));
