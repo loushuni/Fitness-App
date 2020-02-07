@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, Alert } from 'react-native';
 import { Layout, Text, Input, Button, Select } from '@ui-kitten/components';
 
 const OneRM = () => {
@@ -44,6 +44,19 @@ const OneRM = () => {
         { key: '12', value: map.get('12') }
     ];
 
+    const onPressed = () => {
+        if (lift == "") {
+            Alert.alert("Please enter the weight you can lift");
+        } else if (isNaN(lift)) {
+            Alert.alert("Please enter a valid number of weight lifted");
+        } else if (unit == "") {
+            Alert.alert("Please choose the weight unit");
+        } else if (rep == "") {
+            Alert.alert("Please choose from the repetitions");
+        }
+        setResult(lift / (map.get(rep.text) / 100));
+    }
+
     return (
         <Layout style={styles.container}>
             <Text style={styles.title}>1RM Calculator</Text>
@@ -77,7 +90,7 @@ const OneRM = () => {
                     />
                 </Layout>
             </Layout>
-            <Button style={styles.button} onPress={() => setResult(lift / (map.get(rep.text) / 100))}>Calculate 1RM</Button>
+            <Button style={styles.button} onPress={onPressed}>Calculate 1RM</Button>
             <Layout style={{flexDirection: 'row'}}>
                 <Text style={styles.result}>{result}</Text>
                 <Text style={{fontSize: 25, paddingTop: 20, paddingLeft: 10, fontWeight: '700'}}>{unit.text}</Text>
