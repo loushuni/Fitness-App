@@ -1,21 +1,38 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ImageBackground } from 'react-native';
 import { Text, Button, Input } from '@ui-kitten/components';
+import ValidationComponent from 'react-native-form-validator';
 
-export default class Login extends Component {
+export default class Login extends ValidationComponent {
+    constructor(props) {
+        super(props);
+        this.state = { username: "", password: "" };
+    }
+
+    onPressed = () => {
+        this.validate({
+            username: { minlength: 3, maxlength: 10, required: true },
+            password: { minlength: 8, required: true }
+        });
+        this.props.navigation.navigate('Profile');
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/7.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Fitness App</Text>
-                    <Input style={styles.input} placeholder="Username" />
-                    <Input style={styles.input} placeholder="Password" />
+                    <Input style={styles.input} placeholder="Username" onChangeText={(username) => this.setState({ username })} value={this.state.username} />
+                    <Input style={styles.input} placeholder="Password" onChangeText={(password) => this.setState({ password })} value={this.state.password} />
                     <Button
-                        onPress={() => this.props.navigation.navigate('Profile')}
+                        onPress={this.onPressed}
                         style={styles.button}
                         textStyle={styles.buttonText}>
                         Login
                     </Button>
+                    <Text style={styles.error}>
+                        {this.getErrorMessages()}
+                    </Text>
                 </ImageBackground>
             </View>
         );
@@ -61,5 +78,11 @@ const styles = StyleSheet.create({
     backgroundImage: {
         width: '100%',
         height: '100%'
+    },
+    error: {
+        color: 'red',
+        textAlign: 'center',
+        fontWeight: '700',
+        paddingTop: 30
     }
 });
