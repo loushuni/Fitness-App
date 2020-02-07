@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { Text, Layout, BottomNavigation, BottomNavigationTab, Icon, Input, Button } from '@ui-kitten/components';
 import { View, StyleSheet, ScrollView, Alert } from 'react-native';
 import ModalWithBackdrop from './ModalWithBackdrop';
+import ValidationComponent from 'react-native-form-validator';
 
-export default class Profile extends Component {
-    changeGenderHandler = () => {
-        return (
-            Alert.alert('gender')
-        );
-    }
+export default class Profile extends ValidationComponent{
+    
     render() {
         return (
             <Layout style={styles.container}>
