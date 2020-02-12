@@ -5,10 +5,10 @@ import * as firebase from 'firebase';
 
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyDq6clYfRSGu-I-a_F_QrOmNpizrlDb3so",
-  authDomain: "fitness-app-bf0a6.firebaseapp.com",
-  databaseURL: "https://fitness-app-bf0a6.firebaseio.com",
-  storageBucket: "fitness-app-bf0a6.appspot.com"
+    apiKey: "AIzaSyDq6clYfRSGu-I-a_F_QrOmNpizrlDb3so",
+    authDomain: "fitness-app-bf0a6.firebaseapp.com",
+    databaseURL: "https://fitness-app-bf0a6.firebaseio.com",
+    storageBucket: "fitness-app-bf0a6.appspot.com"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -16,18 +16,31 @@ firebase.initializeApp(firebaseConfig);
 export default class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = { username: "", password: "" };
+        this.state = { email: "", password: "" };
     }
 
     onPressed = () => {
-        if (this.state.username == "") {
-            Alert.alert("Please enter your username");
+        // firebase.auth().createUserWithEmailAndPassword(this.state.username, this.state.password).catch(function(error) {
+        //     // Handle Errors here.
+        //     var errorCode = error.code;
+        //     var errorMessage = error.message;
+        //     // ...
+        //   });
+
+
+
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (this.state.email == "") {
+            Alert.alert("Please enter your email address");
+        } else if (reg.test(this.state.email) === false) {
+            Alert.alert("Please enter a valid email address");
         } else if (this.state.password == "") {
             Alert.alert("Please enter your password");
         } else if (this.state.password.length < 8) {
             Alert.alert("Password must be at least 8 characters long");
+        } else {
+            this.props.navigation.navigate('Profile');
         }
-        this.props.navigation.navigate('Profile');
     }
 
     render() {
@@ -35,7 +48,7 @@ export default class Login extends Component {
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/7.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Fitness App</Text>
-                    <Input style={styles.input} placeholder="Username" onChangeText={(username) => this.setState({ username })} value={this.state.username} />
+                    <Input style={styles.input} placeholder="Email" onChangeText={(email) => this.setState({ email })} value={this.state.email} />
                     <Input style={styles.input} placeholder="Password" onChangeText={(password) => this.setState({ password })} value={this.state.password} />
                     <Button
                         onPress={this.onPressed}
