@@ -5,10 +5,10 @@ import * as firebase from 'firebase';
 
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: "<YOUR-API-KEY>",
-  authDomain: "<YOUR-AUTH-DOMAIN>",
-  databaseURL: "<YOUR-DATABASE-URL>",
-  storageBucket: "<YOUR-STORAGE-BUCKET>"
+  apiKey: "AIzaSyDq6clYfRSGu-I-a_F_QrOmNpizrlDb3so",
+  authDomain: "fitness-app-bf0a6.firebaseapp.com",
+  databaseURL: "https://fitness-app-bf0a6.firebaseio.com",
+  storageBucket: "fitness-app-bf0a6.appspot.com"
 };
 
 firebase.initializeApp(firebaseConfig);
