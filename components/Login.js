@@ -3,15 +3,15 @@ import { View, StyleSheet, ImageBackground, Alert } from 'react-native';
 import { Text, Button, Input } from '@ui-kitten/components';
 import * as firebase from 'firebase';
 
-// Initialize Firebase
-const firebaseConfig = {
-    apiKey: "AIzaSyDq6clYfRSGu-I-a_F_QrOmNpizrlDb3so",
-    authDomain: "fitness-app-bf0a6.firebaseapp.com",
-    databaseURL: "https://fitness-app-bf0a6.firebaseio.com",
-    storageBucket: "fitness-app-bf0a6.appspot.com"
-};
+// // Initialize Firebase
+// const firebaseConfig = {
+//     apiKey: "AIzaSyDq6clYfRSGu-I-a_F_QrOmNpizrlDb3so",
+//     authDomain: "fitness-app-bf0a6.firebaseapp.com",
+//     databaseURL: "https://fitness-app-bf0a6.firebaseio.com",
+//     storageBucket: "fitness-app-bf0a6.appspot.com"
+// };
 
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 
 export default class Login extends Component {
     constructor(props) {
@@ -20,13 +20,6 @@ export default class Login extends Component {
     }
 
     onPressed = () => {
-        // firebase.auth().createUserWithEmailAndPassword(this.state.username, this.state.password).catch(function(error) {
-        //     // Handle Errors here.
-        //     var errorCode = error.code;
-        //     var errorMessage = error.message;
-        //     // ...
-        //   });
-
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (this.state.email == "") {
             Alert.alert("Please enter your email address");
@@ -37,6 +30,12 @@ export default class Login extends Component {
         } else if (this.state.password.length < 8) {
             Alert.alert("Password must be at least 8 characters long");
         } else {
+            // firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
+            //     // Handle Errors here.
+            //     var errorCode = error.code;
+            //     var errorMessage = error.message;
+            //     // ...
+            //   });
             this.props.navigation.navigate('Profile');
         }
     }

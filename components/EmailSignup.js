@@ -1,20 +1,41 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ImageBackground, Alert } from 'react-native';
 import { Text, Button, Input } from '@ui-kitten/components';
+import * as firebase from 'firebase';
+
+// Initialize Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyDq6clYfRSGu-I-a_F_QrOmNpizrlDb3so",
+    authDomain: "fitness-app-bf0a6.firebaseapp.com",
+    databaseURL: "https://fitness-app-bf0a6.firebaseio.com",
+    storageBucket: "fitness-app-bf0a6.appspot.com"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 export default class EmailSignup extends Component {
     constructor(props) {
         super(props);
-        this.state = { username: "", password: "" };
+        this.state = { email: "", password: "" };
     }
 
     onPressed = () => {
-        if (this.state.username == "") {
-            Alert.alert("Please enter your username");
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (this.state.email == "") {
+            Alert.alert("Please enter your email address");
+        } else if (reg.test(this.state.email) === false) {
+            Alert.alert("Please enter a valid email address");
         } else if (this.state.password == "") {
             Alert.alert("Please enter your password");
         } else if (this.state.password.length < 8) {
             Alert.alert("Password must be at least 8 characters long");
+        } else {
+            firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ...
+            });
         }
     }
 
@@ -23,7 +44,7 @@ export default class EmailSignup extends Component {
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/12.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Sign Up A New Account</Text>
-                    <Input placeholder='Enter Your Username' style={styles.input} onChangeText={(username) => this.setState({ username })} value={this.state.username} />
+                    <Input placeholder='Enter Your Email Address' style={styles.input} onChangeText={(email) => this.setState({ email })} value={this.state.email} />
                     <Input placeholder='Enter Your Password' style={styles.input} onChangeText={(password) => this.setState({ password })} value={this.state.password} />
                     <Button onPress={this.onPressed} textStyle={StyleSheet.buttonText} style={styles.button}>Sign Up</Button>
                 </ImageBackground>
