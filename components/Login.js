@@ -27,8 +27,6 @@ export default class Login extends Component {
         //     // ...
         //   });
 
-
-
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (this.state.email == "") {
             Alert.alert("Please enter your email address");
