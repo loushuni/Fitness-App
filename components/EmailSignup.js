@@ -12,6 +12,7 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+//var database = firebase.database();
 
 export default class EmailSignup extends Component {
     constructor(props) {

@@ -14,6 +14,7 @@ export default class Signup extends Component {
                         textStyle={styles.buttonText}>
                         Sign Up With Email
                     </Button>
+                    <GoogleButton />
                     <AppleButton />
                     <FacebookButton />
                     <Text style={styles.bottomText}>By signing up, I agree to the Terms of Use and Privacy Policy</Text>
@@ -22,6 +23,14 @@ export default class Signup extends Component {
         );
     }
 }
+
+const GoogleIcon = (style) => (
+    <Icon name='google' {...style} />
+);
+
+const GoogleButton = () => (
+    <Button icon={GoogleIcon} style={styles.button2}>Continue With Google</Button>
+  );
 
 const AppleIcon = (style) => (
     <Icon name='apple' {...style} />
@@ -49,7 +58,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontWeight: 'bold',
-        marginTop: 320,
+        marginTop: 260,
         paddingBottom: 30,
         padding: 10
     },
