@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ImageBackground } from 'react-native';
+import { View, StyleSheet, ImageBackground, Alert } from 'react-native';
 import { Text, Button, Icon } from '@ui-kitten/components';
+import * as firebase from 'firebase';
 
 export default class Signup extends Component {
     render() {
@@ -24,12 +25,17 @@ export default class Signup extends Component {
     }
 }
 
+const pressed = () => {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithRedirect(provider);
+}
+
 const GoogleIcon = (style) => (
     <Icon name='google' {...style} />
 );
 
 const GoogleButton = () => (
-    <Button icon={GoogleIcon} style={styles.button2}>Continue With Google</Button>
+    <Button icon={GoogleIcon} style={styles.button2} onPress={pressed}>Continue With Google</Button>
   );
 
 const AppleIcon = (style) => (
