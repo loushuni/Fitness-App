@@ -20,13 +20,16 @@ export default class Login extends Component {
         } else if (this.state.password.length < 8) {
             Alert.alert("Password must be at least 8 characters long");
         } else {
-            //console.warn(this.state.email + this.state.password);
-            firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
-                // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                Alert.alert(errorMessage);
-              }).then(this.props.navigation.navigate('Profile'));
+            firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+                .then(() => {
+                    this.props.navigation.navigate('Profile');
+                    Alert.alert("You're successfully logged in!");
+                })
+                .catch(function (error) {
+                    //var errorCode = error.code;
+                    var errorMessage = error.message;
+                    Alert.alert(errorMessage);
+                })
         }
     }
 

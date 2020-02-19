@@ -20,12 +20,15 @@ export default class EmailSignup extends Component {
         } else if (this.state.password.length < 8) {
             Alert.alert("Password must be at least 8 characters long");
         } else {
-            firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function (error) {
-                // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                // ...
-            });
+            firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+                .then(() => {
+                    Alert.alert("You're successfully signed up!");
+                })
+                .catch(function (error) {
+                    //var errorCode = error.code;
+                    var errorMessage = error.message;
+                    Alert.alert(errorMessage);
+                });
         }
     }
 
