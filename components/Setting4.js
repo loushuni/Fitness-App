@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         textAlign: 'center',
         fontSize: 27,
-        marginTop: 50,
+        marginTop: 80,
         padding: 10
     },
     backgroundImage: {

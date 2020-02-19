@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         textAlign: 'center',
         fontSize: 27,
-        marginTop: 50,
-        padding: 10
+        marginTop: 80,
+        paddingTop: 10
     },
     backgroundImage: {
         width: '100%',
