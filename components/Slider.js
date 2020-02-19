@@ -43,17 +43,18 @@ const styles = StyleSheet.create({
     button: {
         width: '60%',
         alignContent: 'center',
-        margin: 10
+        margin: 10,
+        height: '20%'
     },
     slides: {
-        flex: 0.7
+        flex: 0.6
     },
     layout: {
-        flex: 0.3,
+        flex: 0.4,
         width: '100%',
         flexDirection: 'column',
         flexWrap: 'wrap',
         alignContent: 'center',
-        paddingTop: 25
+        paddingTop: 30
     }
 });

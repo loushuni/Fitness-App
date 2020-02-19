@@ -42,8 +42,7 @@ const styles = StyleSheet.create({
   mainapp: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20
+    justifyContent: 'center'
   },
   title: {
     fontSize: 26,
@@ -54,8 +53,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 25,
-    fontWeight: 'bold',
-    marginBottom: 50,
+    fontWeight: 'bold'
   },
   image: {
     width: 650,
