@@ -25,7 +25,7 @@ export default class Login extends Component {
                 // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                // ...
+                //Alert.alert(errorMessage + errorCode);
               }).then(this.props.navigation.navigate('Profile'));
         }
     }
@@ -43,6 +43,7 @@ export default class Login extends Component {
                         textStyle={styles.buttonText}>
                         Login
                     </Button>
+                    <Text style={styles.text} onPress={() => this.props.navigation.navigate('Signup')}>Don't have an account yet? Sign up now!</Text>
                 </ImageBackground>
             </View>
         );
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontWeight: 'bold',
-        paddingTop: 60,
+        paddingTop: 80,
         paddingBottom: 150
     },
     input: {
@@ -94,5 +95,9 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: '700',
         paddingTop: 30
+    },
+    text: {
+        alignSelf: 'center',
+        marginTop: 20
     }
 });
