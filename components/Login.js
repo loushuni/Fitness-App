@@ -25,7 +25,7 @@ export default class Login extends Component {
                 // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                //Alert.alert(errorMessage + errorCode);
+                Alert.alert(errorMessage);
               }).then(this.props.navigation.navigate('Profile'));
         }
     }
