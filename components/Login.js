@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, ImageBackground, Alert } from 'react-native';
 import { Text, Button, Input } from '@ui-kitten/components';
-import * as firebase from 'firebase';
+import firebase from './FirebaseConfig';
 
 export default class Login extends Component {
     constructor(props) {
