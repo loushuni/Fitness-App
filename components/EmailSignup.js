@@ -22,6 +22,7 @@ export default class EmailSignup extends Component {
         } else {
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
                 .then(() => {
+                    this.props.navigation.navigate('Profile');
                     Alert.alert("You're successfully signed up!");
                 })
                 .catch(function (error) {
