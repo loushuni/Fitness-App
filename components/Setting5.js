@@ -13,6 +13,18 @@ export default class Setting5 extends Component {
         this.setState({ unit: unit })
     }
 
+    onPressed = () => {
+        this.props.navigation.navigate('Signup',
+            {
+                gender: this.props.navigation.state.params.gender,
+                goal: this.props.navigation.state.params.goal,
+                birthday: this.props.navigation.state.params.birthday,
+                height: this.props.navigation.state.params.height,
+                weight: this.state.number + ' ' + this.state.unit
+            }
+        );
+    }
+
     render() {
         let pickerItems = null;
         if (this.state.unit === 'kg') {
@@ -32,7 +44,7 @@ export default class Setting5 extends Component {
                 <View style={styles.container2}>
                     <Button
                         style={styles.button}
-                        onPress={() => this.props.navigation.navigate('Signup')}
+                        onPress={this.onPressed}
                         textStyle={styles.buttonText}>
                         Continue
                     </Button>
