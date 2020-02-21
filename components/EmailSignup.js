@@ -26,12 +26,24 @@ export default class EmailSignup extends Component {
                     Alert.alert("You're successfully signed up!");
                 })
                 .catch(function (error) {
-                    //var errorCode = error.code;
                     var errorMessage = error.message;
                     Alert.alert(errorMessage);
                 });
         }
     }
+
+    //上一个screen onpress的操作
+    // onPressed = () => {
+    //     this.props.navigation.navigate('EmailSignup',
+    //         {
+    //             gender: this.props.navigation.state.params.gender,
+    //             goal: this.props.navigation.state.params.goal,
+    //             birthday: this.props.navigation.state.params.birthday,
+    //             height: this.props.navigation.state.params.height,
+    //             weight: this.props.navigation.state.params.weight
+    //         }
+    //     );
+    // }
 
     render() {
         return (
