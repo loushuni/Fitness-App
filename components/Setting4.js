@@ -3,7 +3,7 @@ import { View, StyleSheet, ImageBackground, Picker } from 'react-native';
 import { Text, Button } from '@ui-kitten/components';
 
 export default class Setting4 extends Component {
-    state = { number: '', unit: '' }
+    state = { number: '52', unit: 'inch' }
 
     updateNumber = (number) => {
         this.setState({ number: number })
@@ -11,6 +11,17 @@ export default class Setting4 extends Component {
 
     updateUnit = (unit) => {
         this.setState({ unit: unit })
+    }
+
+    onPressed = () => {
+        this.props.navigation.navigate('Setting5',
+            {
+                gender: this.props.navigation.state.params.gender,
+                goal: this.props.navigation.state.params.goal,
+                birthday: this.props.navigation.state.params.birthday,
+                height: this.state.number + ' ' + this.state.unit
+            }
+        );
     }
 
     render() {
@@ -30,7 +41,7 @@ export default class Setting4 extends Component {
                 <View style={styles.container2}>
                     <Button
                         style={styles.button}
-                        onPress={() => this.props.navigation.navigate('Setting5')}
+                        onPress={this.onPressed}
                         textStyle={styles.buttonText}>
                         Continue
                     </Button>

@@ -3,7 +3,7 @@ import { View, StyleSheet, ImageBackground, Picker } from 'react-native';
 import { Text, Button } from '@ui-kitten/components';
 
 export default class Setting5 extends Component {
-    state = { number: '', unit: '' }
+    state = { number: '80', unit: 'lbs' }
 
     updateNumber = (number) => {
         this.setState({ number: number })
@@ -26,6 +26,8 @@ export default class Setting5 extends Component {
             <View style={styles.container1}>
                 <ImageBackground source={require('../assets/10.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Weight</Text>
+                    <Text>{this.props.navigation.state.params.gender}</Text>
+                    <Text>{this.props.navigation.state.params.height}</Text>
                 </ImageBackground>
                 <View style={styles.container2}>
                     <Button
