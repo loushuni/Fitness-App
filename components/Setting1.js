@@ -3,6 +3,15 @@ import { View, StyleSheet, ImageBackground } from 'react-native';
 import { Text, Button } from '@ui-kitten/components';
 
 export default class Setting1 extends Component {
+    state = {
+        gender: 'gender'
+    }
+
+    onPressed = (gender) => {
+        this.setState({ gender: gender });
+        this.props.navigation.navigate('Setting2');
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -10,19 +19,19 @@ export default class Setting1 extends Component {
                     <Text style={styles.title}>Select Gender</Text>
                     <View style={styles.buttonContainer}>
                         <Button
-                            onPress={() => this.props.navigation.navigate('Setting2')}
+                            onPress={() => this.onPressed('Female')}
                             textStyle={styles.text}
                             style={styles.button}>
                             Female
                         </Button>
                         <Button
-                            onPress={() => this.props.navigation.navigate('Setting2')}
+                            onPress={() => this.onPressed('Male')}
                             textStyle={styles.text}
                             style={styles.button}>
                             Male
                         </Button>
                         <Button
-                            onPress={() => this.props.navigation.navigate('Setting2')}
+                            onPress={() => this.onPressed('Non-Binary')}
                             textStyle={styles.text}
                             style={styles.button}>
                             Non-Binary
