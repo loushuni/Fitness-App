@@ -15,9 +15,17 @@ export default class Setting3 extends Component {
         });
     }
 
-    render() {
-        const { date } = this.state;
+    onPressed = () => {
+        this.props.navigation.navigate('Setting4',
+            {
+                gender: this.props.navigation.state.params.gender,
+                goal: this.props.navigation.state.params.goal,
+                birthday: this.state.date.toDateString()
+            }
+        );
+    }
 
+    render() {
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/8.png')} style={styles.backgroundImage}>
@@ -26,11 +34,11 @@ export default class Setting3 extends Component {
                 <View style={styles.datePicker}>
                     <Button
                         style={styles.button}
-                        onPress={() => this.props.navigation.navigate('Setting4')}
+                        onPress={this.onPressed}
                         textStyle={styles.buttonText}>
                         Continue
                     </Button>
-                    <DateTimePicker value={date} display="default" onChange={this.setDate} />
+                    <DateTimePicker value={this.state.date} display="default" onChange={this.setDate} />
                 </View>
             </View>
         );
