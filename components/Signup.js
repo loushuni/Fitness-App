@@ -25,6 +25,18 @@ export default class Signup extends Component {
     //         return { error: true };
     //     }
     // }
+    onPressed = () => {
+        this.props.navigation.navigate('EmailSignup',
+            {
+                gender: this.props.navigation.state.params.gender,
+                goal: this.props.navigation.state.params.goal,
+                birthday: this.props.navigation.state.params.birthday,
+                height: this.props.navigation.state.params.height,
+                weight: this.props.navigation.state.params.weight
+            }
+        );
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -32,7 +44,7 @@ export default class Signup extends Component {
                     <Text style={styles.title}>Great choice! Now get your personal daily plan.</Text>
                     <Button
                         style={styles.button1}
-                        onPress={() => this.props.navigation.navigate('EmailSignup')}
+                        onPress={this.onPressed}
                         textStyle={styles.buttonText}>
                         Sign Up With Email
                     </Button>
