@@ -3,6 +3,15 @@ import { View, StyleSheet, ImageBackground } from 'react-native';
 import { Text, Button } from '@ui-kitten/components';
 
 export default class Setting2 extends Component {
+    state = {
+        goal: ''
+    }
+
+    onPressed = (goal) => {
+      this.setState({goal: goal});
+      this.props.navigation.navigate('Setting3', {gender: this.props.navigation.state.params.gender, goal: goal});
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -10,13 +19,13 @@ export default class Setting2 extends Component {
                     <Text style={styles.title}>Choose a Goal</Text>
                     <View style={styles.buttonContainer}>
                         <Button
-                            onPress={() => this.props.navigation.navigate('Setting3')}
+                            onPress={() => this.onPressed('Lose Weight')}
                             style={styles.button}
                             textStyle={styles.buttonText}>
                             Lose Weight
                         </Button>
                         <Button
-                            onPress={() => this.props.navigation.navigate('Setting3')}
+                            onPress={() => this.onPressed('Get Fitter')}
                             style={styles.button}
                             textStyle={styles.buttonText}>
                             Get Fitter

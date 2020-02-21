@@ -4,12 +4,12 @@ import { Text, Button } from '@ui-kitten/components';
 
 export default class Setting1 extends Component {
     state = {
-        gender: 'gender'
+        gender: ''
     }
 
     onPressed = (gender) => {
         this.setState({ gender: gender });
-        this.props.navigation.navigate('Setting2');
+        this.props.navigation.navigate('Setting2', {gender: gender});
     }
 
     render() {
