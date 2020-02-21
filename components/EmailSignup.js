@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, ImageBackground, Alert } from 'react-native';
 import { Text, Button, Input } from '@ui-kitten/components';
 import firebase from './FirebaseConfig';
+import axios from './AxiosConfig';
 
 export default class EmailSignup extends Component {
     constructor(props) {
@@ -10,6 +11,14 @@ export default class EmailSignup extends Component {
     }
 
     onPressed = () => {
+        const user = {
+            gender: this.props.navigation.state.params.gender,
+            goal: this.props.navigation.state.params.goal,
+            birthday: this.props.navigation.state.params.birthday,
+            height: this.props.navigation.state.params.height,
+            weight: this.props.navigation.state.params.weight
+        }
+
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (this.state.email == "") {
             Alert.alert("Please enter your email address");
@@ -22,6 +31,9 @@ export default class EmailSignup extends Component {
         } else {
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
                 .then(() => {
+                    axios.post('/users.json', user)
+                        .then(response => console.log(response))
+                        .catch(error => Alert.alert(error));
                     this.props.navigation.navigate('Profile');
                     Alert.alert("You're successfully signed up!");
                 })
@@ -31,19 +43,6 @@ export default class EmailSignup extends Component {
                 });
         }
     }
-
-    //上一个screen onpress的操作
-    // onPressed = () => {
-    //     this.props.navigation.navigate('EmailSignup',
-    //         {
-    //             gender: this.props.navigation.state.params.gender,
-    //             goal: this.props.navigation.state.params.goal,
-    //             birthday: this.props.navigation.state.params.birthday,
-    //             height: this.props.navigation.state.params.height,
-    //             weight: this.props.navigation.state.params.weight
-    //         }
-    //     );
-    // }
 
     render() {
         return (
