@@ -39,7 +39,7 @@ export default class Login extends Component {
                 <ImageBackground source={require('../assets/7.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Fitness App</Text>
                     <Input style={styles.input} placeholder="Email" onChangeText={(email) => this.setState({ email })} value={this.state.email} />
-                    <Input style={styles.input} placeholder="Password" onChangeText={(password) => this.setState({ password })} value={this.state.password} />
+                    <Input style={styles.input} placeholder="Password" onChangeText={(password) => this.setState({ password })} value={this.state.password} secureTextEntry={true} />
                     <Button
                         onPress={this.onPressed}
                         style={styles.button}

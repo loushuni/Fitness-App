@@ -3,6 +3,7 @@ import { Text, Layout, BottomNavigation, BottomNavigationTab, Icon, Input, Butto
 import { View, StyleSheet, ScrollView, Alert } from 'react-native';
 import ModalWithBackdrop from './ModalWithBackdrop';
 import ValidationComponent from 'react-native-form-validator';
+import axios from './AxiosConfig';
 
 export default class Profile extends ValidationComponent {
 
@@ -10,18 +11,23 @@ export default class Profile extends ValidationComponent {
         super(props);
         this.state = {
             email: '',
+            users: []
         }
     };
 
-    // onEmailSubmit = (email) => {
-    //     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    //     if (reg.test(email) === false) {
-    //         Alert.alert("Email is Not Correct");
-    //     }
-    //     else {
-    //         Alert.alert("Email is Correct");
-    //     }
-    // }
+    componentDidMount() {
+        axios.get('/users.json',
+            {
+                params: {
+                    email: '3@gmail.com'
+                }
+            })
+            .then(response => {
+                this.setState({ users: response.data });
+                console.log("Profile: " + response.data);
+            })
+            .catch(error => Alert.alert(error));
+    }
 
     render() {
         return (

@@ -38,8 +38,6 @@ export default class Setting5 extends Component {
             <View style={styles.container1}>
                 <ImageBackground source={require('../assets/10.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Weight</Text>
-                    <Text>{this.props.navigation.state.params.gender}</Text>
-                    <Text>{this.props.navigation.state.params.height}</Text>
                 </ImageBackground>
                 <View style={styles.container2}>
                     <Button

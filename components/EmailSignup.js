@@ -7,18 +7,10 @@ import axios from './AxiosConfig';
 export default class EmailSignup extends Component {
     constructor(props) {
         super(props);
-        this.state = { email: "", password: "" };
+        this.state = { email: "", password: "", id: 0 };
     }
 
     onPressed = () => {
-        const user = {
-            gender: this.props.navigation.state.params.gender,
-            goal: this.props.navigation.state.params.goal,
-            birthday: this.props.navigation.state.params.birthday,
-            height: this.props.navigation.state.params.height,
-            weight: this.props.navigation.state.params.weight
-        }
-
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (this.state.email == "") {
             Alert.alert("Please enter your email address");
@@ -29,10 +21,26 @@ export default class EmailSignup extends Component {
         } else if (this.state.password.length < 8) {
             Alert.alert("Password must be at least 8 characters long");
         } else {
+            axios.get('/id.json')
+                .then(response => this.setState({ id: response.data }))
+                .catch(error => Alert.alert(error));
+
+            // axios.put('/id.json', this.state.id + 1)
+            //     .then(console.log('Id Updated Successfully!'))
+            //     .catch(error => Alert.alert(error));
+            const user = {
+                id: this.state.id + 1,
+                email: this.state.email,
+                gender: this.props.navigation.state.params.gender,
+                goal: this.props.navigation.state.params.goal,
+                birthday: this.props.navigation.state.params.birthday,
+                height: this.props.navigation.state.params.height,
+                weight: this.props.navigation.state.params.weight
+            }
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
                 .then(() => {
                     axios.post('/users.json', user)
-                        .then(response => console.log(response))
+                        .then(console.log('Data Posted Successfully!'))
                         .catch(error => Alert.alert(error));
                     this.props.navigation.navigate('Profile');
                     Alert.alert("You're successfully signed up!");
@@ -50,7 +58,7 @@ export default class EmailSignup extends Component {
                 <ImageBackground source={require('../assets/12.png')} style={styles.backgroundImage}>
                     <Text style={styles.title}>Sign Up A New Account</Text>
                     <Input placeholder='Enter Your Email Address' style={styles.input} onChangeText={(email) => this.setState({ email })} value={this.state.email} />
-                    <Input placeholder='Enter Your Password' style={styles.input} onChangeText={(password) => this.setState({ password })} value={this.state.password} />
+                    <Input placeholder='Enter Your Password' style={styles.input} onChangeText={(password) => this.setState({ password })} value={this.state.password} secureTextEntry={true} />
                     <Button onPress={this.onPressed} textStyle={StyleSheet.buttonText} style={styles.button}>Sign Up</Button>
                 </ImageBackground>
             </View>
