@@ -4,6 +4,7 @@ import { View, StyleSheet, ScrollView, Alert } from 'react-native';
 import ModalWithBackdrop from './ModalWithBackdrop';
 import ValidationComponent from 'react-native-form-validator';
 import axios from './AxiosConfig';
+import firebase from './FirebaseConfig';
 
 export default class Profile extends ValidationComponent {
 
@@ -11,22 +12,21 @@ export default class Profile extends ValidationComponent {
         super(props);
         this.state = {
             email: '',
-            users: []
+            gender: '',
+            goal: '',
+            birthday: '',
+            height: '',
+            weight: ''
         }
     };
 
-    componentDidMount() {
-        axios.get('/users.json',
-            {
-                params: {
-                    email: '3@gmail.com'
-                }
-            })
-            .then(response => {
-                this.setState({ users: response.data });
-                console.log("Profile: " + response.data);
-            })
-            .catch(error => Alert.alert(error));
+    componentDidMount = () => {
+        var userId = firebase.auth().currentUser.uid;
+        var s = firebase.database().ref('users/' + userId);
+        s.on('value', function (snapshot) {
+            const data = snapshot.val();
+            this.setState({ email: data.email, gender: data.gender, goal: data.goal, birthday: data.birthday, height: data.height, weight: data.weight });
+        }.bind(this));
     }
 
     render() {

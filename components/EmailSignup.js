@@ -7,8 +7,19 @@ import axios from './AxiosConfig';
 export default class EmailSignup extends Component {
     constructor(props) {
         super(props);
-        this.state = { email: "", password: "", id: 0 };
+        this.state = { email: "", password: ""};
     }
+
+    writeUserData = (userId, email, gender, goal, birthday, height, weight) => {
+        firebase.database().ref('users/' + userId).set({
+          email: email,
+          gender: gender,
+          goal: goal, 
+          birthday: birthday,
+          height: height,
+          weight: weight
+        });
+      }
 
     onPressed = () => {
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -21,27 +32,19 @@ export default class EmailSignup extends Component {
         } else if (this.state.password.length < 8) {
             Alert.alert("Password must be at least 8 characters long");
         } else {
-            axios.get('/id.json')
-                .then(response => this.setState({ id: response.data }))
-                .catch(error => Alert.alert(error));
-
-            // axios.put('/id.json', this.state.id + 1)
-            //     .then(console.log('Id Updated Successfully!'))
+            // axios.get('/id.json')
+            //     .then(response => this.setState({ id: response.data }))
             //     .catch(error => Alert.alert(error));
-            const user = {
-                id: this.state.id + 1,
-                email: this.state.email,
-                gender: this.props.navigation.state.params.gender,
-                goal: this.props.navigation.state.params.goal,
-                birthday: this.props.navigation.state.params.birthday,
-                height: this.props.navigation.state.params.height,
-                weight: this.props.navigation.state.params.weight
-            }
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
                 .then(() => {
-                    axios.post('/users.json', user)
-                        .then(console.log('Data Posted Successfully!'))
-                        .catch(error => Alert.alert(error));
+                    // axios.put('.json', { id: +this.state.id + 1 })
+                    //     .then(console.log('Id Updated Successfully!'))
+                    //     .catch(error => Alert.alert(error));
+                    // axios.post('/users.json', user)
+                    //     .then(console.log('User Data Posted Successfully!'))
+                    //     .catch(error => Alert.alert(error));
+                    var userId = firebase.auth().currentUser.uid;
+                    this.writeUserData(userId, this.state.email, this.props.navigation.state.params.gender, this.props.navigation.state.params.goal, this.props.navigation.state.params.birthday, this.props.navigation.state.params.height, this.props.navigation.state.params.weight);
                     this.props.navigation.navigate('Profile');
                     Alert.alert("You're successfully signed up!");
                 })
