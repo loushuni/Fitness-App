@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { Button, Layout, Modal, Text, Icon } from '@ui-kitten/components';
 import firebase from './FirebaseConfig';
@@ -7,7 +7,8 @@ const ModalWithBackdrop = (props) => {
 
     const [visible, setVisible] = React.useState(false);
 
-    const [option, setOption] = React.useState('Femalela');
+    const [gender, setGender] = React.useState('');
+    const [goal, setGoal] = React.useState('');
 
     var userId = firebase.auth().currentUser.uid;
 
@@ -15,9 +16,15 @@ const ModalWithBackdrop = (props) => {
         setVisible(!visible);
     };
 
-    const updateData = (gender) => {
+    const updateGender = (gender) => {
         firebase.database().ref('users/' + userId).update({
             gender: gender
+        });
+    }
+
+    const updateGoal = (goal) => {
+        firebase.database().ref('users/' + userId).update({
+            goal: goal
         });
     }
 
@@ -31,11 +38,11 @@ const ModalWithBackdrop = (props) => {
             <Layout
                 level='3'
                 style={styles.optionContainer}>
-                <Button style={styles.optionButton} onPress={() => setOption('Male')}>Male</Button>
-                <Button style={styles.optionButton} onPress={() => setOption('Female')}>Female</Button>
-                <Button style={styles.optionButton} onPress={() => setOption('Other')}>Other</Button>
+                <Button style={styles.optionButton} onPress={() => setGender('Male')}>Male</Button>
+                <Button style={styles.optionButton} onPress={() => setGender('Female')}>Female</Button>
+                <Button style={styles.optionButton} onPress={() => setGender('Other')}>Other</Button>
                 <Button style={styles.optionButton} status='success' onPress={() => {
-                    updateData(option);
+                    updateGender(gender);
                     toggleModal;
                 }}>Submit</Button>
             </Layout>
@@ -45,10 +52,38 @@ const ModalWithBackdrop = (props) => {
             <Layout
                 level='3'
                 style={styles.optionContainer}>
-                <Button style={styles.optionButton} onPress={(option) => setOption('kg')}>kg</Button>
-                <Button style={styles.optionButton} onPress={(option) => setOption('lb')}>lb</Button>
+                <Button style={styles.optionButton} onPress={() => setOption('kg')}>kg</Button>
+                <Button style={styles.optionButton} onPress={() => setOption('lb')}>lb</Button>
                 <Button style={styles.optionButton} status='success' onPress={toggleModal}>Submit</Button>
             </Layout>
+        );
+    } else if (props.element == 'goalElement') {
+        renderElement = (
+            <Layout
+                level='3'
+                style={styles.optionContainer}>
+                <Button style={styles.optionButton} onPress={() => setGoal('Loss Weight')}>Loss Weight</Button>
+                <Button style={styles.optionButton} onPress={() => setGoal('Get Fitter')}>Get Fitter</Button>
+                <Button style={styles.optionButton} status='success' onPress={() => {
+                    updateGoal(goal);
+                    toggleModal;
+                }}>Submit</Button>
+            </Layout>
+        );
+    }
+
+    let button = null;
+    if (props.name == 'Gender') {
+        button = (
+            <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
+                {gender}
+            </Button>
+        );
+    } else if (props.name = 'Goal') {
+        button = (
+            <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
+                {goal}
+            </Button>
         );
     }
 
@@ -56,9 +91,7 @@ const ModalWithBackdrop = (props) => {
         <Layout>
             <Layout style={styles.elementContainer}>
                 <Text style={styles.text}>{props.name}</Text>
-                <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
-                    {option}
-                </Button>
+                {button}
             </Layout>
             <Modal
                 allowBackdrop={true}
