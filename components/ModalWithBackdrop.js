@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, Picker } from 'react-native';
 import { Button, Layout, Modal, Text, Icon } from '@ui-kitten/components';
 import firebase from './FirebaseConfig';
 //import DateTimePicker from '@react-native-community/datetimepicker';
@@ -18,7 +18,11 @@ const ModalWithBackdrop = (props) => {
 
     const [height, setHeight] = React.useState('height');
 
+    const [heightUnit, setHeightUnit] = React.useState('heightUnit');
+
     const [weight, setWeight] = React.useState('weight');
+
+    const [weightUnit, setWeightUnit] = React.useState('weightUnit');
 
     const toggleModal = () => {
         setVisible(!visible);
@@ -95,13 +99,31 @@ const ModalWithBackdrop = (props) => {
             </Layout>
         );
     } else if (props.element == 'heightElement') {
+        let pickerItems = null;
+        if (heightUnit === 'cm') {
+            pickerItems = Array.from(Array(121), (_, x) => x).map((item, index) => (
+                <Picker.Item label={`${item + 130}`} key={index} value={`${item + 130}`} />));
+        } else {
+            pickerItems = Array.from(Array(47), (_, x) => x).map((item, index) => (
+                <Picker.Item label={`${item + 52}`} key={index} value={`${item + 52}`} />));
+        }
         renderElement = (
             <Layout
                 level='3'
                 style={styles.optionContainer}>
-                <Button style={styles.optionButton} onPress={() => setOption('kg')}>kg</Button>
-                <Button style={styles.optionButton} onPress={() => setOption('lb')}>lb</Button>
-                <Button style={styles.optionButton} status='success' onPress={toggleModal}>Submit</Button>
+                <Layout style={styles.pickerView}>
+                    <Picker selectedValue={height} onValueChange={setHeight} style={styles.picker} itemStyle={styles.itemStyle}>
+                        {pickerItems}
+                    </Picker>
+                    <Picker selectedValue={heightUnit} onValueChange={setHeightUnit} style={styles.picker} itemStyle={styles.itemStyle}>
+                        < Picker.Item label="inch" value="inch" />
+                        < Picker.Item label="cm" value="cm" />
+                    </Picker>
+                </Layout>
+                <Button style={styles.optionButton} status='success' onPress={() => {
+                    updateHeight(height + ' ' + heightUnit);
+                    toggleModal;
+                }}>Submit</Button>
             </Layout>
         );
     } else if (props.element == 'weightElement') {
@@ -138,13 +160,13 @@ const ModalWithBackdrop = (props) => {
     } else if (props.name == 'Height') {
         button = (
             <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
-                {height}
+                {height + ' ' + heightUnit}
             </Button>
         );
     } else if (props.name == 'Weight') {
         button = (
             <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
-                {weight}
+                {weight + ' ' + weightUnit}
             </Button>
         );
     }
@@ -220,6 +242,16 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'black',
         borderBottomWidth: 0
+    },
+    pickerView: {
+        flex: 1,
+        flexDirection: 'row'
+    },
+    picker: {
+        flex: 0.5
+    },
+    itemStyle: {
+        color: 'white'
     }
 });
 
