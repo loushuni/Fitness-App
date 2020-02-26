@@ -53,7 +53,6 @@ export default class Profile extends ValidationComponent {
                         <ModalWithBackdrop option={this.state.birthday} name='Birthday' element='birthdayElement' />
                         <ModalWithBackdrop option={this.state.height} name='Height' element='heightElement' />
                         <ModalWithBackdrop option={this.state.weight} name='Weight' element='weightElement' />
-                        <ModalWithBackdrop option='' name='Log Out' />
                     </View>
  
                     <Text style={styles.header}>Fitness Calculators</Text>

@@ -2,15 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { Button, Layout, Modal, Text, Icon } from '@ui-kitten/components';
 import firebase from './FirebaseConfig';
+//import DateTimePicker from '@react-native-community/datetimepicker';
 
 const ModalWithBackdrop = (props) => {
 
     const [visible, setVisible] = React.useState(false);
 
-    const [gender, setGender] = React.useState('');
-    const [goal, setGoal] = React.useState('');
-
     var userId = firebase.auth().currentUser.uid;
+
+    const [gender, setGender] = React.useState('gender');
+
+    const [goal, setGoal] = React.useState('goal');
+
+    const [birthday, setBirthday] = React.useState('birthday');
+
+    const [height, setHeight] = React.useState('height');
+
+    const [weight, setWeight] = React.useState('weight');
 
     const toggleModal = () => {
         setVisible(!visible);
@@ -25,6 +33,24 @@ const ModalWithBackdrop = (props) => {
     const updateGoal = (goal) => {
         firebase.database().ref('users/' + userId).update({
             goal: goal
+        });
+    }
+
+    const updateBirthday = (birthday) => {
+        firebase.database().ref('users/' + userId).update({
+            birthday: birthday
+        });
+    }
+
+    const updateHeight = (height) => {
+        firebase.database().ref('users/' + userId).update({
+            height: height
+        });
+    }
+
+    const updateWeight = (weight) => {
+        firebase.database().ref('users/' + userId).update({
+            weight: weight
         });
     }
 
@@ -47,7 +73,28 @@ const ModalWithBackdrop = (props) => {
                 }}>Submit</Button>
             </Layout>
         );
-    } else if (props.element == 'weightElement') {
+    } else if (props.element == 'goalElement') {
+        renderElement = (
+            <Layout
+                level='3'
+                style={styles.optionContainer}>
+                <Button style={styles.optionButton} onPress={() => setGoal('Lose Weight')}>Lose Weight</Button>
+                <Button style={styles.optionButton} onPress={() => setGoal('Get Fitter')}>Get Fitter</Button>
+                <Button style={styles.optionButton} status='success' onPress={() => {
+                    updateGoal(goal);
+                    toggleModal;
+                }}>Submit</Button>
+            </Layout>
+        );
+    } else if (props.element == 'birthdayElement') {
+        renderElement = (
+            <Layout
+                level='3'
+                style={styles.optionContainer}>
+                <Button style={styles.optionButton} status='success' onPress={toggleModal}>Submit</Button>
+            </Layout>
+        );
+    } else if (props.element == 'heightElement') {
         renderElement = (
             <Layout
                 level='3'
@@ -57,17 +104,14 @@ const ModalWithBackdrop = (props) => {
                 <Button style={styles.optionButton} status='success' onPress={toggleModal}>Submit</Button>
             </Layout>
         );
-    } else if (props.element == 'goalElement') {
+    } else if (props.element == 'weightElement') {
         renderElement = (
             <Layout
                 level='3'
                 style={styles.optionContainer}>
-                <Button style={styles.optionButton} onPress={() => setGoal('Loss Weight')}>Loss Weight</Button>
-                <Button style={styles.optionButton} onPress={() => setGoal('Get Fitter')}>Get Fitter</Button>
-                <Button style={styles.optionButton} status='success' onPress={() => {
-                    updateGoal(goal);
-                    toggleModal;
-                }}>Submit</Button>
+                <Button style={styles.optionButton} onPress={() => setOption('kg')}>kg</Button>
+                <Button style={styles.optionButton} onPress={() => setOption('lb')}>lb</Button>
+                <Button style={styles.optionButton} status='success' onPress={toggleModal}>Submit</Button>
             </Layout>
         );
     }
@@ -79,10 +123,28 @@ const ModalWithBackdrop = (props) => {
                 {gender}
             </Button>
         );
-    } else if (props.name = 'Goal') {
+    } else if (props.name == 'Goal') {
         button = (
             <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
                 {goal}
+            </Button>
+        );
+    } else if (props.name == 'Birthday') {
+        button = (
+            <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
+                {birthday}
+            </Button>
+        );
+    } else if (props.name == 'Height') {
+        button = (
+            <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
+                {height}
+            </Button>
+        );
+    } else if (props.name == 'Weight') {
+        button = (
+            <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
+                {weight}
             </Button>
         );
     }
