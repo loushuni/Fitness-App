@@ -10,14 +10,16 @@ export default class EmailSignup extends Component {
         this.state = { email: "", password: "" };
     }
 
-    writeUserData = (userId, email, gender, goal, birthday, height, weight) => {
+    writeUserData = (userId, email, gender, goal, birthday, height, heightUnit, weight, weightUnit) => {
         firebase.database().ref('users/' + userId).set({
             email: email,
             gender: gender,
             goal: goal,
             birthday: birthday,
             height: height,
-            weight: weight
+            heightUnit: heightUnit,
+            weight: weight,
+            weightUnit: weightUnit
         });
     }
 
@@ -51,7 +53,9 @@ export default class EmailSignup extends Component {
                         this.props.navigation.state.params.goal,
                         this.props.navigation.state.params.birthday,
                         this.props.navigation.state.params.height,
-                        this.props.navigation.state.params.weight);
+                        this.props.navigation.state.params.heightUnit,
+                        this.props.navigation.state.params.weight,
+                        this.props.navigation.state.params.weightUnit,);
                     this.props.navigation.navigate('Profile');
                     Alert.alert("You're successfully signed up!");
                 })

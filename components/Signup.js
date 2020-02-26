@@ -32,7 +32,9 @@ export default class Signup extends Component {
                 goal: this.props.navigation.state.params.goal,
                 birthday: this.props.navigation.state.params.birthday,
                 height: this.props.navigation.state.params.height,
-                weight: this.props.navigation.state.params.weight
+                heightUnit: this.props.navigation.state.params.heightUnit,
+                weight: this.props.navigation.state.params.weight,
+                weightUnit: this.props.navigation.state.params.weightUnit,
             }
         );
     }

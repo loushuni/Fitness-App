@@ -20,7 +20,9 @@ export default class Setting5 extends Component {
                 goal: this.props.navigation.state.params.goal,
                 birthday: this.props.navigation.state.params.birthday,
                 height: this.props.navigation.state.params.height,
-                weight: this.state.number + ' ' + this.state.unit
+                heightUnit: this.props.navigation.state.params.heightUnit,
+                weight: this.state.number,
+                weightUnit: this.state.unit
             }
         );
     }

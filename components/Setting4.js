@@ -19,7 +19,8 @@ export default class Setting4 extends Component {
                 gender: this.props.navigation.state.params.gender,
                 goal: this.props.navigation.state.params.goal,
                 birthday: this.props.navigation.state.params.birthday,
-                height: this.state.number + ' ' + this.state.unit
+                height: this.state.number,
+                heightUnit: this.state.unit
             }
         );
     }

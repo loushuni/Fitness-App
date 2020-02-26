@@ -10,19 +10,37 @@ const ModalWithBackdrop = (props) => {
 
     var userId = firebase.auth().currentUser.uid;
 
-    const [gender, setGender] = React.useState('gender');
+    const [gender, setGender] = React.useState(props.option);
+    useEffect(() => {
+        setGender(props.option);
+    }, [props.option])
 
-    const [goal, setGoal] = React.useState('goal');
+    const [goal, setGoal] = React.useState(props.option);
+    useEffect(() => {
+        setGoal(props.option);
+    }, [props.option])
 
-    const [birthday, setBirthday] = React.useState('birthday');
+    const [birthday, setBirthday] = React.useState(props.option);
 
-    const [height, setHeight] = React.useState('height');
+    const [height, setHeight] = React.useState(props.option);
+    useEffect(() => {
+        setHeight(props.option);
+    }, [props.option])
 
-    const [heightUnit, setHeightUnit] = React.useState('unit');
+    const [heightUnit, setHeightUnit] = React.useState(props.unit);
+    useEffect(() => {
+        setHeightUnit(props.unit);
+    }, [props.unit])
 
-    const [weight, setWeight] = React.useState('weight');
+    const [weight, setWeight] = React.useState(props.option);
+    useEffect(() => {
+        setWeight(props.option);
+    }, [props.option])
 
-    const [weightUnit, setWeightUnit] = React.useState('unit');
+    const [weightUnit, setWeightUnit] = React.useState(props.unit);
+    useEffect(() => {
+        setWeightUnit(props.unit);
+    }, [props.unit])
 
     const toggleModal = () => {
         setVisible(!visible);
@@ -136,7 +154,7 @@ const ModalWithBackdrop = (props) => {
                         {pickerItems}
                     </Picker>
                     <Picker selectedValue={weightUnit} onValueChange={setWeightUnit} style={styles.picker} itemStyle={styles.itemStyle}>
-                        < Picker.Item label="lbs" value="lbs" />
+                        < Picker.Item label="lb" value="lb" />
                         < Picker.Item label="kg" value="kg" />
                     </Picker>
                 </Layout>
@@ -186,13 +204,13 @@ const ModalWithBackdrop = (props) => {
     } else if (props.name == 'Height') {
         button = (
             <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
-                {height + ' ' + heightUnit}
+                {height.slice(0, -3) + heightUnit}
             </Button>
         );
     } else if (props.name == 'Weight') {
         button = (
             <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
-                {weight + ' ' + weightUnit}
+                {weight.slice(0, -3) + ' ' + weightUnit}
             </Button>
         );
     }

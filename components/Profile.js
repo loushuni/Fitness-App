@@ -16,7 +16,9 @@ export default class Profile extends ValidationComponent {
             goal: '',
             birthday: '',
             height: '',
-            weight: ''
+            heightUnit: '',
+            weight: '',
+            weightUnit: ''
         }
     };
 
@@ -25,7 +27,7 @@ export default class Profile extends ValidationComponent {
         var s = firebase.database().ref('users/' + userId);
         s.on('value', function (snapshot) {
             const data = snapshot.val();
-            this.setState({ email: data.email, gender: data.gender, goal: data.goal, birthday: data.birthday, height: data.height, weight: data.weight });
+            this.setState({ email: data.email, gender: data.gender, goal: data.goal, birthday: data.birthday, height: data.height, heightUnit: data.heightUnit, weight: data.weight, weight: data.weightUnit });
         }.bind(this));
     }
 
@@ -51,8 +53,8 @@ export default class Profile extends ValidationComponent {
                         <ModalWithBackdrop option={this.state.gender} name='Gender' element='genderElement' />
                         <ModalWithBackdrop option={this.state.goal} name='Goal' element='goalElement' />
                         <ModalWithBackdrop option={this.state.birthday} name='Birthday' element='birthdayElement' />
-                        <ModalWithBackdrop option={this.state.height} name='Height' element='heightElement' />
-                        <ModalWithBackdrop option={this.state.weight} name='Weight' element='weightElement' />
+                        <ModalWithBackdrop option={this.state.height} unit={this.state.heightUnit} name='Height' element='heightElement' />
+                        <ModalWithBackdrop option={this.state.weight} unit={this.state.weightUnit} name='Weight' element='weightElement' />
                     </View>
  
                     <Text style={styles.header}>Fitness Calculators</Text>
