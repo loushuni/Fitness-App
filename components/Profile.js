@@ -27,7 +27,7 @@ export default class Profile extends ValidationComponent {
         var s = firebase.database().ref('users/' + userId);
         s.on('value', function (snapshot) {
             const data = snapshot.val();
-            this.setState({ email: data.email, gender: data.gender, goal: data.goal, birthday: data.birthday, height: data.height, heightUnit: data.heightUnit, weight: data.weight, weight: data.weightUnit });
+            this.setState({ email: data.email, gender: data.gender, goal: data.goal, birthday: data.birthday, height: data.height, heightUnit: data.heightUnit, weight: data.weight, weightUnit: data.weightUnit });
         }.bind(this));
     }
 

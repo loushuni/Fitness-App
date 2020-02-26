@@ -64,15 +64,17 @@ const ModalWithBackdrop = (props) => {
     //     });
     // }
 
-    const updateHeight = (height) => {
+    const updateHeight = (height, heightUnit) => {
         firebase.database().ref('users/' + userId).update({
-            height: height
+            height: height,
+            heightUnit: heightUnit
         });
     }
 
-    const updateWeight = (weight) => {
+    const updateWeight = (weight, weightUnit) => {
         firebase.database().ref('users/' + userId).update({
-            weight: weight
+            weight: weight,
+            weightUnit: weightUnit
         });
     }
 
@@ -131,7 +133,7 @@ const ModalWithBackdrop = (props) => {
                     </Picker>
                 </Layout>
                 <Button style={styles.optionButton} status='success' onPress={() => {
-                    updateHeight(height + ' ' + heightUnit);
+                    updateHeight(height, heightUnit);
                     toggleModal;
                 }}>Submit</Button>
             </Layout>
@@ -204,13 +206,13 @@ const ModalWithBackdrop = (props) => {
     } else if (props.name == 'Height') {
         button = (
             <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
-                {height.slice(0, -3) + heightUnit}
+                {height + ' ' + heightUnit}
             </Button>
         );
     } else if (props.name == 'Weight') {
         button = (
             <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
-                {weight.slice(0, -3) + ' ' + weightUnit}
+                {weight + ' ' + weightUnit}
             </Button>
         );
     }
