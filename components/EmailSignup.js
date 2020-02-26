@@ -7,19 +7,19 @@ import axios from './AxiosConfig';
 export default class EmailSignup extends Component {
     constructor(props) {
         super(props);
-        this.state = { email: "", password: ""};
+        this.state = { email: "", password: "" };
     }
 
     writeUserData = (userId, email, gender, goal, birthday, height, weight) => {
         firebase.database().ref('users/' + userId).set({
-          email: email,
-          gender: gender,
-          goal: goal, 
-          birthday: birthday,
-          height: height,
-          weight: weight
+            email: email,
+            gender: gender,
+            goal: goal,
+            birthday: birthday,
+            height: height,
+            weight: weight
         });
-      }
+    }
 
     onPressed = () => {
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -44,7 +44,14 @@ export default class EmailSignup extends Component {
                     //     .then(console.log('User Data Posted Successfully!'))
                     //     .catch(error => Alert.alert(error));
                     var userId = firebase.auth().currentUser.uid;
-                    this.writeUserData(userId, this.state.email, this.props.navigation.state.params.gender, this.props.navigation.state.params.goal, this.props.navigation.state.params.birthday, this.props.navigation.state.params.height, this.props.navigation.state.params.weight);
+                    this.writeUserData(
+                        userId,
+                        this.state.email,
+                        this.props.navigation.state.params.gender,
+                        this.props.navigation.state.params.goal,
+                        this.props.navigation.state.params.birthday,
+                        this.props.navigation.state.params.height,
+                        this.props.navigation.state.params.weight);
                     this.props.navigation.navigate('Profile');
                     Alert.alert("You're successfully signed up!");
                 })
