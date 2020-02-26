@@ -3,7 +3,7 @@ import { View, StyleSheet, ImageBackground, Picker } from 'react-native';
 import { Text, Button } from '@ui-kitten/components';
 
 export default class Setting5 extends Component {
-    state = { number: '80', unit: 'lbs' }
+    state = { number: '80', unit: 'lb' }
 
     updateNumber = (number) => {
         this.setState({ number: number })
@@ -53,7 +53,7 @@ export default class Setting5 extends Component {
                             {pickerItems}
                         </Picker>
                         <Picker selectedValue={this.state.unit} onValueChange={this.updateUnit} style={styles.picker}>
-                            < Picker.Item label="lbs" value="lbs" />
+                            < Picker.Item label="lb" value="lb" />
                             < Picker.Item label="kg" value="kg" />
                         </Picker>
                     </View>
