@@ -127,13 +127,31 @@ const ModalWithBackdrop = (props) => {
             </Layout>
         );
     } else if (props.element == 'weightElement') {
+        let pickerItems = null;
+        if (weightUnit === 'kg') {
+            pickerItems = Array.from(Array(116), (_, x) => x).map((item, index) => (
+                <Picker.Item label={`${item + 35}`} key={index} value={`${item + 35}`} />));
+        } else {
+            pickerItems = Array.from(Array(271), (_, x) => x).map((item, index) => (
+                <Picker.Item label={`${item + 80}`} key={index} value={`${item + 80}`} />));
+        }
         renderElement = (
             <Layout
                 level='3'
                 style={styles.optionContainer}>
-                <Button style={styles.optionButton} onPress={() => setOption('kg')}>kg</Button>
-                <Button style={styles.optionButton} onPress={() => setOption('lb')}>lb</Button>
-                <Button style={styles.optionButton} status='success' onPress={toggleModal}>Submit</Button>
+                <Layout style={styles.pickerView}>
+                    <Picker selectedValue={weight} onValueChange={setWeight} style={styles.picker} itemStyle={styles.itemStyle}>
+                        {pickerItems}
+                    </Picker>
+                    <Picker selectedValue={weightUnit} onValueChange={setWeightUnit} style={styles.picker} itemStyle={styles.itemStyle}>
+                        < Picker.Item label="lbs" value="lbs" />
+                        < Picker.Item label="kg" value="kg" />
+                    </Picker>
+                </Layout>
+                <Button style={styles.optionButton} status='success' onPress={() => {
+                    updateWeight(weight + ' ' + weightUnit);
+                    toggleModal;
+                }}>Submit</Button>
             </Layout>
         );
     }
