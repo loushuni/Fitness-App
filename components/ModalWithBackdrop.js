@@ -18,11 +18,11 @@ const ModalWithBackdrop = (props) => {
 
     const [height, setHeight] = React.useState('height');
 
-    const [heightUnit, setHeightUnit] = React.useState('heightUnit');
+    const [heightUnit, setHeightUnit] = React.useState('unit');
 
     const [weight, setWeight] = React.useState('weight');
 
-    const [weightUnit, setWeightUnit] = React.useState('weightUnit');
+    const [weightUnit, setWeightUnit] = React.useState('unit');
 
     const toggleModal = () => {
         setVisible(!visible);
@@ -40,11 +40,11 @@ const ModalWithBackdrop = (props) => {
         });
     }
 
-    const updateBirthday = (birthday) => {
-        firebase.database().ref('users/' + userId).update({
-            birthday: birthday
-        });
-    }
+    // const updateBirthday = (birthday) => {
+    //     firebase.database().ref('users/' + userId).update({
+    //         birthday: birthday
+    //     });
+    // }
 
     const updateHeight = (height) => {
         firebase.database().ref('users/' + userId).update({
@@ -88,14 +88,6 @@ const ModalWithBackdrop = (props) => {
                     updateGoal(goal);
                     toggleModal;
                 }}>Submit</Button>
-            </Layout>
-        );
-    } else if (props.element == 'birthdayElement') {
-        renderElement = (
-            <Layout
-                level='3'
-                style={styles.optionContainer}>
-                <Button style={styles.optionButton} status='success' onPress={toggleModal}>Submit</Button>
             </Layout>
         );
     } else if (props.element == 'heightElement') {
@@ -155,6 +147,22 @@ const ModalWithBackdrop = (props) => {
             </Layout>
         );
     }
+    // else if (props.element == 'birthdayElement') {
+    //     renderElement = (
+    //         <Layout
+    //             level='3'
+    //             style={styles.optionContainer}>
+    //             <DateTimePicker
+    //                 testID="dateTimePicker"
+    //                 value={birthday}
+    //                 mode='date'
+    //                 display="default"
+    //                 onChange={onChange}
+    //             />
+    //             <Button style={styles.optionButton} status='success' onPress={toggleModal}>Submit</Button>
+    //         </Layout>
+    //     );
+    // }
 
     let button = null;
     if (props.name == 'Gender') {
@@ -172,7 +180,7 @@ const ModalWithBackdrop = (props) => {
     } else if (props.name == 'Birthday') {
         button = (
             <Button onPress={toggleModal} style={styles.button} textStyle={styles.buttonText} icon={arrowIcon}>
-                {birthday}
+                {props.option}
             </Button>
         );
     } else if (props.name == 'Height') {
