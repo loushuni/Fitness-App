@@ -1,7 +1,7 @@
 import React, { Component, useEffect } from 'react';
 import { StyleSheet, Alert } from 'react-native';
 import { Layout, Text, Input, Button, Select } from '@ui-kitten/components';
-
+import firebase from './FirebaseConfig';
 
 const BMI = () => {
 
@@ -13,6 +13,13 @@ const BMI = () => {
 
     useEffect(() => {
         console.log('mounted');
+        var userId = firebase.auth().currentUser.uid;
+        var s = firebase.database().ref('users/' + userId);
+        s.on('value', function (snapshot) {
+            const data = snapshot.val();
+            setWeight(data.weight);
+            setHeight(data.height);
+        }.bind(this));
     }, []);
 
     const onPressed = () => {
