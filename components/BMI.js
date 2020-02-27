@@ -38,7 +38,11 @@ const BMI = () => {
         } else if (isNaN(height)) {
             Alert.alert("Please enter a valid number for your height");
         }
-        setResult((+weight * 703 / height / height).toFixed(2));
+        if (heightUnit == 'inch' && weightUnit == 'lb') {
+            setResult((+weight * 703 / height / height).toFixed(2));
+        } else if (heightUnit == 'cm' && weightUnit == 'kg') {
+            setResult((+weight / (height / 100) / (height / 100)).toFixed(2));
+        }
     }
 
     // const unit1 = [
