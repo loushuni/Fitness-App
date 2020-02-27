@@ -2,6 +2,7 @@ import React, { Component, useEffect } from 'react';
 import { StyleSheet, Alert } from 'react-native';
 import { Layout, Text, Input, Button, Select } from '@ui-kitten/components';
 import firebase from './FirebaseConfig';
+import ModalWithBackdrop from './ModalWithBackdrop';
 
 const BMI = () => {
 
@@ -22,6 +23,8 @@ const BMI = () => {
             const data = snapshot.val();
             setWeight(data.weight);
             setHeight(data.height);
+            setWeightUnit(data.weightUnit);
+            setHeightUnit(data.heightUnit);
         }.bind(this));
     }, []);
 
@@ -38,21 +41,23 @@ const BMI = () => {
         setResult((+weight * 703 / height / height).toFixed(2));
     }
 
-    const unit1 = [
-        { text: 'lb' },
-        { text: 'kg' }
-    ];
+    // const unit1 = [
+    //     { text: 'lb' },
+    //     { text: 'kg' }
+    // ];
 
-    const unit2 = [
-        { text: 'inch' },
-        { text: 'cm' }
-    ];
+    // const unit2 = [
+    //     { text: 'inch' },
+    //     { text: 'cm' }
+    // ];
 
     return (
         <Layout style={styles.container}>
             <Text style={styles.title}>BMI Calculator</Text>
-            <Layout style={{ flexDirection: 'column', marginLeft: 50 }}>
-                <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
+            <Layout>
+                <ModalWithBackdrop option={height} unit={heightUnit} name='Height' element='heightElement' />
+                <ModalWithBackdrop option={weight} unit={weightUnit} name='Weight' element='weightElement' />
+                {/* <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
                     <Text style={{ marginRight: 10, marginTop: 8 }}>Weight:</Text>
                     <Input
                         placeholder='Enter Your Weight'
@@ -65,8 +70,8 @@ const BMI = () => {
                         selectedOption={weightUnit}
                         onSelect={setWeightUnit}
                     />
-                </Layout>
-                <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
+                </Layout> */}
+                {/* <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
                     <Text style={{ marginRight: 10, marginTop: 8 }}>Height:</Text>
                     <Input
                         placeholder='Enter Your Height'
@@ -79,8 +84,8 @@ const BMI = () => {
                         selectedOption={heightUnit}
                         onSelect={setHeightUnit}
                     />
-                </Layout>
-                <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
+                </Layout> */}
+                <Layout style={{ flexDirection: 'row', marginBottom: 10, marginTop: 20, alignSelf: 'center' }}>
                     <Button style={styles.button} onPress={onPressed}>Calculate BMI</Button>
                     <Text style={styles.result}>{result}</Text>
                 </Layout>
@@ -104,8 +109,8 @@ const styles = StyleSheet.create({
         paddingTop: 10
     },
     button: {
-        width: '50%',
-        marginRight: 10
+        width: '40%',
+        marginRight: 20
     },
     input: {
         width: '40%',
