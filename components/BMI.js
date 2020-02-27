@@ -6,6 +6,8 @@ import ModalWithBackdrop from './ModalWithBackdrop';
 
 const BMI = () => {
 
+    var userId = firebase.auth().currentUser.uid;
+
     const [weight, setWeight] = React.useState('');
 
     const [weightUnit, setWeightUnit] = React.useState('');
@@ -43,6 +45,9 @@ const BMI = () => {
         } else if (heightUnit == 'cm' && weightUnit == 'kg') {
             setResult((+weight / (height / 100) / (height / 100)).toFixed(2));
         }
+        firebase.database().ref('users/' + userId).update({
+            bmi: result
+        });
     }
 
     // const unit1 = [

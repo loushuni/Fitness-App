@@ -19,7 +19,11 @@ export default class EmailSignup extends Component {
             height: height,
             heightUnit: heightUnit,
             weight: weight,
-            weightUnit: weightUnit
+            weightUnit: weightUnit,
+            bmi: 0,
+            tdee: 0,
+            macro: 0,
+            onerm: 0
         });
     }
 
