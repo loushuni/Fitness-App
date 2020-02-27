@@ -13,6 +13,7 @@ import BMI from './components/BMI';
 import TDEE from './components/TDEE';
 import Macro from './components/Macro';
 import OneRM from './components/OneRM';
+import Calculators from './components/Calculators';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
@@ -35,7 +36,8 @@ const RootStack = createStackNavigator(
     BMI: BMI,
     TDEE: TDEE,
     Macro: Macro,
-    OneRM: OneRM
+    OneRM: OneRM,
+    Calculators: Calculators
   },
   {
     initialRouteName: 'Slider',
