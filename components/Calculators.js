@@ -5,7 +5,7 @@ import { Text, Button, Input, Layout } from '@ui-kitten/components';
 const Calculators = () => {
     return (
         <Layout>
-            <Text>Calculators</Text>
+            <Text>Fitness Calculators</Text>
         </Layout>
     );
 }

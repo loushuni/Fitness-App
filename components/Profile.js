@@ -56,30 +56,6 @@ export default class Profile extends ValidationComponent {
                         <ModalWithBackdrop option={this.state.height} unit={this.state.heightUnit} name='Height' element='heightElement' />
                         <ModalWithBackdrop option={this.state.weight} unit={this.state.weightUnit} name='Weight' element='weightElement' />
                     </View>
- 
-                    <Text style={styles.header}>Fitness Calculators</Text>
-                    <View style={{ flexDirection: 'column', alignContent: 'flex-start', alignItems: 'flex-start' }}>
-                        <Button
-                            style={styles.button}
-                            textStyle={{ fontWeight: '500', marginRight: 245 }}
-                            icon={arrowIcon}
-                            onPress={() => this.props.navigation.navigate('BMI')}>BMI Calculator</Button>
-                        <Button
-                            style={styles.button}
-                            textStyle={{ fontWeight: '500', marginRight: 235 }}
-                            icon={arrowIcon}
-                            onPress={() => this.props.navigation.navigate('TDEE')}>TDEE Calculator</Button>
-                        <Button
-                            style={styles.button}
-                            textStyle={{ fontWeight: '500', marginRight: 228 }}
-                            icon={arrowIcon}
-                            onPress={() => this.props.navigation.navigate('Macro')}>Macro Calculator</Button>
-                        <Button
-                            style={styles.button}
-                            textStyle={{ fontWeight: '500', marginRight: 241 }}
-                            icon={arrowIcon}
-                            onPress={() => this.props.navigation.navigate('OneRM')}>1RM Calculator</Button>
-                    </View>
                 </ScrollView>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
             </Layout>
