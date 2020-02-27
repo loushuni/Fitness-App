@@ -2,34 +2,36 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { Text, Button, Layout, Icon } from '@ui-kitten/components';
 
-const Calculators = () => {
-    return (
-        <Layout style={styles.container}>
-            <Text style={styles.title}>Fitness Calculators</Text>
-            <Layout style={{ flexDirection: 'column', alignContent: 'flex-start', alignItems: 'flex-start' }}>
-                <Button
-                    style={styles.button}
-                    textStyle={{ fontWeight: '500', marginRight: 245 }}
-                    icon={arrowIcon}
-                    onPress={() => this.props.navigation.navigate('BMI')}>BMI Calculator</Button>
-                <Button
-                    style={styles.button}
-                    textStyle={{ fontWeight: '500', marginRight: 235 }}
-                    icon={arrowIcon}
-                    onPress={() => this.props.navigation.navigate('TDEE')}>TDEE Calculator</Button>
-                <Button
-                    style={styles.button}
-                    textStyle={{ fontWeight: '500', marginRight: 228 }}
-                    icon={arrowIcon}
-                    onPress={() => this.props.navigation.navigate('Macro')}>Macro Calculator</Button>
-                <Button
-                    style={styles.button}
-                    textStyle={{ fontWeight: '500', marginRight: 241 }}
-                    icon={arrowIcon}
-                    onPress={() => this.props.navigation.navigate('OneRM')}>1RM Calculator</Button>
+export default class Calculators extends Component {
+    render() {
+        return (
+            <Layout style={styles.container}>
+                <Text style={styles.title}>Fitness Calculators</Text>
+                <Layout style={{ flexDirection: 'column', alignContent: 'flex-start', alignItems: 'flex-start' }}>
+                    <Button
+                        style={styles.button}
+                        textStyle={{ fontWeight: '500', marginRight: 245 }}
+                        icon={arrowIcon}
+                        onPress={() => this.props.navigation.navigate('BMI')}>BMI Calculator</Button>
+                    <Button
+                        style={styles.button}
+                        textStyle={{ fontWeight: '500', marginRight: 235 }}
+                        icon={arrowIcon}
+                        onPress={() => this.props.navigation.navigate('TDEE')}>TDEE Calculator</Button>
+                    <Button
+                        style={styles.button}
+                        textStyle={{ fontWeight: '500', marginRight: 228 }}
+                        icon={arrowIcon}
+                        onPress={() => this.props.navigation.navigate('Macro')}>Macro Calculator</Button>
+                    <Button
+                        style={styles.button}
+                        textStyle={{ fontWeight: '500', marginRight: 241 }}
+                        icon={arrowIcon}
+                        onPress={() => this.props.navigation.navigate('OneRM')}>1RM Calculator</Button>
+                </Layout>
             </Layout>
-        </Layout>
-    );
+        );
+    }
 }
 
 const arrowIcon = (style) => (
@@ -61,5 +63,3 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start'
     }
 })
-
-export default Calculators;
