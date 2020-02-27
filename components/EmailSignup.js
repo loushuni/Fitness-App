@@ -34,17 +34,8 @@ export default class EmailSignup extends Component {
         } else if (this.state.password.length < 8) {
             Alert.alert("Password must be at least 8 characters long");
         } else {
-            // axios.get('/id.json')
-            //     .then(response => this.setState({ id: response.data }))
-            //     .catch(error => Alert.alert(error));
             firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
                 .then(() => {
-                    // axios.put('.json', { id: +this.state.id + 1 })
-                    //     .then(console.log('Id Updated Successfully!'))
-                    //     .catch(error => Alert.alert(error));
-                    // axios.post('/users.json', user)
-                    //     .then(console.log('User Data Posted Successfully!'))
-                    //     .catch(error => Alert.alert(error));
                     var userId = firebase.auth().currentUser.uid;
                     this.writeUserData(
                         userId,
