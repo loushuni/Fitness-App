@@ -11,6 +11,10 @@ const BMI = () => {
 
     const [result, setResult] = React.useState(0);
 
+    useEffect(() => {
+        console.log('mounted');
+    }, []);
+
     const onPressed = () => {
         if (weight == "") {
             Alert.alert("Please enter your weight");

@@ -11,36 +11,27 @@ const ModalWithBackdrop = (props) => {
     var userId = firebase.auth().currentUser.uid;
 
     const [gender, setGender] = React.useState(props.option);
-    useEffect(() => {
-        setGender(props.option);
-    }, [props.option])
 
     const [goal, setGoal] = React.useState(props.option);
-    useEffect(() => {
-        setGoal(props.option);
-    }, [props.option])
 
     const [birthday, setBirthday] = React.useState(props.option);
 
     const [height, setHeight] = React.useState(props.option);
-    useEffect(() => {
-        setHeight(props.option);
-    }, [props.option])
 
     const [heightUnit, setHeightUnit] = React.useState(props.unit);
-    useEffect(() => {
-        setHeightUnit(props.unit);
-    }, [props.unit])
 
     const [weight, setWeight] = React.useState(props.option);
-    useEffect(() => {
-        setWeight(props.option);
-    }, [props.option])
 
     const [weightUnit, setWeightUnit] = React.useState(props.unit);
+
     useEffect(() => {
+        setGender(props.option);
+        setGoal(props.option);
+        setHeight(props.option);
+        setHeightUnit(props.unit);
+        setWeight(props.option);
         setWeightUnit(props.unit);
-    }, [props.unit])
+    }, [props.option, props.unit])
 
     const toggleModal = () => {
         setVisible(!visible);
