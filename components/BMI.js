@@ -7,12 +7,15 @@ const BMI = () => {
 
     const [weight, setWeight] = React.useState('');
 
+    const [weightUnit, setWeightUnit] = React.useState('');
+
     const [height, setHeight] = React.useState('');
+
+    const [heightUnit, setHeightUnit] = React.useState('');
 
     const [result, setResult] = React.useState(0);
 
     useEffect(() => {
-        console.log('mounted');
         var userId = firebase.auth().currentUser.uid;
         var s = firebase.database().ref('users/' + userId);
         s.on('value', function (snapshot) {
@@ -35,6 +38,16 @@ const BMI = () => {
         setResult((+weight * 703 / height / height).toFixed(2));
     }
 
+    const unit1 = [
+        { text: 'lb' },
+        { text: 'kg' }
+    ];
+
+    const unit2 = [
+        { text: 'inch' },
+        { text: 'cm' }
+    ];
+
     return (
         <Layout style={styles.container}>
             <Text style={styles.title}>BMI Calculator</Text>
@@ -46,7 +59,12 @@ const BMI = () => {
                         style={styles.input}
                         value={weight}
                         onChangeText={setWeight} />
-                    <Text style={{ paddingTop: 10 }}>lb</Text>
+                    <Select
+                        style={styles.select}
+                        data={unit1}
+                        selectedOption={weightUnit}
+                        onSelect={setWeightUnit}
+                    />
                 </Layout>
                 <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
                     <Text style={{ marginRight: 10, marginTop: 8 }}>Height:</Text>
@@ -55,7 +73,12 @@ const BMI = () => {
                         style={styles.input}
                         value={height}
                         onChangeText={setHeight} />
-                    <Text style={{ paddingTop: 10 }}>inch</Text>
+                    <Select
+                        style={styles.select}
+                        data={unit2}
+                        selectedOption={heightUnit}
+                        onSelect={setHeightUnit}
+                    />
                 </Layout>
                 <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
                     <Button style={styles.button} onPress={onPressed}>Calculate BMI</Button>
@@ -85,7 +108,7 @@ const styles = StyleSheet.create({
         marginRight: 10
     },
     input: {
-        width: '55%',
+        width: '40%',
         paddingRight: 10
     },
     result: {
@@ -95,6 +118,9 @@ const styles = StyleSheet.create({
         paddingTop: 11,
         paddingBottom: 11,
         backgroundColor: '#1A2138',
+        width: '40%'
+    },
+    select: {
         width: '35%'
     }
 })
