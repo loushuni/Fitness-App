@@ -63,10 +63,6 @@ export default class Profile extends ValidationComponent {
     }
 }
 
-const arrowIcon = (style) => (
-    <Icon name='angle-right' style={{ color: '#8F9BB3', paddingLeft: 10 }} />
-);
-
 const BottomNavigationWithIconsShowcase = () => {
 
     const [bottomSelectedIndex, setBottomSelectedIndex] = React.useState(0);

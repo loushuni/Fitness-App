@@ -152,7 +152,7 @@ const ModalWithBackdrop = (props) => {
                     </Picker>
                 </Layout>
                 <Button style={styles.optionButton} status='success' onPress={() => {
-                    updateWeight(weight + ' ' + weightUnit);
+                    updateWeight(weight, weightUnit);
                     toggleModal;
                 }}>Submit</Button>
             </Layout>
