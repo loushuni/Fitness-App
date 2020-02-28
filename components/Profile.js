@@ -64,19 +64,19 @@ export default class Profile extends ValidationComponent {
                     <View style={styles.elementContainer}>
                         <View style={styles.element}>
                             <Text style={styles.text}>BMI</Text>
-                            <Text>{this.state.bmi}</Text>
+                            <Text style={styles.calResult}>{this.state.bmi}</Text>
                         </View>
                         <View style={styles.element}>
                             <Text style={styles.text}>TDEE</Text>
-                            <Text>{this.state.tdee}</Text>
+                            <Text style={styles.calResult}>{this.state.tdee}</Text>
                         </View>
                         <View style={styles.element}>
                             <Text style={styles.text}>Macro</Text>
-                            <Text>{this.state.macro}</Text>
+                            <Text style={styles.calResult}>{this.state.macro}</Text>
                         </View>
                         <View style={styles.element}>
                             <Text style={styles.text}>1RM</Text>
-                            <Text>{this.state.onerm}</Text>
+                            <Text style={styles.calResult}>{this.state.onerm}</Text>
                         </View>
                     </View>
                 </ScrollView>
@@ -200,5 +200,10 @@ const styles = StyleSheet.create({
         borderColor: '#101426',
         flexDirection: 'row-reverse',
         justifyContent: 'flex-start'
+    },
+    calResult: {
+        color: '#8F9BB3',
+        alignSelf: 'center',
+        marginLeft: 145
     }
 });
