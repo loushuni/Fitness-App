@@ -22,7 +22,7 @@ export default class Login extends Component {
         } else {
             firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
                 .then(() => {
-                    this.props.navigation.navigate('Profile');
+                    this.props.navigation.navigate('Calculators');
                     Alert.alert("You're successfully logged in!");
                 })
                 .catch(function (error) {
@@ -46,7 +46,6 @@ export default class Login extends Component {
                         textStyle={styles.buttonText}>
                         Login
                     </Button>
-                    <Text style={styles.text} onPress={() => this.props.navigation.navigate('Signup')}>Don't have an account yet? Sign up now!</Text>
                 </ImageBackground>
             </View>
         );
@@ -98,9 +97,5 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: '700',
         paddingTop: 30
-    },
-    text: {
-        alignSelf: 'center',
-        marginTop: 20
     }
 });

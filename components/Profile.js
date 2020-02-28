@@ -204,6 +204,6 @@ const styles = StyleSheet.create({
     calResult: {
         color: '#8F9BB3',
         alignSelf: 'center',
-        marginLeft: 145
+        marginLeft: 120
     }
 });

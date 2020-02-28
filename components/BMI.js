@@ -19,12 +19,14 @@ const BMI = () => {
 
     const [result, setResult] = React.useState(0);
 
-   // const navigation = useNavigation();
+    // const navigation = useNavigation();
 
     useEffect(() => {
-        firebase.database().ref('users/' + userId).update({
-            bmi: result
-        });
+        if (result != 0) {
+            firebase.database().ref('users/' + userId).update({
+                bmi: result
+            });
+        }
     }, [result]);
 
     useEffect(() => {
@@ -35,6 +37,7 @@ const BMI = () => {
             setHeight(data.height);
             setWeightUnit(data.weightUnit);
             setHeightUnit(data.heightUnit);
+            setResult(data.bmi);
         }.bind(this));
     }, []);
 
@@ -54,16 +57,6 @@ const BMI = () => {
             setResult((+weight / (height / 100) / (height / 100)).toFixed(2));
         }
     }
-
-    // const unit1 = [
-    //     { text: 'lb' },
-    //     { text: 'kg' }
-    // ];
-
-    // const unit2 = [
-    //     { text: 'inch' },
-    //     { text: 'cm' }
-    // ];
 
     return (
         <Layout style={styles.container}>
