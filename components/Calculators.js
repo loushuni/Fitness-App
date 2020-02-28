@@ -7,26 +7,28 @@ export default class Calculators extends Component {
         return (
             <Layout style={styles.container}>
                 <Text style={styles.title}>Fitness Calculators</Text>
-                <Layout style={{ flexDirection: 'column', alignContent: 'flex-start', alignItems: 'flex-start' }}>
+                <Layout style={{ flexDirection: 'row', alignSelf: 'center' }}>
                     <Button
                         style={styles.button}
-                        textStyle={{ fontWeight: '500', marginRight: 245 }}
-                        icon={arrowIcon}
+                        textStyle={styles.buttonText}
+                        //icon={arrowIcon}
                         onPress={() => this.props.navigation.navigate('BMI')}>BMI Calculator</Button>
                     <Button
                         style={styles.button}
-                        textStyle={{ fontWeight: '500', marginRight: 235 }}
-                        icon={arrowIcon}
+                        textStyle={styles.buttonText}
+                        //icon={arrowIcon}
                         onPress={() => this.props.navigation.navigate('TDEE')}>TDEE Calculator</Button>
+                </Layout>
+                <Layout style={{ flexDirection: 'row', alignSelf: 'center' }}>
                     <Button
                         style={styles.button}
-                        textStyle={{ fontWeight: '500', marginRight: 228 }}
-                        icon={arrowIcon}
+                        textStyle={styles.buttonText}
+                        //icon={arrowIcon}
                         onPress={() => this.props.navigation.navigate('Macro')}>Macro Calculator</Button>
                     <Button
                         style={styles.button}
-                        textStyle={{ fontWeight: '500', marginRight: 241 }}
-                        icon={arrowIcon}
+                        textStyle={styles.buttonText}
+                        //icon={arrowIcon}
                         onPress={() => this.props.navigation.navigate('OneRM')}>1RM Calculator</Button>
                 </Layout>
             </Layout>
@@ -48,18 +50,21 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 27,
         marginTop: 80,
-        marginBottom: 100,
+        marginBottom: 150,
         paddingTop: 10
     },
     button: {
-        width: '100%',
+        width: '45%',
         borderWidth: 1,
-        height: 50,
-        flexDirection: 'row',
+        height: 150,
         borderBottomWidth: 0,
         backgroundColor: '#2E3A59',
         borderColor: '#101426',
-        flexDirection: 'row-reverse',
-        justifyContent: 'flex-start'
+        //flexDirection: 'row',
+        //flexDirection: 'row-reverse',
+        //justifyContent: 'flex-start'
+    },
+    buttonText: {
+       fontSize: 15
     }
 })
