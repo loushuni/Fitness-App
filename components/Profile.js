@@ -18,7 +18,11 @@ export default class Profile extends ValidationComponent {
             height: '',
             heightUnit: '',
             weight: '',
-            weightUnit: ''
+            weightUnit: '',
+            bmi: '',
+            tdee: '',
+            macro: '',
+            onerm: ''
         }
     };
 
@@ -27,7 +31,7 @@ export default class Profile extends ValidationComponent {
         var s = firebase.database().ref('users/' + userId);
         s.on('value', function (snapshot) {
             const data = snapshot.val();
-            this.setState({ email: data.email, gender: data.gender, goal: data.goal, birthday: data.birthday, height: data.height, heightUnit: data.heightUnit, weight: data.weight, weightUnit: data.weightUnit });
+            this.setState({ email: data.email, gender: data.gender, goal: data.goal, birthday: data.birthday, height: data.height, heightUnit: data.heightUnit, weight: data.weight, weightUnit: data.weightUnit, bmi: data.bmi, tdee: data.tdee, macro: data.macro, onerm: data.onerm });
         }.bind(this));
     }
 
@@ -55,6 +59,25 @@ export default class Profile extends ValidationComponent {
                         <ModalWithBackdrop option={this.state.birthday} name='Birthday' element='birthdayElement' />
                         <ModalWithBackdrop option={this.state.height} unit={this.state.heightUnit} name='Height' element='heightElement' />
                         <ModalWithBackdrop option={this.state.weight} unit={this.state.weightUnit} name='Weight' element='weightElement' />
+                    </View>
+                    <Text style={styles.header}>Fitness Calculators</Text>
+                    <View style={styles.elementContainer}>
+                        <View style={styles.element}>
+                            <Text style={styles.text}>BMI</Text>
+                            <Text>{this.state.bmi}</Text>
+                        </View>
+                        <View style={styles.element}>
+                            <Text style={styles.text}>TDEE</Text>
+                            <Text>{this.state.tdee}</Text>
+                        </View>
+                        <View style={styles.element}>
+                            <Text style={styles.text}>Macro</Text>
+                            <Text>{this.state.macro}</Text>
+                        </View>
+                        <View style={styles.element}>
+                            <Text style={styles.text}>1RM</Text>
+                            <Text>{this.state.onerm}</Text>
+                        </View>
                     </View>
                 </ScrollView>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />

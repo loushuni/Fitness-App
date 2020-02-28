@@ -3,6 +3,7 @@ import { StyleSheet, Alert } from 'react-native';
 import { Layout, Text, Input, Button, Select } from '@ui-kitten/components';
 import firebase from './FirebaseConfig';
 import ModalWithBackdrop from './ModalWithBackdrop';
+//import { useNavigation } from '@react-navigation/native';
 
 const BMI = () => {
 
@@ -17,6 +18,8 @@ const BMI = () => {
     const [heightUnit, setHeightUnit] = React.useState('');
 
     const [result, setResult] = React.useState(0);
+
+   // const navigation = useNavigation();
 
     useEffect(() => {
         firebase.database().ref('users/' + userId).update({
@@ -96,10 +99,11 @@ const BMI = () => {
                         onSelect={setHeightUnit}
                     />
                 </Layout> */}
-                <Layout style={{ flexDirection: 'row', marginBottom: 10, marginTop: 20, alignSelf: 'center' }}>
+                <Layout style={styles.resultContainer}>
                     <Button style={styles.button} onPress={onPressed}>Calculate BMI</Button>
                     <Text style={styles.result}>{result}</Text>
                 </Layout>
+                {/* <Button style={styles.navButton} onPress={() => navigation.navigate('Profile')}>Continue to Your Profile</Button> */}
             </Layout>
         </Layout>
     );
@@ -138,6 +142,17 @@ const styles = StyleSheet.create({
     },
     select: {
         width: '35%'
+    },
+    resultContainer: {
+        flexDirection: 'row',
+        marginBottom: 10,
+        marginTop: 20,
+        alignSelf: 'center'
+    },
+    navButton: {
+        width: '50%',
+        alignSelf: 'center',
+        marginTop: 10
     }
 })
 
