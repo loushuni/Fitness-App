@@ -74,10 +74,6 @@ export default class Profile extends ValidationComponent {
                             <Text style={styles.text}>Macro</Text>
                             <Text style={styles.calResult}>{this.state.macro}</Text>
                         </View>
-                        <View style={styles.element}>
-                            <Text style={styles.text}>1RM</Text>
-                            <Text style={styles.calResult}>{this.state.onerm}</Text>
-                        </View>
                     </View>
                 </ScrollView>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
