@@ -1,6 +1,6 @@
 import React, { Component, useEffect } from 'react';
-import { StyleSheet, Alert } from 'react-native';
-import { Layout, Text, Input, Button, Select } from '@ui-kitten/components';
+import { StyleSheet, Alert, Picker } from 'react-native';
+import { Layout, Text, Input, Button, Select, Modal } from '@ui-kitten/components';
 import firebase from './FirebaseConfig';
 import ModalWithBackdrop from './ModalWithBackdrop';
 //import { useNavigation } from '@react-navigation/native';
@@ -19,7 +19,19 @@ const BMI = () => {
 
     const [result, setResult] = React.useState(0);
 
+    const [weightVisible, setWeightVisible] = React.useState(false);
+
+    const [heightVisible, setHeightVisible] = React.useState(false);
+
     // const navigation = useNavigation();
+
+    const toggleWeightModal = () => {
+        setWeightVisible(!weightVisible);
+    };
+
+    const toggleHeightModal = () => {
+        setHeightVisible(!heightVisible);
+    };
 
     useEffect(() => {
         if (result != 0) {
@@ -58,12 +70,76 @@ const BMI = () => {
         }
     }
 
+    let weightPickerItems = null;
+    if (weightUnit === 'kg') {
+        weightPickerItems = Array.from(Array(116), (_, x) => x).map((item, index) => (
+            <Picker.Item label={`${item + 35}`} key={index} value={`${item + 35}`} />));
+    } else {
+        weightPickerItems = Array.from(Array(271), (_, x) => x).map((item, index) => (
+            <Picker.Item label={`${item + 80}`} key={index} value={`${item + 80}`} />));
+    }
+
+    let heightPickerItems = null;
+    if (heightUnit === 'cm') {
+        heightPickerItems = Array.from(Array(121), (_, x) => x).map((item, index) => (
+            <Picker.Item label={`${item + 130}`} key={index} value={`${item + 130}`} />));
+    } else {
+        heightPickerItems = Array.from(Array(47), (_, x) => x).map((item, index) => (
+            <Picker.Item label={`${item + 52}`} key={index} value={`${item + 52}`} />));
+    }
+
+    let weightPicker = (
+        <Layout style={styles.pickerContainer}>
+            <Picker selectedValue={weight} onValueChange={setWeight} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white', backgroundColor: '#2E3A59' }}>
+                {weightPickerItems}
+            </Picker>
+            <Picker selectedValue={weightUnit} onValueChange={setWeightUnit} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white', backgroundColor: '#2E3A59' }}>
+                < Picker.Item label="lb" value="lb" />
+                < Picker.Item label="kg" value="kg" />
+            </Picker>
+        </Layout>
+    );
+
+    let heightPicker = (
+        <Layout style={styles.pickerContainer}>
+            <Picker selectedValue={height} onValueChange={setHeight} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white', backgroundColor: '#2E3A59' }}>
+                {heightPickerItems}
+            </Picker>
+            <Picker selectedValue={heightUnit} onValueChange={setHeightUnit} style={{ height: 50, width: 100, color: 'white' }} itemStyle={{ color: 'white', backgroundColor: '#2E3A59' }}>
+                < Picker.Item label="inch" value="inch" />
+                < Picker.Item label="cm" value="cm" />
+            </Picker>
+        </Layout>
+    );
+
     return (
         <Layout style={styles.container}>
             <Text style={styles.title}>BMI Calculator</Text>
             <Layout>
-                <ModalWithBackdrop option={height} unit={heightUnit} name='Height' element='heightElement' />
-                <ModalWithBackdrop option={weight} unit={weightUnit} name='Weight' element='weightElement' />
+                <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
+                    <Text style={{ paddingTop: 7, paddingRight: 23 }}>Weight:</Text>
+                    <Text onPress={toggleWeightModal} style={styles.placeholder}>{weight + ' ' + weightUnit}</Text>
+                    <Modal
+                        allowBackdrop={true}
+                        backdropStyle={styles.backdrop}
+                        onBackdropPress={toggleWeightModal}
+                        visible={weightVisible}>
+                        {weightPicker}
+                    </Modal>
+                </Layout>
+                <Layout style={{ flexDirection: 'row', marginTop: 10 }}>
+                    <Text style={{ paddingTop: 7, paddingRight: 26 }}>Height:</Text>
+                    <Text onPress={toggleHeightModal} style={styles.placeholder}>{height + ' ' + heightUnit}</Text>
+                    <Modal
+                        allowBackdrop={true}
+                        backdropStyle={styles.backdrop}
+                        onBackdropPress={toggleHeightModal}
+                        visible={heightVisible}>
+                        {heightPicker}
+                    </Modal>
+                </Layout>
+                {/* <ModalWithBackdrop option={height} unit={heightUnit} name='Height' element='heightElement' />
+                <ModalWithBackdrop option={weight} unit={weightUnit} name='Weight' element='weightElement' /> */}
                 {/* <Layout style={{ flexDirection: 'row', marginBottom: 10 }}>
                     <Text style={{ marginRight: 10, marginTop: 8 }}>Weight:</Text>
                     <Input
@@ -146,6 +222,26 @@ const styles = StyleSheet.create({
         width: '50%',
         alignSelf: 'center',
         marginTop: 10
+    },
+    placeholder: {
+        borderColor: '#101426',
+        borderWidth: 1,
+        backgroundColor: '#1A2138',
+        width: '55%',
+        color: '#8F9BB3',
+        paddingTop: 5,
+        paddingBottom: 10,
+        paddingLeft: 10
+    },
+    backdrop: {
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    },
+    pickerContainer: {
+        flex: 1,
+        flexDirection: 'row'
+    },
+    picker: {
+        flex: 0.5
     }
 })
 
