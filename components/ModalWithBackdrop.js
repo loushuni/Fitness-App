@@ -84,7 +84,7 @@ const ModalWithBackdrop = (props) => {
                 <Button style={styles.optionButton} onPress={() => setGender('Other')}>Other</Button>
                 <Button style={styles.optionButton} status='success' onPress={() => {
                     updateGender(gender);
-                    toggleModal;
+                    setVisible(!visible);
                 }}>Submit</Button>
             </Layout>
         );
@@ -97,7 +97,7 @@ const ModalWithBackdrop = (props) => {
                 <Button style={styles.optionButton} onPress={() => setGoal('Get Fitter')}>Get Fitter</Button>
                 <Button style={styles.optionButton} status='success' onPress={() => {
                     updateGoal(goal);
-                    toggleModal;
+                    setVisible(!visible);
                 }}>Submit</Button>
             </Layout>
         );
@@ -125,7 +125,7 @@ const ModalWithBackdrop = (props) => {
                 </Layout>
                 <Button style={styles.optionButton} status='success' onPress={() => {
                     updateHeight(height, heightUnit);
-                    toggleModal;
+                    setVisible(!visible);
                 }}>Submit</Button>
             </Layout>
         );
@@ -153,7 +153,7 @@ const ModalWithBackdrop = (props) => {
                 </Layout>
                 <Button style={styles.optionButton} status='success' onPress={() => {
                     updateWeight(weight, weightUnit);
-                    toggleModal;
+                    setVisible(!visible);
                 }}>Submit</Button>
             </Layout>
         );
