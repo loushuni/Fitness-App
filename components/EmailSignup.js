@@ -51,7 +51,7 @@ export default class EmailSignup extends Component {
                         this.props.navigation.state.params.heightUnit,
                         this.props.navigation.state.params.weight,
                         this.props.navigation.state.params.weightUnit);
-                    this.props.navigation.navigate('Profile');
+                    this.props.navigation.navigate('Calculators');
                     Alert.alert("You're successfully signed up!");
                 })
                 .catch(function (error) {
