@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { StyleSheet, Picker, Alert } from 'react-native';
 import { Layout, Text, Input, Button, Radio, RadioGroup, Modal, Select } from '@ui-kitten/components';
+import firebase from './FirebaseConfig';
 
 const TDEE = () => {
+
+    const userId = firebase.auth().currentUser.uid;
 
     const [selectedIndex, setSelectedIndex] = React.useState(0);
 
@@ -27,6 +30,27 @@ const TDEE = () => {
     const [bodyFat, setBodyFat] = React.useState('');
 
     const [result, setResult] = React.useState('');
+
+    useEffect(() => {
+        if (result != 0) {
+            firebase.database().ref('users/' + userId).update({
+                tdee: result
+            });
+        }
+    }, [result]);
+
+    useEffect(() => {
+        var s = firebase.database().ref('users/' + userId);
+        s.on('value', function (snapshot) {
+            const data = snapshot.val();
+            setSelectedIndex(data.gender == 'Male' ? 0 : 1);
+            setWeight(data.weight);
+            setHeight(data.height);
+            setWeightUnit(data.weightUnit);
+            setHeightUnit(data.heightUnit);
+            setResult(data.tdee);
+        }.bind(this));
+    }, []);
 
     const toggleAgeModal = () => {
         setAgeVisible(!ageVisible);

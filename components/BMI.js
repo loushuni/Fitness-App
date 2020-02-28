@@ -7,7 +7,7 @@ import ModalWithBackdrop from './ModalWithBackdrop';
 
 const BMI = () => {
 
-    var userId = firebase.auth().currentUser.uid;
+    const userId = firebase.auth().currentUser.uid;
 
     const [weight, setWeight] = React.useState('');
 
