@@ -36,9 +36,9 @@ export default class Calculators extends Component {
     }
 }
 
-const arrowIcon = (style) => (
-    <Icon name='angle-right' style={{ color: '#8F9BB3', paddingLeft: 10 }} />
-);
+// const arrowIcon = (style) => (
+//     <Icon name='angle-right' style={{ color: '#8F9BB3', paddingLeft: 10 }} />
+// );
 
 const styles = StyleSheet.create({
     container: {
