@@ -19,7 +19,12 @@ const BMI = () => {
     const [result, setResult] = React.useState(0);
 
     useEffect(() => {
-        var userId = firebase.auth().currentUser.uid;
+        firebase.database().ref('users/' + userId).update({
+            bmi: result
+        });
+    }, [result]);
+
+    useEffect(() => {
         var s = firebase.database().ref('users/' + userId);
         s.on('value', function (snapshot) {
             const data = snapshot.val();
@@ -45,9 +50,6 @@ const BMI = () => {
         } else if (heightUnit == 'cm' && weightUnit == 'kg') {
             setResult((+weight / (height / 100) / (height / 100)).toFixed(2));
         }
-        firebase.database().ref('users/' + userId).update({
-            bmi: result
-        });
     }
 
     // const unit1 = [
