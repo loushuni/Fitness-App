@@ -78,8 +78,19 @@ export default class Profile extends ValidationComponent {
                             <Text style={styles.calResult}>{this.state.tdee}</Text>
                         </View>
                         <View style={styles.element}>
-                            <Text style={styles.text}>Macro</Text>
-                            <Text style={styles.calResult}>{this.state.macro}</Text>
+                            <Text style={styles.text}>Macro for {this.state.goal}</Text>
+                        </View>
+                        <View style={styles.element}>
+                            <Text style={styles.text1}>Protein</Text>
+                            <Text style={styles.calResult}>{this.state.macroProtein}</Text>
+                        </View>
+                        <View style={styles.element}>
+                            <Text style={styles.text1}>Fat</Text>
+                            <Text style={styles.calResult}>{this.state.macroFat}</Text>
+                        </View>
+                        <View style={styles.element}>
+                            <Text style={styles.text1}>Carbs</Text>
+                            <Text style={styles.calResult}>{this.state.macroCarbs}</Text>
                         </View>
                     </View>
                 </ScrollView>
@@ -166,6 +177,12 @@ const styles = StyleSheet.create({
         paddingTop: 15,
         paddingLeft: 20,
         fontWeight: '500'
+    },
+    text1: {
+        width: '50%',
+        paddingTop: 15,
+        paddingLeft: 50,
+        fontWeight: '300'
     },
     input: {
         width: '50%',
