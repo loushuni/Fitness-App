@@ -21,7 +21,9 @@ export default class Profile extends ValidationComponent {
             weightUnit: '',
             bmi: '',
             tdee: '',
-            macro: '',
+            macroProtein: '',
+            macroFat: '',
+            macroCarbs: '',
             onerm: ''
         }
     };
@@ -31,7 +33,12 @@ export default class Profile extends ValidationComponent {
         var s = firebase.database().ref('users/' + userId);
         s.on('value', function (snapshot) {
             const data = snapshot.val();
-            this.setState({ email: data.email, gender: data.gender, goal: data.goal, birthday: data.birthday, height: data.height, heightUnit: data.heightUnit, weight: data.weight, weightUnit: data.weightUnit, bmi: data.bmi, tdee: data.tdee, macro: data.macro, onerm: data.onerm });
+            this.setState({
+                email: data.email, gender: data.gender, goal: data.goal, birthday: data.birthday,
+                height: data.height, heightUnit: data.heightUnit, weight: data.weight, weightUnit: data.weightUnit,
+                macroProtein: data.macroProtein, macroFat: data.macroFat, macroCarbs: data.macroCarbs,
+                onerm: data.onerm, bmi: data.bmi, tdee: data.tdee,
+            });
         }.bind(this));
     }
 

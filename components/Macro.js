@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { StyleSheet, Picker, ScrollView, Alert } from 'react-native';
 import { Layout, Text, Input, Button, Radio, RadioGroup, Modal, Select, Tab, TabView } from '@ui-kitten/components';
+import firebase from './FirebaseConfig';
 
 const Macro = () => {
+    const userId = firebase.auth().currentUser.uid;
 
     const [selectedIndex, setSelectedIndex] = React.useState(0);
 
@@ -29,6 +31,18 @@ const Macro = () => {
     const [bodyFat, setBodyFat] = React.useState('');
 
     const [result, setResult] = React.useState(0);
+
+    useEffect(() => {
+        var s = firebase.database().ref('users/' + userId);
+        s.on('value', function (snapshot) {
+            const data = snapshot.val();
+            setSelectedIndex(data.gender == 'Male' ? 0 : 1);
+            setWeight(data.weight);
+            setHeight(data.height);
+            setWeightUnit(data.weightUnit);
+            setHeightUnit(data.heightUnit);
+        }.bind(this));
+    }, []);
 
     const toggleAgeModal = () => {
         setAgeVisible(!ageVisible);

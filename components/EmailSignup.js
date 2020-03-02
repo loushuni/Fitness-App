@@ -22,7 +22,9 @@ export default class EmailSignup extends Component {
             weightUnit: weightUnit,
             bmi: 0,
             tdee: 0,
-            macro: 0,
+            macroProtein: 0,
+            macroFat: 0,
+            macroCarbs: 0,
             onerm: 0
         });
     }
