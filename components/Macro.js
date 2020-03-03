@@ -51,6 +51,7 @@ const Macro = () => {
             setHeight(data.height);
             setWeightUnit(data.weightUnit);
             setHeightUnit(data.heightUnit);
+            setAge(data.age)
         }.bind(this));
     }, []);
 
