@@ -36,10 +36,14 @@ const BMI = () => {
     useEffect(() => {
         if (result != 0) {
             firebase.database().ref('users/' + userId).update({
-                bmi: result
+                bmi: result,
+                height: height,
+                weight: weight,
+                heightUnit: heightUnit,
+                weightUnit: weightUnit
             });
         }
-    }, [result]);
+    }, [result, height, weight, heightUnit, weightUnit]);
 
     useEffect(() => {
         var s = firebase.database().ref('users/' + userId);
