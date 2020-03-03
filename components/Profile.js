@@ -43,6 +43,18 @@ export default class Profile extends ValidationComponent {
         }.bind(this));
     }
 
+    logout = () => {
+        firebase.auth().signOut()
+            .then(() => {
+                this.props.navigation.navigate('Login');
+                Alert.alert('You have been signed out successfully!');
+            })
+            .catch(function (error) {
+                var errorMessage = error.message;
+                Alert.alert(errorMessage);
+            });
+    }
+
     render() {
         return (
             <Layout style={styles.container}>
@@ -95,7 +107,7 @@ export default class Profile extends ValidationComponent {
                         </View>
                     </View>
                     <View style={styles.logoutButton}>
-                        <Button>Log Out</Button>
+                        <Button onPress={this.logout}>Log Out</Button>
                     </View>
                 </ScrollView>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
@@ -231,7 +243,7 @@ const styles = StyleSheet.create({
         marginLeft: 120
     },
     logoutButton: {
-       marginBottom: 50,
-       marginTop: 30
+        marginBottom: 50,
+        marginTop: 30
     }
 });
