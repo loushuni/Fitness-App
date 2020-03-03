@@ -7,26 +7,6 @@ export default class Calculators extends Component {
         return (
             <Layout style={styles.container}>
                 <Text style={styles.title}>Fitness Calculators</Text>
-                {/* <Layout style={{ flexDirection: 'row', alignSelf: 'center' }}>
-                    <Button
-                        style={styles.button}
-                        textStyle={styles.buttonText}
-                        onPress={() => this.props.navigation.navigate('BMI')}>BMI Calculator</Button>
-                    <Button
-                        style={styles.button}
-                        textStyle={styles.buttonText}
-                        onPress={() => this.props.navigation.navigate('TDEE')}>TDEE Calculator</Button>
-                </Layout>
-                <Layout style={{ flexDirection: 'row', alignSelf: 'center' }}>
-                    <Button
-                        style={styles.button}
-                        textStyle={styles.buttonText}
-                        onPress={() => this.props.navigation.navigate('Macro')}>Macro Calculator</Button>
-                    <Button
-                        style={styles.button}
-                        textStyle={styles.buttonText}
-                        onPress={() => this.props.navigation.navigate('OneRM')}>1RM Calculator</Button>
-                </Layout> */}
                 <ScrollView>
                     <Layout style={{ flex: 1 }}>
                         <ImageBackground source={require('../assets/13.png')} style={styles.backgroundImage} >
