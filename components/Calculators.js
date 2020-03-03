@@ -31,6 +31,7 @@ export default class Calculators extends Component {
                         //icon={arrowIcon}
                         onPress={() => this.props.navigation.navigate('OneRM')}>1RM Calculator</Button>
                 </Layout>
+                <Button style={styles.profileButton} onPress={() => {this.props.navigation.navigate('Profile')}}>Go to Your Profile</Button>
             </Layout>
         );
     }
@@ -66,5 +67,10 @@ const styles = StyleSheet.create({
     },
     buttonText: {
        fontSize: 15
+    },
+    profileButton: {
+        width: '50%',
+        alignSelf: 'center',
+        marginTop: 50
     }
 })
