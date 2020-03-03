@@ -33,6 +33,16 @@ const Macro = () => {
 
     const [result, setResult] = React.useState(0);
 
+    const [mp, setMP] = React.useState(0);
+    const [mf, setMF] = React.useState(0);
+    const [mc, setMC] = React.useState(0);
+    const [lp, setLP] = React.useState(0);
+    const [lf, setLF] = React.useState(0);
+    const [lc, setLC] = React.useState(0);
+    const [hp, setHP] = React.useState(0);
+    const [hf, setHF] = React.useState(0);
+    const [hc, setHC] = React.useState(0);
+
     useEffect(() => {
         if (mp != 0) {
             firebase.database().ref('users/' + userId).update({
@@ -64,7 +74,7 @@ const Macro = () => {
             setHeight(data.height);
             setWeightUnit(data.weightUnit);
             setHeightUnit(data.heightUnit);
-            setAge(data.age)
+            setAge(data.age);
         }.bind(this));
     }, []);
 
@@ -170,16 +180,6 @@ const Macro = () => {
         res = (res * 1.525).toFixed(2);
     }
 
-    const [mp, setMP] = React.useState(0);
-    const [mf, setMF] = React.useState(0);
-    const [mc, setMC] = React.useState(0);
-    const [lp, setLP] = React.useState(0);
-    const [lf, setLF] = React.useState(0);
-    const [lc, setLC] = React.useState(0);
-    const [hp, setHP] = React.useState(0);
-    const [hf, setHF] = React.useState(0);
-    const [hc, setHC] = React.useState(0);
-
     if (selectedGoal.text == 'Bulk') {
         res = +res + 500;
     } else if (selectedGoal.text == 'Shred') {
@@ -203,7 +203,7 @@ const Macro = () => {
         setMC((res * 0.35 / 4).toFixed(0));
         setLP((res * 0.4 / 4).toFixed(0));
         setLF((res * 0.4 / 9).toFixed(0));
-        setLC((res * 0.2 / 4).toFixed(0))
+        setLC((res * 0.2 / 4).toFixed(0));
         setHP((res * 0.3 / 4).toFixed(0));
         setHF((res * 0.2 / 9).toFixed(0));
         setHC((res * 0.5 / 4).toFixed(0));
