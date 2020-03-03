@@ -8,18 +8,18 @@ export default class Calculators extends Component {
             <Layout style={styles.container}>
                 <Text style={styles.title}>Fitness Calculators</Text>
                 <ScrollView>
-                    <Layout style={{ flex: 1 }}>
+                    <Layout style={{ flex: 8 }} >
                         <ImageBackground source={require('../assets/13.png')} style={styles.backgroundImage} >
-                            <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate('BMI')}>BMI Calculator</Text>
+                            <Text style={styles.text} onPress={() => this.props.navigation.navigate('BMI')}>BMI Calculator</Text>
                         </ImageBackground>
                         <ImageBackground source={require('../assets/14.png')} style={styles.backgroundImage} >
-                            <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate('TDEE')}>TDEE Calculator</Text>
+                            <Text style={styles.text} onPress={() => this.props.navigation.navigate('TDEE')}>TDEE Calculator</Text>
                         </ImageBackground>
                         <ImageBackground source={require('../assets/15.png')} style={styles.backgroundImage} >
-                            <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate('Macro')}>Macro Calculator</Text>
+                            <Text style={styles.text} onPress={() => this.props.navigation.navigate('Macro')}>Macro Calculator</Text>
                         </ImageBackground>
                         <ImageBackground source={require('../assets/16.png')} style={styles.backgroundImage} >
-                            <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate('OneRM')}>1RM Calculator</Text>
+                            <Text style={styles.text} onPress={() => this.props.navigation.navigate('OneRM')}>1RM Calculator</Text>
                         </ImageBackground>
                     </Layout>
                 </ScrollView>
@@ -43,30 +43,21 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 27,
         marginTop: 80,
-        marginBottom: 150,
+        marginBottom: 100,
         paddingTop: 10
     },
-    button: {
-        width: '45%',
-        borderWidth: 1,
-        height: 150,
-        borderBottomWidth: 0,
-        backgroundColor: '#2E3A59',
-        borderColor: '#101426',
-        //flexDirection: 'row',
-        //flexDirection: 'row-reverse',
-        //justifyContent: 'flex-start'
-    },
-    buttonText: {
-        fontSize: 15
+    text: {
+        fontSize: 22,
+        fontWeight: '700'
     },
     profileButton: {
         width: '50%',
         alignSelf: 'center',
-        marginBottom: 50
+        marginBottom: 50,
+        //marginTop: 30
     },
     backgroundImage: {
-        height: '150%',
-        width: '100%',
+        height: '135%',
+        width: '100%'
     }
 })
