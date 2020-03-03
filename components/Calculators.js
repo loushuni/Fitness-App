@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ImageBackground, ScrollView, Alert } from 'react-native';
 import { Text, Button, Layout, Icon } from '@ui-kitten/components';
 
 export default class Calculators extends Component {
@@ -7,31 +7,43 @@ export default class Calculators extends Component {
         return (
             <Layout style={styles.container}>
                 <Text style={styles.title}>Fitness Calculators</Text>
-                <Layout style={{ flexDirection: 'row', alignSelf: 'center' }}>
+                {/* <Layout style={{ flexDirection: 'row', alignSelf: 'center' }}>
                     <Button
                         style={styles.button}
                         textStyle={styles.buttonText}
-                        //icon={arrowIcon}
                         onPress={() => this.props.navigation.navigate('BMI')}>BMI Calculator</Button>
                     <Button
                         style={styles.button}
                         textStyle={styles.buttonText}
-                        //icon={arrowIcon}
                         onPress={() => this.props.navigation.navigate('TDEE')}>TDEE Calculator</Button>
                 </Layout>
                 <Layout style={{ flexDirection: 'row', alignSelf: 'center' }}>
                     <Button
                         style={styles.button}
                         textStyle={styles.buttonText}
-                        //icon={arrowIcon}
                         onPress={() => this.props.navigation.navigate('Macro')}>Macro Calculator</Button>
                     <Button
                         style={styles.button}
                         textStyle={styles.buttonText}
-                        //icon={arrowIcon}
                         onPress={() => this.props.navigation.navigate('OneRM')}>1RM Calculator</Button>
-                </Layout>
-                <Button style={styles.profileButton} onPress={() => {this.props.navigation.navigate('Profile')}}>Go to Your Profile</Button>
+                </Layout> */}
+                <ScrollView>
+                    <Layout style={{ flex: 1 }}>
+                        <ImageBackground source={require('../assets/13.png')} style={styles.backgroundImage} >
+                            <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate('BMI')}>BMI Calculator</Text>
+                        </ImageBackground>
+                        <ImageBackground source={require('../assets/14.png')} style={styles.backgroundImage} >
+                            <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate('TDEE')}>TDEE Calculator</Text>
+                        </ImageBackground>
+                        <ImageBackground source={require('../assets/15.png')} style={styles.backgroundImage} >
+                            <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate('Macro')}>Macro Calculator</Text>
+                        </ImageBackground>
+                        <ImageBackground source={require('../assets/16.png')} style={styles.backgroundImage} >
+                            <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate('OneRM')}>1RM Calculator</Text>
+                        </ImageBackground>
+                    </Layout>
+                </ScrollView>
+                <Button style={styles.profileButton} onPress={() => { this.props.navigation.navigate('Profile') }}>Go to Your Profile</Button>
             </Layout>
         );
     }
@@ -66,11 +78,15 @@ const styles = StyleSheet.create({
         //justifyContent: 'flex-start'
     },
     buttonText: {
-       fontSize: 15
+        fontSize: 15
     },
     profileButton: {
         width: '50%',
         alignSelf: 'center',
-        marginTop: 50
+        marginBottom: 50
+    },
+    backgroundImage: {
+        height: '150%',
+        width: '100%',
     }
 })
