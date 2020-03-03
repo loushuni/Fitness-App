@@ -24,7 +24,8 @@ export default class Profile extends ValidationComponent {
             macroProtein: '',
             macroFat: '',
             macroCarbs: '',
-            onerm: ''
+            onerm: '',
+            age: ''
         }
     };
 
@@ -37,7 +38,7 @@ export default class Profile extends ValidationComponent {
                 email: data.email, gender: data.gender, goal: data.goal, birthday: data.birthday,
                 height: data.height, heightUnit: data.heightUnit, weight: data.weight, weightUnit: data.weightUnit,
                 macroProtein: data.macroProtein, macroFat: data.macroFat, macroCarbs: data.macroCarbs,
-                onerm: data.onerm, bmi: data.bmi, tdee: data.tdee,
+                onerm: data.onerm, bmi: data.bmi, tdee: data.tdee, age: data.age
             });
         }.bind(this));
     }

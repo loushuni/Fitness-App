@@ -25,7 +25,8 @@ export default class EmailSignup extends Component {
             macroProtein: 0,
             macroFat: 0,
             macroCarbs: 0,
-            onerm: 0
+            onerm: 0,
+            age: 'Please choose your age'
         });
     }
 

@@ -33,6 +33,16 @@ const Macro = () => {
     const [result, setResult] = React.useState(0);
 
     useEffect(() => {
+        if (result != 0) {
+            firebase.database().ref('users/' + userId).update({
+                macroProtein: mp,
+                macroFat: mf,
+                macroCarbs: mc
+            });
+        }
+    }, [mp, mf, mc]);
+
+    useEffect(() => {
         var s = firebase.database().ref('users/' + userId);
         s.on('value', function (snapshot) {
             const data = snapshot.val();
@@ -179,7 +189,7 @@ const Macro = () => {
         setMC((res * 0.35 / 4).toFixed(0));
         setLP((res * 0.4 / 4).toFixed(0));
         setLF((res * 0.4 / 9).toFixed(0));
-        setLC((res * 0.2 / 4).toFixed(0));
+        setLC((res * 0.2 / 4).toFixed(0))
         setHP((res * 0.3 / 4).toFixed(0));
         setHF((res * 0.2 / 9).toFixed(0));
         setHC((res * 0.5 / 4).toFixed(0));
