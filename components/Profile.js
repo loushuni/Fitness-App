@@ -83,15 +83,15 @@ export default class Profile extends ValidationComponent {
                         </View>
                         <View style={styles.element}>
                             <Text style={styles.text1}>Protein</Text>
-                            <Text style={styles.calResult}>{this.state.macroProtein}</Text>
+                            <Text style={styles.calResult}>{this.state.macroProtein + ' g'}</Text>
                         </View>
                         <View style={styles.element}>
                             <Text style={styles.text1}>Fat</Text>
-                            <Text style={styles.calResult}>{this.state.macroFat}</Text>
+                            <Text style={styles.calResult}>{this.state.macroFat + ' g'}</Text>
                         </View>
                         <View style={styles.element}>
                             <Text style={styles.text1}>Carbs</Text>
-                            <Text style={styles.calResult}>{this.state.macroCarbs}</Text>
+                            <Text style={styles.calResult}>{this.state.macroCarbs + ' g'}</Text>
                         </View>
                     </View>
                 </ScrollView>
