@@ -94,6 +94,9 @@ export default class Profile extends ValidationComponent {
                             <Text style={styles.calResult}>{this.state.macroCarbs + ' g'}</Text>
                         </View>
                     </View>
+                    <View style={styles.logoutButton}>
+                        <Button>Log Out</Button>
+                    </View>
                 </ScrollView>
                 <BottomNavigationWithIconsShowcase style={styles.bottomTabs} />
             </Layout>
@@ -226,5 +229,9 @@ const styles = StyleSheet.create({
         color: '#8F9BB3',
         alignSelf: 'center',
         marginLeft: 120
+    },
+    logoutButton: {
+       marginBottom: 50,
+       marginTop: 30
     }
 });
