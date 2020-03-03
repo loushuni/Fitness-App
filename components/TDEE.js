@@ -35,10 +35,14 @@ const TDEE = () => {
         if (result != 0) {
             firebase.database().ref('users/' + userId).update({
                 tdee: result,
-                age: age
+                age: age,
+                weight: weight,
+                height: height,
+                weightUnit: weightUnit,
+                heightUnit: heightUnit
             });
         }
-    }, [result, age]);
+    }, [result, age, weight, height, heightUnit, weightUnit]);
 
     useEffect(() => {
         var s = firebase.database().ref('users/' + userId);
