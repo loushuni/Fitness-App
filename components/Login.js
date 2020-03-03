@@ -22,7 +22,7 @@ export default class Login extends Component {
         } else {
             firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
                 .then(() => {
-                    this.props.navigation.navigate('Profile');
+                    this.props.navigation.navigate('Calculators');
                     Alert.alert("You're successfully logged in!");
                 })
                 .catch(function (error) {

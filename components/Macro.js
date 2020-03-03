@@ -4,6 +4,7 @@ import { Layout, Text, Input, Button, Radio, RadioGroup, Modal, Select, Tab, Tab
 import firebase from './FirebaseConfig';
 
 const Macro = () => {
+
     const userId = firebase.auth().currentUser.uid;
 
     const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -33,11 +34,18 @@ const Macro = () => {
     const [result, setResult] = React.useState(0);
 
     useEffect(() => {
-        if (result != 0) {
+        if (mp != 0) {
             firebase.database().ref('users/' + userId).update({
                 macroProtein: mp,
                 macroFat: mf,
-                macroCarbs: mc,
+                macroCarbs: mc
+            });
+        }
+    }, [mp, mf, mc]);
+
+    useEffect(() => {
+        if (age != 'Choose Your Age') {
+            firebase.database().ref('users/' + userId).update({
                 age: age,
                 weight: weight,
                 height: height,
@@ -45,7 +53,7 @@ const Macro = () => {
                 heightUnit: heightUnit
             });
         }
-    }, [mp, mf, mc, ]);
+    }, [age, weight, height, heightUnit, weightUnit]);
 
     useEffect(() => {
         var s = firebase.database().ref('users/' + userId);
