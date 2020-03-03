@@ -37,10 +37,15 @@ const Macro = () => {
             firebase.database().ref('users/' + userId).update({
                 macroProtein: mp,
                 macroFat: mf,
-                macroCarbs: mc
+                macroCarbs: mc,
+                age: age,
+                weight: weight,
+                height: height,
+                weightUnit: weightUnit,
+                heightUnit: heightUnit
             });
         }
-    }, [mp, mf, mc]);
+    }, [mp, mf, mc, ]);
 
     useEffect(() => {
         var s = firebase.database().ref('users/' + userId);

@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { StyleSheet, ScrollView, Alert } from 'react-native';
 import { Layout, Text, Input, Button, Select } from '@ui-kitten/components';
+import firebase from './FirebaseConfig';
 
 const OneRM = () => {
+    const userId = firebase.auth().currentUser.uid;
+
     const [lift, setLift] = React.useState('');
 
     const [unit, setUnit] = React.useState('');
@@ -15,6 +18,14 @@ const OneRM = () => {
 
     const reps = Array.from(Array(12), (_, x) => x).map((item, index) => (
         { text: `${item + 1}` }));
+
+    useEffect(() => {
+        if (result != 0) {
+            firebase.database().ref('users/' + userId).update({
+                onerm: result,
+            });
+        }
+    }, [result]);
 
     let map = new Map();
     map.set('1', '100');
@@ -54,7 +65,7 @@ const OneRM = () => {
         } else if (rep == "") {
             Alert.alert("Please choose from the repetitions");
         }
-        setResult(lift / (map.get(rep.text) / 100));
+        setResult((lift / (map.get(rep.text) / 100)).toFixed(0));
     }
 
     return (
@@ -91,9 +102,9 @@ const OneRM = () => {
                 </Layout>
             </Layout>
             <Button style={styles.button} onPress={onPressed}>Calculate 1RM</Button>
-            <Layout style={{flexDirection: 'row'}}>
+            <Layout style={{ flexDirection: 'row' }}>
                 <Text style={styles.result}>{result}</Text>
-                <Text style={{fontSize: 25, paddingTop: 20, paddingLeft: 10, fontWeight: '700'}}>{unit.text}</Text>
+                <Text style={{ fontSize: 25, paddingTop: 20, paddingLeft: 10, fontWeight: '700' }}>{unit.text}</Text>
             </Layout>
             <Text style={{ backgroundColor: '#8F9BB3', width: 410, height: 2, marginTop: 20 }}></Text>
             <Text style={{ alignSelf: 'center', fontWeight: '700', marginTop: 10, marginBottom: 10 }}>Percentages</Text>
