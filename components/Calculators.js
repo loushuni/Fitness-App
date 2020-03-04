@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 27,
         marginTop: 80,
-        marginBottom: 100,
+        marginBottom: 10,
         paddingTop: 10,
         flex: 0.05
     },
