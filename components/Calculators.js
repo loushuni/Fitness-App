@@ -41,7 +41,9 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 22,
-        fontWeight: '700'
+        fontWeight: '700',
+        paddingTop: 10,
+        paddingLeft: 10
     },
     profileButton: {
         width: '50%',
