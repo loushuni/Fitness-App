@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         marginTop: 80,
         marginBottom: 100,
         paddingTop: 10,
-        flex: 0.1
+        flex: 0.05
     },
     text: {
         fontSize: 22,
